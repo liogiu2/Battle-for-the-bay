@@ -1,0 +1,927 @@
+fileFormatVersion: 2
+guid: 082de02403871ba4baaf47c5ebe36495
+timeCreated: 1511889669
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: anchor1
+    100002: anchor2
+    100004: anchor3
+    100006: anchor4
+    100008: anchties
+    100010: binacle
+    100012: CCANNONS
+    100014: davits
+    100016: dcannon1
+    100018: dcannon2
+    100020: dcannon3
+    100022: dcannon4
+    100024: dcannon5
+    100026: dcannon6
+    100028: dcannon7
+    100030: dcannon8
+    100032: decks
+    100034: fbuckets
+    100036: fcannon1
+    100038: fcannon2
+    100040: flagpole
+    100042: HAMMOCKC
+    100044: HAMMOCKM
+    100046: HAMMOCKS
+    100048: hamnets
+    100050: HDFLAGS
+    100052: HFSAILS
+    100054: HSTUDSAILS
+    100056: hull
+    100058: HWFLAGS
+    100060: HWSAILS
+    100062: lanterns
+    100064: LSTUDSAILS
+    100066: LWFLAGS
+    100068: LWSAILS
+    100070: mainrope
+    100072: masts
+    100074: OCANNONS
+    100076: ratlines
+    100078: rigging
+    100080: 'rudder '
+    100082: sboat01
+    100084: sboat02
+    100086: sboat03
+    100088: sboat04
+    100090: //RootNode
+    100092: skylite
+    100094: STDSPARE
+    100096: STDSPARR
+    100098: stern
+    100100: STERNW
+    100102: wheel
+    400000: anchor1
+    400002: anchor2
+    400004: anchor3
+    400006: anchor4
+    400008: anchties
+    400010: binacle
+    400012: CCANNONS
+    400014: davits
+    400016: dcannon1
+    400018: dcannon2
+    400020: dcannon3
+    400022: dcannon4
+    400024: dcannon5
+    400026: dcannon6
+    400028: dcannon7
+    400030: dcannon8
+    400032: decks
+    400034: fbuckets
+    400036: fcannon1
+    400038: fcannon2
+    400040: flagpole
+    400042: HAMMOCKC
+    400044: HAMMOCKM
+    400046: HAMMOCKS
+    400048: hamnets
+    400050: HDFLAGS
+    400052: HFSAILS
+    400054: HSTUDSAILS
+    400056: hull
+    400058: HWFLAGS
+    400060: HWSAILS
+    400062: lanterns
+    400064: LSTUDSAILS
+    400066: LWFLAGS
+    400068: LWSAILS
+    400070: mainrope
+    400072: masts
+    400074: OCANNONS
+    400076: ratlines
+    400078: rigging
+    400080: 'rudder '
+    400082: sboat01
+    400084: sboat02
+    400086: sboat03
+    400088: sboat04
+    400090: //RootNode
+    400092: skylite
+    400094: STDSPARE
+    400096: STDSPARR
+    400098: stern
+    400100: STERNW
+    400102: wheel
+    2300000: anchor1
+    2300002: anchor2
+    2300004: anchor3
+    2300006: anchor4
+    2300008: anchties
+    2300010: binacle
+    2300012: CCANNONS
+    2300014: davits
+    2300016: dcannon1
+    2300018: dcannon2
+    2300020: dcannon3
+    2300022: dcannon4
+    2300024: dcannon5
+    2300026: dcannon6
+    2300028: dcannon7
+    2300030: dcannon8
+    2300032: decks
+    2300034: fbuckets
+    2300036: fcannon1
+    2300038: fcannon2
+    2300040: flagpole
+    2300042: HAMMOCKC
+    2300044: HAMMOCKM
+    2300046: HAMMOCKS
+    2300048: hamnets
+    2300050: HDFLAGS
+    2300052: HFSAILS
+    2300054: HSTUDSAILS
+    2300056: hull
+    2300058: HWFLAGS
+    2300060: HWSAILS
+    2300062: lanterns
+    2300064: LSTUDSAILS
+    2300066: LWFLAGS
+    2300068: LWSAILS
+    2300070: mainrope
+    2300072: masts
+    2300074: OCANNONS
+    2300076: ratlines
+    2300078: rigging
+    2300080: 'rudder '
+    2300082: sboat01
+    2300084: sboat02
+    2300086: sboat03
+    2300088: sboat04
+    2300090: skylite
+    2300092: STDSPARE
+    2300094: STDSPARR
+    2300096: stern
+    2300098: STERNW
+    2300100: wheel
+    3300000: anchor1
+    3300002: anchor2
+    3300004: anchor3
+    3300006: anchor4
+    3300008: anchties
+    3300010: binacle
+    3300012: CCANNONS
+    3300014: davits
+    3300016: dcannon1
+    3300018: dcannon2
+    3300020: dcannon3
+    3300022: dcannon4
+    3300024: dcannon5
+    3300026: dcannon6
+    3300028: dcannon7
+    3300030: dcannon8
+    3300032: decks
+    3300034: fbuckets
+    3300036: fcannon1
+    3300038: fcannon2
+    3300040: flagpole
+    3300042: HAMMOCKC
+    3300044: HAMMOCKM
+    3300046: HAMMOCKS
+    3300048: hamnets
+    3300050: HDFLAGS
+    3300052: HFSAILS
+    3300054: HSTUDSAILS
+    3300056: hull
+    3300058: HWFLAGS
+    3300060: HWSAILS
+    3300062: lanterns
+    3300064: LSTUDSAILS
+    3300066: LWFLAGS
+    3300068: LWSAILS
+    3300070: mainrope
+    3300072: masts
+    3300074: OCANNONS
+    3300076: ratlines
+    3300078: rigging
+    3300080: 'rudder '
+    3300082: sboat01
+    3300084: sboat02
+    3300086: sboat03
+    3300088: sboat04
+    3300090: skylite
+    3300092: STDSPARE
+    3300094: STDSPARR
+    3300096: stern
+    3300098: STERNW
+    3300100: wheel
+    4300000: STDSPARE
+    4300002: HWSAILS
+    4300004: LWSAILS
+    4300006: LSTUDSAILS
+    4300008: HSTUDSAILS
+    4300010: HFSAILS
+    4300012: CCANNONS
+    4300014: sboat04
+    4300016: sboat01
+    4300018: sboat02
+    4300020: sboat03
+    4300022: flagpole
+    4300024: hamnets
+    4300026: mainrope
+    4300028: stern
+    4300030: decks
+    4300032: anchties
+    4300034: davits
+    4300036: lanterns
+    4300038: ratlines
+    4300040: STDSPARR
+    4300042: OCANNONS
+    4300044: 'rudder '
+    4300046: masts
+    4300048: rigging
+    4300050: HWFLAGS
+    4300052: HDFLAGS
+    4300054: LWFLAGS
+    4300056: HAMMOCKS
+    4300058: HAMMOCKC
+    4300060: HAMMOCKM
+    4300062: fbuckets
+    4300064: hull
+    4300066: wheel
+    4300068: binacle
+    4300070: dcannon1
+    4300072: dcannon2
+    4300074: dcannon3
+    4300076: dcannon4
+    4300078: dcannon5
+    4300080: dcannon6
+    4300082: dcannon7
+    4300084: dcannon8
+    4300086: fcannon2
+    4300088: fcannon1
+    4300090: anchor1
+    4300092: anchor2
+    4300094: anchor3
+    4300096: anchor4
+    4300098: STERNW
+    4300100: skylite
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BROPE2
+    second: {fileID: 2100000, guid: 954fef46624d6804ba4e3623874a2155, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BROPE21
+    second: {fileID: 2100000, guid: ba15b980341a66240b31d8ef09039bbd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BROPES
+    second: {fileID: 2100000, guid: 944c6c6dd7c9ed5418966a4fbb8abfa8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BritFlag
+    second: {fileID: 2100000, guid: eaca48a5a48d3774ebe104fadc7244ec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BritFlag1
+    second: {fileID: 2100000, guid: c865c217b19dfbc4eb591845aedbd637, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BritFlag11
+    second: {fileID: 2100000, guid: 79e32bb7873b3c640b5a6a9ec03c0b9d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BritFlag12
+    second: {fileID: 2100000, guid: 6d1a70ac693422a41bea6cbedc05b057, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BritFlag2
+    second: {fileID: 2100000, guid: 29868d2ce52fe2e42bf4db95d94d756f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BritFlag21
+    second: {fileID: 2100000, guid: 48def744f41fe9943a7feab3b11ef105, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BritFlag22
+    second: {fileID: 2100000, guid: 3516dfd85eee82f40a9abf918fa5cfe7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BritFlag3
+    second: {fileID: 2100000, guid: b19e85ea00d64644d873399fecfdc127, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BritFlag31
+    second: {fileID: 2100000, guid: 2712299d6417e7f4d8c360a2dcdc54cc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BritFlag32
+    second: {fileID: 2100000, guid: d327012886ae073478dc9427023d837c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BritFlag4
+    second: {fileID: 2100000, guid: dccc62cf7e0d7ef418d54a5993a4f3df, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BritFlag5
+    second: {fileID: 2100000, guid: ab11cd8692f6cdf4197d8aad9d814f9d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gold Trim
+    second: {fileID: 2100000, guid: 5ddc553462177cf4bbd68e1e9b582d23, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gold Trim1
+    second: {fileID: 2100000, guid: ea076f0cf3e5a5347a2494c9442c6364, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Inner Hull
+    second: {fileID: 2100000, guid: 5f455054334bb6a4fbea4ebdd8b98307, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mast2
+    second: {fileID: 2100000, guid: 4af216b2a4d52c440874964a12bd04ec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mast4
+    second: {fileID: 2100000, guid: 1df305f00948e55499bcf6881201e587, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #4648'
+    second: {fileID: 2100000, guid: 846b0cd6ed001f543bf3b08b50cdb840, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ROPES
+    second: {fileID: 2100000, guid: 8aa55c0df1f5357488b1c18ca227ea71, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SKYLITE3
+    second: {fileID: 2100000, guid: 72443f5ba014a234db70f3612768dddd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ancROPES
+    second: {fileID: 2100000, guid: 257c6732fe6cc4249969c541f06a5092, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: anchor metal
+    second: {fileID: 2100000, guid: ee2af0ec53ec1c94caa17f4e32614307, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: anchor wood
+    second: {fileID: 2100000, guid: b7be4113e27e41c4ca6c81f1f34c5342, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: black squares
+    second: {fileID: 2100000, guid: 31893df00d4f9314eb1626736074c00e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue
+    second: {fileID: 2100000, guid: 3c0d724df0a9820439bf477c384f25dc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: boat inside
+    second: {fileID: 2100000, guid: c8f6938849f8dc5448473efb7b353453, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: boat outside
+    second: {fileID: 2100000, guid: 5955a3055f0ba9941b5df82305cca35d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bowgrating
+    second: {fileID: 2100000, guid: 6e0a0639bb777504aaaa704a9ee2773e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bowgrating2
+    second: {fileID: 2100000, guid: c159ab77eaabb24479396b0b7456fa11, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: buckets
+    second: {fileID: 2100000, guid: 0f87c7d140a337e45ba7af1c864f4bf8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bulkhead
+    second: {fileID: 2100000, guid: 475e12b8b65ba0f418b0febdbcb86ab7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bulkhead2
+    second: {fileID: 2100000, guid: 2fc6d1844c9bd364ea42d5b1905c2e97, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cabin1
+    second: {fileID: 2100000, guid: 6704d99fd68fe9943b965558aa220ac1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cabin2
+    second: {fileID: 2100000, guid: c63717a562986064899ca7dc250efe68, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cabin3
+    second: {fileID: 2100000, guid: 50bd1740065684d4881fc1d4f340acba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cannon
+    second: {fileID: 2100000, guid: e1d990ec269ab304e879c204103e13be, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cannon1
+    second: {fileID: 2100000, guid: cb31022b25834ee479bf2f0a9ebf21f6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cannon2
+    second: {fileID: 2100000, guid: e6b4efbe20439e848945d60dfd0810e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cathead
+    second: {fileID: 2100000, guid: 4d2efbdb3d40bc442bd5680bce0bcaec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: chain
+    second: {fileID: 2100000, guid: 50e5f61f862670b4bae64d74fdd9f8a1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: chain1
+    second: {fileID: 2100000, guid: c762d1e25d454814f9228003660653e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: channel
+    second: {fileID: 2100000, guid: 322f3be8992224f4288aa0b25a22f0c4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: channel1
+    second: {fileID: 2100000, guid: 4f89623c9afa90942b85bb483799a3c9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: crown
+    second: {fileID: 2100000, guid: 79ffa6a856d06d04faa87bd0023e2c28, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: darkw
+    second: {fileID: 2100000, guid: 3323b7d4a2acbc04faef01613fa87a92, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: darkw1
+    second: {fileID: 2100000, guid: 0cb7bb30bdca33f4084d666ff6ce33e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: davits
+    second: {fileID: 2100000, guid: 7bf2ef99195e9f844a039532ede2fa41, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: deadeye
+    second: {fileID: 2100000, guid: da9eead97599b7a4fabb1270f87a3bae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: deck
+    second: {fileID: 2100000, guid: d9306ae56b06a374394a2b471b653a9c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: deck1
+    second: {fileID: 2100000, guid: e6650c00c12b02a44ae0a20d25fe13ed, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gp cover
+    second: {fileID: 2100000, guid: d449f94c60f5c69489665ea03fed7cbc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gp cover1
+    second: {fileID: 2100000, guid: 1d9aeaf97e8125745925a80df3bd0494, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gp cover2
+    second: {fileID: 2100000, guid: 7a8f7d4b69252174c8452ca418f4aa8a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: grating
+    second: {fileID: 2100000, guid: b98990a11c39ac24ca311c5828b11cdc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hamnets
+    second: {fileID: 2100000, guid: e55d4600e9351084d93774f64419af95, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: keel
+    second: {fileID: 2100000, guid: 0e828a904399b344f8771f36d126bae2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lanterns
+    second: {fileID: 2100000, guid: bb67a373adb397248927a0d770def646, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lower hull
+    second: {fileID: 2100000, guid: 706e535b614655744815a6ef1d104d6b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lower hull1
+    second: {fileID: 2100000, guid: ada6b43a05fe369438ea5317ed4fab40, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mast
+    second: {fileID: 2100000, guid: b2dcd7bd676721544bef9276d45bece6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal
+    second: {fileID: 2100000, guid: 5ba6287c2ad3f4e41b1f7dfd2945e441, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ratlines
+    second: {fileID: 2100000, guid: 0f4b84f6ea754c84dad7c569aaa526e6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red
+    second: {fileID: 2100000, guid: 9d7ff4341eb3f574498e886f7a6cd14a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red trim
+    second: {fileID: 2100000, guid: 745e7976b6597ce4ab78389e61369f92, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red trim1
+    second: {fileID: 2100000, guid: 83faa6a04f01a8b41ba1a5b61f46c889, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red trim2
+    second: {fileID: 2100000, guid: d02400d3eee6dc644b3890033fb82aa8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red trim21
+    second: {fileID: 2100000, guid: 09cd55e804460c4469ef085034348135, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red trim3
+    second: {fileID: 2100000, guid: cabac52de4341cd4aadbf11ba90d3f11, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red trim4
+    second: {fileID: 2100000, guid: 9cd9fc3d8a860864ab5653d4af414a86, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: rudder
+    second: {fileID: 2100000, guid: f782e86af990e2748b224f5573e77ada, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sail0
+    second: {fileID: 2100000, guid: 557830a136e51a14f864fab4d39c8aac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sail01
+    second: {fileID: 2100000, guid: 421db995693661c4e8dd6938ab671256, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sail02
+    second: {fileID: 2100000, guid: 0d8202a2e6f64744d9dc16ba60a87c90, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sail021
+    second: {fileID: 2100000, guid: 93a5346aa7ba22a45a7b619ade56dc22, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sail1
+    second: {fileID: 2100000, guid: 1a21461e94a4c624da8349fbdeb25231, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sail11
+    second: {fileID: 2100000, guid: d44c92e32e0dd9a41b3bd34cca6a470b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sail2H
+    second: {fileID: 2100000, guid: 59b57aaa225854d45a7fdfe49af7e802, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sail3
+    second: {fileID: 2100000, guid: 031dac2b7266ce14284e9a89aa235102, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sail31
+    second: {fileID: 2100000, guid: 095bee1baeed5044bbd4f36013326a83, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sailF
+    second: {fileID: 2100000, guid: 13e997e8ccbeb2e4c9a1774e6da18caf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sailH
+    second: {fileID: 2100000, guid: 641623b94d45f3046ae8e520678a047b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sailb2
+    second: {fileID: 2100000, guid: d7b12e0fd1749544a9dadf3df3c38d85, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sailb21
+    second: {fileID: 2100000, guid: 8ab6c931acc096e4191050f52e084d5b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sails
+    second: {fileID: 2100000, guid: f3808ab9d0e331c4b8e37763a11868f9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sails1
+    second: {fileID: 2100000, guid: 5135508999c6a26498e694ef75b2f235, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sb door
+    second: {fileID: 2100000, guid: 33c0a0154258253419599424d047ad5a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sb doorf
+    second: {fileID: 2100000, guid: e0b4f1eefac10384ab40b7dd584d9eee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sb doorf1
+    second: {fileID: 2100000, guid: b6e85ea32c13f4d41a4ee7422bfb489b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sb doors
+    second: {fileID: 2100000, guid: c5f70119fff90ee46b7be87041a81bb3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sb doors1
+    second: {fileID: 2100000, guid: bea9a41ea3fb0d645b46b9248c714179, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: shield
+    second: {fileID: 2100000, guid: 9a147357f86fbbc4f911d3044de07d86, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: skylite1
+    second: {fileID: 2100000, guid: 21eb594fdfbcf054096a9e0a134587ae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: skylite2
+    second: {fileID: 2100000, guid: d6d56ffe9ee39bf42a603c46ecdaebc7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: statue
+    second: {fileID: 2100000, guid: 408d5b9383772984f9243319d212cb50, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sternend
+    second: {fileID: 2100000, guid: 4c3f40c6d0d4d054bba3d042b5d5e0fb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sterni
+    second: {fileID: 2100000, guid: f1d7f643ccea8f54d9bd83afdab0a280, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sternside
+    second: {fileID: 2100000, guid: 407f34583e6acf94aa6d7e5a11a7add4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: upper hull
+    second: {fileID: 2100000, guid: f8a009ea3ff82d046b08c528f649af59, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: upper hull1
+    second: {fileID: 2100000, guid: b7d261a20a5bffa4d8b057219a1e38f8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: upper hull2
+    second: {fileID: 2100000, guid: 4428ed147b4c59c47827a0c15640c9ac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wood dark
+    second: {fileID: 2100000, guid: d0f9ebdaa299f1a4c8b42ff3df96b75e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wood2
+    second: {fileID: 2100000, guid: ca5aa453b3fa58142b642cb206df1c21, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wood3
+    second: {fileID: 2100000, guid: 52d0866436ccffd449777ed02376a504, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wood4
+    second: {fileID: 2100000, guid: 7f9adc56205ac5343a2114b75797981d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wood41
+    second: {fileID: 2100000, guid: 908f9cad3dc2c9d478eeff3d0adcfd7d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wood5
+    second: {fileID: 2100000, guid: 5a33a70ceec0f374ab3424adb410db6f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wood51
+    second: {fileID: 2100000, guid: 583079268e0a6524fb0b7ea3b122205a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wood7
+    second: {fileID: 2100000, guid: 4015fd764f4373a4a8f11ff46f137f6c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wtops
+    second: {fileID: 2100000, guid: 1df1ebf899095a6469cbab4b05d5880c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wwood
+    second: {fileID: 2100000, guid: fbca365acacffb14c806068acb438154, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yard
+    second: {fileID: 2100000, guid: 23602d7a5ef73bc43b3e7fa711c2829c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yard1
+    second: {fileID: 2100000, guid: e5f0643431a2cd144aa3a4e3ecb4a1e8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yard2
+    second: {fileID: 2100000, guid: a74272a6a155d8845b30a9002f82c038, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yard21
+    second: {fileID: 2100000, guid: 56098da227e5f704cb92bfcc52ee89f6, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.001
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
