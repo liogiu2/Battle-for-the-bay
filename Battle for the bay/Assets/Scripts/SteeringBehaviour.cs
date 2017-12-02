@@ -38,7 +38,7 @@ public class SteeringBehaviour : MonoBehaviour {
 	// Update is called once per frame
     void FixedUpdate()
     {
-		if(target != transform.position){
+		if(transform.position != target){
 			desired = target - transform.position;
 			desired.Normalize();
 			desired *= maxSpeed;
@@ -49,6 +49,10 @@ public class SteeringBehaviour : MonoBehaviour {
 			// float angle = Mathf.Atan2(target.y, target.x) * Mathf.Rad2Deg;
 			// rb.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 			rb.AddForce(steer, ForceMode.Acceleration);
+		}
+		else{
+    		rb.velocity = Vector3.zero;
+    		rb.angularVelocity = Vector3.zero; 
 		}
     }
 }
