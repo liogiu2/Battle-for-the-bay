@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DetectionScript : MonoBehaviour
+public class DetectionScriptForEnemies : MonoBehaviour
 {
 
     public AIRootScript rootScript;
@@ -27,7 +27,7 @@ public class DetectionScript : MonoBehaviour
                 rootScript.detected.Remove(detectedObject);
             }
 
-            if (detectedObject.tag == "Ship")
+            if (detectedObject.tag == "Player")
             {
                 rootScript.enemies.Add(detectedObject);
             }
