@@ -14,6 +14,9 @@ public class AIRootScript : MonoBehaviour
     public List<AIRootScript> detected, enemies;
     public GameObject TargetEnemy;
     public GameObject bulletPrefab;
+    public float BulletSpeed;
+
+    bool _startedFire = false;
     // Use this for initialization
     void Start()
     {
@@ -31,12 +34,18 @@ public class AIRootScript : MonoBehaviour
 
         switch (currentState)
         {
+            case STATE.Idle:
+                _startedFire = false;
+                TargetEnemy = null;
+            return;
             case STATE.Combat:
-                if (TargetEnemy == null)
+                if (TargetEnemy)
                 {
-                    return;
+                    if (!_startedFire)
+                    {
+                        StartCoroutine(Fire(TargetEnemy));
+                    }
                 }
-                Fire(TargetEnemy);
                 return;
         }
     }
@@ -48,23 +57,33 @@ public class AIRootScript : MonoBehaviour
     {
         currentState = state;
     }
-    void Fire(GameObject Target)
+    private IEnumerator Fire(GameObject Target)
     {
-        //bulletPosition = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
+        _startedFire = true;
+        while (currentState == STATE.Combat)
+        {
+            Vector3 bulletPosition = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
 
-        //CREATE THE BULLET
-        var bullet = (GameObject)Instantiate(
-            bulletPrefab,
-            transform.position + transform.forward,
-            Quaternion.Euler(-10, transform.rotation.y - 90, 0));
+            //CREATE THE BULLET
+            var bullet = (GameObject)Instantiate(
+                bulletPrefab,
+                bulletPosition,
+                //Quaternion.Euler(-10, transform.rotation.y - 90, 0));
+                Quaternion.identity);
 
-        //COLOR THE BULLET
-        bullet.GetComponent<MeshRenderer>().material.color = Color.black;
+            bullet.GetComponent<BulletsBehaviour>().GeneratedTag = gameObject.tag;
+            //COLOR THE BULLET
+            bullet.GetComponent<MeshRenderer>().material.color = Color.black;
 
-        //GIVE INITIAL VELOCITY TO THE BULLET
-        bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 12;
+            //GIVE INITIAL VELOCITY TO THE BULLET
+            //bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 12;
+            bullet.GetComponent<Rigidbody>().velocity = (Target.transform.position - bulletPosition).normalized * BulletSpeed;
 
-        Destroy(bullet, 13.0f);
+            Destroy(bullet, 3.0f);
+            yield return new WaitForSeconds(1.0f);
+        }
     }
+
+    public void DamageOnHit() { }
 
 }
