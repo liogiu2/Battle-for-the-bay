@@ -23,7 +23,7 @@ public class WorldInteraction : MonoBehaviour {
         {
             GameObject interactedObject = interactionInfo.collider.gameObject;
             if(interactedObject.tag == "Interactive Object") {
-                Debug.Log("Interactable interacted.");
+                
             } else {
                 playerAgent.destination = interactionInfo.point;
 
