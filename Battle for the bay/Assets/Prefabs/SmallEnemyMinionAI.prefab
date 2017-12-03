@@ -26,6 +26,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1247009608823194
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4107229733962054}
+  m_Layer: 0
+  m_Name: Target
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1498523814499318
 GameObject:
   m_ObjectHideFlags: 1
@@ -55,9 +70,10 @@ GameObject:
   - component: {fileID: 54781197129569914}
   - component: {fileID: 195428432092888412}
   - component: {fileID: 114081033714620466}
+  - component: {fileID: 114287261972338686}
   m_Layer: 0
   m_Name: SmallEnemyMinionAI
-  m_TagString: Untagged
+  m_TagString: Ship
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89,6 +105,7 @@ GameObject:
   - component: {fileID: 4406935269527120}
   - component: {fileID: 135428579673230972}
   - component: {fileID: 114920245106505896}
+  - component: {fileID: 114775380084581200}
   m_Layer: 2
   m_Name: AttackRange
   m_TagString: Untagged
@@ -109,6 +126,19 @@ Transform:
   m_Father: {fileID: 4374361732328128}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4107229733962054
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1247009608823194}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4374361732328128}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4374361732328128
 Transform:
   m_ObjectHideFlags: 1
@@ -116,12 +146,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1571076837685520}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 352.02167, y: -1.6382236e-15, z: 73.79901}
+  m_LocalPosition: {x: 350.363, y: -1.608973e-15, z: 72.48168}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4848236017841430}
   - {fileID: 4012249835586180}
   - {fileID: 4406935269527120}
+  - {fileID: 4107229733962054}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -235,6 +266,24 @@ MonoBehaviour:
   currentState: 0
   wanderRadius: 50
   wanderTimer: 5
+--- !u!114 &114287261972338686
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1571076837685520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46ba5487932e9485cbfe0bb20be3cdf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  detected: []
+  enemies: []
+  TargetEnemy: {fileID: 0}
+  bulletPrefab: {fileID: 1206017651612816, guid: bc82d198bd7be3f4fad1f37ca3322fc2,
+    type: 2}
+  BulletSpeed: 5
 --- !u!114 &114754032000234184
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -247,6 +296,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ai: {fileID: 114081033714620466}
+--- !u!114 &114775380084581200
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1957719713261894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59cab221e56684acebe941543a7f3d7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rootScript: {fileID: 114287261972338686}
 --- !u!114 &114920245106505896
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -19,7 +19,6 @@ public class ShipMovementStop : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
-		Debug.Log("Sto dentro");
 		if(other.tag == shipMovement.tag){
 			if(shipMovement.moving == true){
 				shipMovement.moving = false;
