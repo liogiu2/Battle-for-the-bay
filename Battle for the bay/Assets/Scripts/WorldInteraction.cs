@@ -14,7 +14,12 @@ public class WorldInteraction : MonoBehaviour {
         if (Input.GetMouseButtonDown(1) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()) {
             getIntercation();
         }
-	}
+
+        if (Input.GetKeyDown("s")) {
+            playerAgent.Stop(true);
+            playerAgent.ResetPath();
+        }
+    }
 
     void getIntercation() {
         Ray interactionRay = Camera.main.ScreenPointToRay(Input.mousePosition);
