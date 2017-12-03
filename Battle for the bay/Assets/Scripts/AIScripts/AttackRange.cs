@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackRange : MonoBehaviour {
 
-	public AI ai;
+	public AIRootMovement ai;
 
 	// Use this for initialization
 	void Start () {
@@ -19,14 +19,14 @@ public class AttackRange : MonoBehaviour {
 	void OnTriggerEnter(Collider other){
 		if(other.gameObject.tag == "Player"){
 			Debug.Log("Player entered the attack range");
-			ai.stateMachine.ChangeState(IdleState.Instance);
+			ai.ChangeState(AIRootMovement.STATE.Idle);
 		}
 	}
 
 	void OnTriggerExit(Collider other){
 		if(other.gameObject.tag == "Player"){
 			Debug.Log("Player exited the attack range");
-			ai.stateMachine.ChangeState(ChaseState.Instance);
+			ai.ChangeState(AIRootMovement.STATE.Chase);
 		}
 	}
 }

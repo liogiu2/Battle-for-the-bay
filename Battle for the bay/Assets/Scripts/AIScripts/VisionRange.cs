@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class VisionRange : MonoBehaviour {
 
-	public AI ai;
+	public AIRootMovement ai;
 
 	// Use this for initialization
 	void Start () {
@@ -19,14 +19,14 @@ public class VisionRange : MonoBehaviour {
 	void OnTriggerEnter(Collider other){
 		if(other.gameObject.tag == "Player"){
 			Debug.Log("Player entered the vision range");
-			ai.stateMachine.ChangeState(ChaseState.Instance);
+			ai.ChangeState(AIRootMovement.STATE.Chase);
 		}
 	}
 
 	void OnTriggerExit(Collider other){
 		if(other.gameObject.tag == "Player"){
 			Debug.Log("Player exited the vision range");
-			ai.stateMachine.ChangeState(WanderState.Instance);
+			ai.ChangeState(AIRootMovement.STATE.Wander);
 		}
 	}
 }
