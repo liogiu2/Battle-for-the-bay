@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class Healt : MonoBehaviour {
 
-    public int healt;
+    public float healt;
 
 	// Use this for initialization
 	void Start () {
-        healt = 100;
 	}
 	
 	// Update is called once per frame
@@ -16,10 +15,10 @@ public class Healt : MonoBehaviour {
 		
 	}
 
-    public void DamageOnHit()
+    public void DamageOnHit(float DamageOnHit)
     {
-        healt -= 20;
+        healt -= DamageOnHit;
         if(healt <= 0)
-            Destroy(gameObject);
+            healt = 100;
     }
 }

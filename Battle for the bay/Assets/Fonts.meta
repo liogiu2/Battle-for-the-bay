@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Battle for the bay/Assets/Fonts.meta
 guid: 7755763c4995eed49b9e4b808d399f1c
 folderAsset: yes
 timeCreated: 1512134680
+=======
+guid: 873aa04ecf54e489d8adeb2d5aa185a1
+folderAsset: yes
+timeCreated: 1512143073
+>>>>>>> b68e8573e685342c0b80ee28265d2575f221c2c1:Battle for the bay/Assets/Sounds.meta
 licenseType: Free
 DefaultImporter:
   externalObjects: {}

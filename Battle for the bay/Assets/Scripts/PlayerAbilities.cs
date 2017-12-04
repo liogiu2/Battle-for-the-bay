@@ -17,9 +17,5 @@ public class PlayerAbilities : MonoBehaviour {
         } else if (Input.GetKeyDown("3")) {
             prepType = 3;
         }
-
-        if (prepType == 1){
-
-        }
     }
 }
