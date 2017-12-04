@@ -19,6 +19,6 @@ public class Healt : MonoBehaviour {
     {
         healt -= DamageOnHit;
         if(healt <= 0)
-            Destroy(gameObject);
+            healt = 100;
     }
 }

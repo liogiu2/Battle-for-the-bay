@@ -17,6 +17,7 @@ public class AIRootScript : MonoBehaviour
     public float BulletSpeed;
 
     bool _startedFire = false;
+    private bool _corutineStarted = false;
     // Use this for initialization
     void Start()
     {
@@ -45,8 +46,9 @@ public class AIRootScript : MonoBehaviour
             case STATE.Combat:
                 if (TargetEnemy)
                 {
-                    if (!_startedFire)
+                    if (!_startedFire && !_corutineStarted)
                     {
+                        _startedFire = true;
                         StartCoroutine(Fire(TargetEnemy));
                     }
                 }
@@ -63,8 +65,8 @@ public class AIRootScript : MonoBehaviour
     }
     private IEnumerator Fire(GameObject Target)
     {
-        _startedFire = true;
-        while (currentState == STATE.Combat)
+        _corutineStarted = true;
+        while (_startedFire)
         {
             Vector3 bulletPosition = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
 
@@ -86,8 +88,16 @@ public class AIRootScript : MonoBehaviour
             Destroy(bullet, 3.0f);
             yield return new WaitForSeconds(1.0f);
         }
+        _corutineStarted = false;
+        
     }
 
     public void DamageOnHit() { }
+
+    public void StopCorutineFire()
+    {
+        StopCoroutine("Fire");
+        _startedFire = false;
+    }
 
 }

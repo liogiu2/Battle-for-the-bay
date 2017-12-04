@@ -45,25 +45,15 @@ public class MoveInput : MonoBehaviour
                 {
                     if (rootScript.TargetEnemy)
                     {
-                        if (rootScript.TargetEnemy.name != hit.collider.name)
-                        {
-                            rootScript.TargetEnemy.SendMessage("DeActivateTarget");
-                            TargetRoutine(hit);
-                        }
+                        rootScript.TargetEnemy.SendMessage("DeActivateTarget");
+                        rootScript.StopCorutineFire();
                     }
-                    else
-                    {
-                        TargetRoutine(hit);
-                    }
+                    GameObject Ship = hit.collider.gameObject;
+                    Ship.SendMessage("ActivateTarget");
+                    rootScript.TargetEnemy = Ship;
                 }
             }
         }
     }
 
-    void TargetRoutine(RaycastHit hit)
-    {
-        GameObject Ship = hit.collider.gameObject;
-        Ship.SendMessage("ActivateTarget");
-        rootScript.TargetEnemy = Ship;
-    }
 }

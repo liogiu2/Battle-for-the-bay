@@ -59,7 +59,8 @@ GameObject:
   - component: {fileID: 114951226739000348}
   - component: {fileID: 114432608139101822}
   - component: {fileID: 114053303813715894}
-  - component: {fileID: 114275517547621850}
+  - component: {fileID: 114400201311795786}
+  - component: {fileID: 114594010547742938}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -204,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 981926098e31e9841b40d5f3fe7f0834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114275517547621850
+--- !u!114 &114400201311795786
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -212,16 +213,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1407059325152006}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc9d24ace94ce4057af9f385d85333a6, type: 3}
+  m_Script: {fileID: 11500000, guid: b8a5c5ad83efe6444af058a8bfde2351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: 0
-  detected: []
-  enemies: []
-  TargetEnemy: {fileID: 0}
-  bulletPrefab: {fileID: 1206017651612816, guid: bc82d198bd7be3f4fad1f37ca3322fc2,
-    type: 2}
-  BulletSpeed: 5
+  healt: 100
 --- !u!114 &114432608139101822
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -236,6 +231,24 @@ MonoBehaviour:
   moving: 0
   agent: {fileID: 195058580903683966}
   pointer: {fileID: 0}
+--- !u!114 &114594010547742938
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1407059325152006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cfe210dca6d54596bb6ab890a969ad3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  detected: []
+  enemies: []
+  TargetEnemy: {fileID: 0}
+  bulletPrefab: {fileID: 1206017651612816, guid: bc82d198bd7be3f4fad1f37ca3322fc2,
+    type: 2}
+  BulletSpeed: 5
 --- !u!114 &114679408478077212
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -247,7 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d803a853e825d43cca43ff8cc3f77d3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rootScript: {fileID: 114275517547621850}
+  rootScript: {fileID: 114594010547742938}
 --- !u!114 &114951226739000348
 MonoBehaviour:
   m_ObjectHideFlags: 1
