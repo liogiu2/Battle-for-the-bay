@@ -8,6 +8,9 @@ TagManager:
   - Trigger
   - Ground
   - Terrain
+  - Fire
+  - Cunstractable
+  - Fort
   layers:
   - Default
   - TransparentFX
