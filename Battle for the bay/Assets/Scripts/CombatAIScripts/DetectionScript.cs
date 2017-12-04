@@ -26,7 +26,6 @@ public class DetectionScript : MonoBehaviour
             {
                 rootScript.detected.Remove(detectedObject);
             }
-
             if (detectedObject.tag == "Ship")
             {
                 rootScript.enemies.Add(detectedObject);

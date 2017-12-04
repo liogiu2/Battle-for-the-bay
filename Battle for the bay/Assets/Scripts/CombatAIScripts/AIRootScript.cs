@@ -76,6 +76,7 @@ public class AIRootScript : MonoBehaviour
                 bulletPosition,
                 //Quaternion.Euler(-10, transform.rotation.y - 90, 0));
                 Quaternion.identity);
+            Destroy(bullet, 3.0f);                
 
             bullet.GetComponent<BulletsBehaviour>().GeneratedTag = gameObject.tag;
             //COLOR THE BULLET
@@ -85,7 +86,6 @@ public class AIRootScript : MonoBehaviour
             //bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 12;
             bullet.GetComponent<Rigidbody>().velocity = (Target.transform.position - bulletPosition).normalized * BulletSpeed;
 
-            Destroy(bullet, 3.0f);
             yield return new WaitForSeconds(1.0f);
         }
         _corutineStarted = false;
