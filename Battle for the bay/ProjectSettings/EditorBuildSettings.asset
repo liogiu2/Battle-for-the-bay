@@ -9,5 +9,5 @@ EditorBuildSettings:
     path: Assets/GameEntrance.unity
     guid: 9729c68be9c493c46a11dcf1a508bcca
   - enabled: 1
-    path: Assets/TeddiMain.unity
-    guid: da87dd0243d2b204cb72d99847bfb06d
+    path: Assets/Main.unity
+    guid: 10711d0da19b6c544900f65984a95eb1
