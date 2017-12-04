@@ -36,8 +36,12 @@ public class AIRootScript : MonoBehaviour
         {
             case STATE.Idle:
                 _startedFire = false;
+                if (TargetEnemy && TargetEnemy.GetComponent<AiEnemyScript>())
+                {
+                    TargetEnemy.GetComponent<AiEnemyScript>().SendMessage("DeActivateTarget");
+                }
                 TargetEnemy = null;
-            return;
+                return;
             case STATE.Combat:
                 if (TargetEnemy)
                 {
