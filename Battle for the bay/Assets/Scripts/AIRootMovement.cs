@@ -108,8 +108,9 @@ public class AIRootMovement : MonoBehaviour
 
         transform.RotateAround(target.transform.position, axis, rotationSpeed * Time.deltaTime);
         //desiredRotation = new GameObject().transform;
-        desiredRotation.LookAt(target.transform.position);
-        transform.rotation = Quaternion.Lerp(transform.rotation, desiredRotation.rotation, Time.deltaTime);
+        //desiredRotation.LookAt(target.transform.position);
+        Quaternion neededRotation = Quaternion.LookRotation(target.transform.position - transform.position);
+        transform.rotation = Quaternion.Lerp(transform.rotation, neededRotation, Time.deltaTime);
         //desiredPosition = (transform.position - target.transform.position).normalized * orbitRadius + target.transform.position;
         //transform.position = Vector3.MoveTowards(transform.position, desiredPosition, Time.deltaTime * orbitRadiusSpeed);
 
