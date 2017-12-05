@@ -422,7 +422,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healt: 100
+  MaxHealth: 100
+  HealthRecovery: 0
   Explosion: {fileID: 1496793775603666}
+  MoneyOnDie: 20
 --- !u!114 &114754032000234184
 MonoBehaviour:
   m_ObjectHideFlags: 1
