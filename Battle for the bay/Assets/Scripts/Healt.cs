@@ -7,10 +7,12 @@ public class Healt : MonoBehaviour
 
     public float healt;
     public GameObject Explosion;
+    private UpdateEnemyList updateEnemyList;
 
     // Use this for initialization
     void Start()
     {
+        updateEnemyList = GameObject.Find("GameManager").GetComponent<UpdateEnemyList>();
     }
 
     // Update is called once per frame
@@ -34,6 +36,7 @@ public class Healt : MonoBehaviour
                 {
                     Explosion.SetActive(true);
                 }
+                updateEnemyList.AddDestroyingItem(gameObject.GetComponent<AIRootScript>());
                 Destroy(gameObject, 0.5f);
             }
         }
