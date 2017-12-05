@@ -10,12 +10,12 @@ public class MoveInput : MonoBehaviour
     public float minMoveRange;
     public SpriteRenderer cursorSprite;
 
-	private AIRootScript rootScript;
+    private AIRootScript rootScript;
 
     // Use this for initialization
     void Start()
     {
-		rootScript = GetComponent<AIRootScript>();
+        rootScript = GetComponent<AIRootScript>();
     }
 
     // Update is called once per frame
@@ -41,13 +41,19 @@ public class MoveInput : MonoBehaviour
 
                 }
 
-				if(hit.collider.tag == "Ship"){
-					GameObject Ship =  hit.collider.gameObject;
-					Ship.SendMessage("ActivateTarget");
-					rootScript.TargetEnemy = Ship;
-				}
-
+                if (hit.collider.tag == "Ship")
+                {
+                    if (rootScript.TargetEnemy)
+                    {
+                        rootScript.TargetEnemy.SendMessage("DeActivateTarget");
+                        rootScript.StopCorutineFire();
+                    }
+                    GameObject Ship = hit.collider.gameObject;
+                    Ship.SendMessage("ActivateTarget");
+                    rootScript.TargetEnemy = Ship;
+                }
             }
         }
     }
+
 }

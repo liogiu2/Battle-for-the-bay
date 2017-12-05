@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletsBehaviour : MonoBehaviour
 {
     public string GeneratedTag;
+    public float DamageOnHit = 20f;
     // Use this for initialization
     void Start()
     {
@@ -25,16 +26,16 @@ public class BulletsBehaviour : MonoBehaviour
         }
         if (other.gameObject.tag == "Ship")
         {
-            other.gameObject.SendMessage("DamageOnHit");
+            other.gameObject.SendMessage("DamageOnHit", DamageOnHit);
             Debug.Log("HIT Enemy");
-            Destroy(gameObject, 0.3f);
+            Destroy(gameObject, 0.1f);
         }
 
         if (other.gameObject.tag == "Player")
         {
-            other.gameObject.SendMessage("DamageOnHit");
+            other.gameObject.SendMessage("DamageOnHit", DamageOnHit);
             Debug.Log("HIT Player");
-            Destroy(gameObject, 0.3f);
+            Destroy(gameObject, 0.1f);
         }
     }
 

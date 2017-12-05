@@ -2,24 +2,43 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Healt : MonoBehaviour {
+public class Healt : MonoBehaviour
+{
 
-    public int healt;
+    public float healt;
+    public GameObject Explosion;
+    private UpdateEnemyList updateEnemyList;
 
-	// Use this for initialization
-	void Start () {
-        healt = 100;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-    public void DamageOnHit()
+    // Use this for initialization
+    void Start()
     {
-        healt -= 20;
-        if(healt <= 0)
-            Destroy(gameObject);
+        updateEnemyList = GameObject.Find("GameManager").GetComponent<UpdateEnemyList>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    public void DamageOnHit(float DamageOnHit)
+    {
+        healt -= DamageOnHit;
+        if (healt <= 0)
+        {
+            if (gameObject.tag == "Player")
+            {
+                healt = 100;
+            }
+            else
+            {
+                if (Explosion)
+                {
+                    Explosion.SetActive(true);
+                }
+                updateEnemyList.AddDestroyingItem(gameObject.GetComponent<AIRootScript>());
+                Destroy(gameObject, 0.5f);
+            }
+        }
     }
 }

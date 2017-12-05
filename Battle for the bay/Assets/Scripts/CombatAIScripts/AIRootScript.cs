@@ -17,18 +17,21 @@ public class AIRootScript : MonoBehaviour
     public float BulletSpeed;
 
     bool _startedFire = false;
+    private bool _corutineStarted = false;
+    protected UpdateEnemyList _updateEnemyList;
     // Use this for initialization
     void Start()
     {
         ChangeState(STATE.Idle);
         detected = new List<AIRootScript>();
         enemies = new List<AIRootScript>();
+        _updateEnemyList = GameObject.Find("GameManager").GetComponent<UpdateEnemyList>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        UpdateLists();
         //Let extended class to do something
         OnUpdate();
 
@@ -36,13 +39,18 @@ public class AIRootScript : MonoBehaviour
         {
             case STATE.Idle:
                 _startedFire = false;
+                if (TargetEnemy && TargetEnemy.GetComponent<AiEnemyScript>())
+                {
+                    TargetEnemy.GetComponent<AiEnemyScript>().SendMessage("DeActivateTarget");
+                }
                 TargetEnemy = null;
-            return;
+                return;
             case STATE.Combat:
                 if (TargetEnemy)
                 {
-                    if (!_startedFire)
+                    if (!_startedFire && !_corutineStarted)
                     {
+                        _startedFire = true;
                         StartCoroutine(Fire(TargetEnemy));
                     }
                 }
@@ -57,10 +65,28 @@ public class AIRootScript : MonoBehaviour
     {
         currentState = state;
     }
+
+    private void UpdateLists()
+    {
+        if (_updateEnemyList.DestroyingItem != null)
+        {
+            AIRootScript aI = _updateEnemyList.DestroyingItem;
+            if (aI != null)
+            {
+                StopCorutineFire();
+                detected.Remove(aI);
+                enemies.Remove(aI);
+                if (TargetEnemy != null && TargetEnemy.GetComponent<AIRootScript>() == aI)
+                {
+                    TargetEnemy = null;
+                }
+            }
+        }
+    }
     private IEnumerator Fire(GameObject Target)
     {
-        _startedFire = true;
-        while (currentState == STATE.Combat)
+        _corutineStarted = true;
+        while (_startedFire)
         {
             Vector3 bulletPosition = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
 
@@ -70,6 +96,7 @@ public class AIRootScript : MonoBehaviour
                 bulletPosition,
                 //Quaternion.Euler(-10, transform.rotation.y - 90, 0));
                 Quaternion.identity);
+            Destroy(bullet, 3.0f);
 
             bullet.GetComponent<BulletsBehaviour>().GeneratedTag = gameObject.tag;
             //COLOR THE BULLET
@@ -79,11 +106,18 @@ public class AIRootScript : MonoBehaviour
             //bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 12;
             bullet.GetComponent<Rigidbody>().velocity = (Target.transform.position - bulletPosition).normalized * BulletSpeed;
 
-            Destroy(bullet, 3.0f);
             yield return new WaitForSeconds(1.0f);
         }
+        _corutineStarted = false;
+
     }
 
     public void DamageOnHit() { }
+
+    public void StopCorutineFire()
+    {
+        StopCoroutine("Fire");
+        _startedFire = false;
+    }
 
 }

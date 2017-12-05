@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 135851116851096492}
   - component: {fileID: 54914231979353822}
   - component: {fileID: 208162647458151570}
-  - component: {fileID: 114551644854479960}
+  - component: {fileID: 114618767514911942}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Ship
@@ -38,8 +38,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4686179397398154}
-  - component: {fileID: 114167392715399602}
   - component: {fileID: 135864064059225562}
+  - component: {fileID: 114307463703671826}
   m_Layer: 2
   m_Name: DetectionArea
   m_TagString: Untagged
@@ -64,6 +64,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1743831132213516
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4829048008874240}
+  m_Layer: 0
+  m_Name: Target
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!1 &1920507640648230
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,6 +134,19 @@ Transform:
   m_Father: {fileID: 4879080213489694}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4829048008874240
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1743831132213516}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4879080213489694}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4879080213489694
 Transform:
   m_ObjectHideFlags: 1
@@ -131,6 +159,7 @@ Transform:
   m_Children:
   - {fileID: 4693982148292558}
   - {fileID: 4686179397398154}
+  - {fileID: 4829048008874240}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -190,7 +219,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114167392715399602
+--- !u!114 &114307463703671826
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -198,11 +227,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1188658633643940}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d803a853e825d43cca43ff8cc3f77d3b, type: 3}
+  m_Script: {fileID: 11500000, guid: 59cab221e56684acebe941543a7f3d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rootScript: {fileID: 114551644854479960}
---- !u!114 &114551644854479960
+  rootScript: {fileID: 114618767514911942}
+--- !u!114 &114618767514911942
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -210,12 +239,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1076498614929798}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc9d24ace94ce4057af9f385d85333a6, type: 3}
+  m_Script: {fileID: 11500000, guid: 46ba5487932e9485cbfe0bb20be3cdf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
   detected: []
   enemies: []
+  TargetEnemy: {fileID: 0}
+  bulletPrefab: {fileID: 1206017651612816, guid: bc82d198bd7be3f4fad1f37ca3322fc2,
+    type: 2}
+  BulletSpeed: 5
 --- !u!135 &135851116851096492
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -235,7 +268,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1188658633643940}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 3

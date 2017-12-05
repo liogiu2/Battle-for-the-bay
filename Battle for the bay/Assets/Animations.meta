@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Battle for the bay/Assets/Standard Assets.meta
+guid: b517c6a0f20d5c94db7d4271c957b0f8
+folderAsset: yes
+timeCreated: 1512237707
+=======
 guid: 137cdfcfb86f72d4a9d56e0e19de43a4
 folderAsset: yes
 timeCreated: 1512261232
+>>>>>>> b68e8573e685342c0b80ee28265d2575f221c2c1:Battle for the bay/Assets/Animations.meta
 licenseType: Free
 DefaultImporter:
   externalObjects: {}
