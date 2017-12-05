@@ -36,14 +36,14 @@ public class SpecialAbilities : MonoBehaviour {
                 Vector3 position = new Vector3(hit.point.x, lineShotAim.transform.position.y, hit.point.z);
                 lineShotAim.transform.LookAt(position);
                 if(Input.GetMouseButtonDown(0)){
-                    FireTowards(lineShotAim);
+                    FireTowards(position);
                 }
             }
         }
 	}
 
 
-    private void FireTowards(GameObject Target)
+    private void FireTowards(Vector3 Target)
     {
             Vector3 bulletPosition = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
 
@@ -53,7 +53,7 @@ public class SpecialAbilities : MonoBehaviour {
                 bulletPosition,
                 //Quaternion.Euler(-10, transform.rotation.y - 90, 0));
                 Quaternion.identity);
-            Destroy(bullet, 3.0f);
+            Destroy(bullet, 1.0f);
 
             bullet.GetComponent<BulletsBehaviour>().GeneratedTag = gameObject.tag;
             //COLOR THE BULLET
@@ -61,7 +61,7 @@ public class SpecialAbilities : MonoBehaviour {
 
             //GIVE INITIAL VELOCITY TO THE BULLET
             //bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 12;
-            bullet.GetComponent<Rigidbody>().velocity = (Target.transform.position - bulletPosition).normalized * 1f;
+            bullet.GetComponent<Rigidbody>().velocity = (Target - bulletPosition).normalized * 10f;
 
     }
 }
