@@ -18,18 +18,20 @@ public class AIRootScript : MonoBehaviour
 
     bool _startedFire = false;
     private bool _corutineStarted = false;
+    protected UpdateEnemyList _updateEnemyList;
     // Use this for initialization
     void Start()
     {
         ChangeState(STATE.Idle);
         detected = new List<AIRootScript>();
         enemies = new List<AIRootScript>();
+        _updateEnemyList = GameObject.Find("GameManager").GetComponent<UpdateEnemyList>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        UpdateLists();
         //Let extended class to do something
         OnUpdate();
 
@@ -63,6 +65,24 @@ public class AIRootScript : MonoBehaviour
     {
         currentState = state;
     }
+
+    private void UpdateLists()
+    {
+        if (_updateEnemyList.DestroyingItem != null)
+        {
+            AIRootScript aI = _updateEnemyList.DestroyingItem;
+            if (aI != null)
+            {
+                StopCorutineFire();
+                detected.Remove(aI);
+                enemies.Remove(aI);
+                if (TargetEnemy != null && TargetEnemy.GetComponent<AIRootScript>() == aI)
+                {
+                    TargetEnemy = null;
+                }
+            }
+        }
+    }
     private IEnumerator Fire(GameObject Target)
     {
         _corutineStarted = true;
@@ -76,7 +96,7 @@ public class AIRootScript : MonoBehaviour
                 bulletPosition,
                 //Quaternion.Euler(-10, transform.rotation.y - 90, 0));
                 Quaternion.identity);
-            Destroy(bullet, 3.0f);                
+            Destroy(bullet, 3.0f);
 
             bullet.GetComponent<BulletsBehaviour>().GeneratedTag = gameObject.tag;
             //COLOR THE BULLET
@@ -89,7 +109,7 @@ public class AIRootScript : MonoBehaviour
             yield return new WaitForSeconds(1.0f);
         }
         _corutineStarted = false;
-        
+
     }
 
     public void DamageOnHit() { }
