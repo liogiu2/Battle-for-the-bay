@@ -392,6 +392,11 @@ MonoBehaviour:
   currentState: 0
   wanderRadius: 50
   wanderTimer: 5
+  maxIdleTime: 2
+  orbitRadius: 2
+  orbitRadiusSpeed: 0.1
+  rotationSpeed: 40
+  maxOrbitTime: 2
 --- !u!114 &114287261972338686
 MonoBehaviour:
   m_ObjectHideFlags: 1
