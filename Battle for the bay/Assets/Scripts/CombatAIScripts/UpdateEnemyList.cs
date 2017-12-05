@@ -2,21 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UpdateEnemyList : MonoBehaviour {
+public class UpdateEnemyList : MonoBehaviour
+{
 
-	private AIRootScript _destroyingItem;
-	// Use this for initialization
+    public AIRootScript DestroyingItem;
 
-	public void AddDestroyingItem(AIRootScript item){
-		_destroyingItem = item;
-	}
+    public void AddDestroyingItem(AIRootScript item)
+    {
+        DestroyingItem = item;
+    }
 
-	public AIRootScript GetDestroyingItem(){
-		return _destroyingItem;
-	}
 
-	public void RemoveAiRootScript(){
-		_destroyingItem = null;
-	}
+    private IEnumerator Fire(GameObject Target)
+    {
+        yield return new WaitForSeconds(0.1f);
+		DestroyingItem = null;
+    }
+
 
 }
