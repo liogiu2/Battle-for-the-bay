@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAbilities : MonoBehaviour {
-    int aimMode = 0;
+    public int aimMode = 0;
     public Transform areaPointer;
     Transform rangePointer;
     Transform linePointer;
@@ -17,6 +17,8 @@ public class PlayerAbilities : MonoBehaviour {
 
     private GameObject player;
     private MoveInput moveInput;
+
+    private bool clickDelay = false;
 
     void Start() {
         lineShotAim = this.gameObject.transform.Find("Aim").gameObject;
@@ -51,35 +53,36 @@ public class PlayerAbilities : MonoBehaviour {
             aimMode = (aimMode == 0) ? 3 : 0;
         }
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            Debug.Log("IM PRESSING");
-            FireTowards(lineShotAim.transform.rotation);
-            aimMode = 0;
-        }
-
         if (aimMode != 0) {
-            Debug.Log("in aiming mode");
-
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, 100))
             {
-                Debug.DrawLine(ray.origin, hit.point);
                 Vector3 position = new Vector3(hit.point.x, lineShotAim.transform.position.y, hit.point.z);
-                lineSprite.enabled = true;
                 lineShotAim.transform.LookAt(position);
                 switch (aimMode)
                 {
                     case 1:
                         lineSprite.enabled = true;
                         lineShotAim.transform.LookAt(position);
+                        if (Input.GetMouseButtonDown(0))
+                        {
+                            FireTowards(lineShotAim.transform.rotation);
+                            resetSprites();
+                            clickDelay = true;
+                        }
                         break;
                     case 2:
                         // Range 
                         rangeSprite.enabled = true;
                         lineShotAim.transform.LookAt(position);
+                        if (Input.GetMouseButtonDown(0))
+                        {
+                            FireTowards(lineShotAim.transform.rotation);
+                            resetSprites();
+                            clickDelay = true;
+                        }
                         break;
                     case 3:
                         // Splash Area mode
@@ -92,19 +95,18 @@ public class PlayerAbilities : MonoBehaviour {
             }
         } else
         {
-            areaSprite.enabled = false;
-            rangeSprite.enabled = false;
-            lineSprite.enabled = false;
-            lineShotAim.SetActive(false);
-            moveInput.enabled = true;
-
+            if (clickDelay && Input.GetMouseButtonDown(0))
+            {
+                clickDelay = false;
+                moveInput.enabled = true;
+            }
+            resetSprites();
         }
     }
 
     private void FireTowards(Quaternion Target)
     {
             Vector3 bulletPosition = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
-
             //CREATE THE BULLET
             var bullet = (GameObject)Instantiate(
                 bulletPrefab,
@@ -118,6 +120,14 @@ public class PlayerAbilities : MonoBehaviour {
 
             //GIVE INITIAL VELOCITY TO THE BULLET
             bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * 12, ForceMode.Impulse);
+    }
 
+    private void resetSprites()
+    {
+        aimMode = 0;
+        areaSprite.enabled = false;
+        rangeSprite.enabled = false;
+        lineSprite.enabled = false;
+        lineShotAim.SetActive(false);
     }
 }
