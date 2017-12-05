@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 54331979297810008}
   - component: {fileID: 114290985341904056}
   m_Layer: 9
-  m_Name: Bullet
+  m_Name: Bullet2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,7 +94,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -111,6 +111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8331864c80c11234d8a0f3bb0393fc23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GeneratedTag: 
+  DamageOnHit: 20
 --- !u!135 &135113831418685624
 SphereCollider:
   m_ObjectHideFlags: 1

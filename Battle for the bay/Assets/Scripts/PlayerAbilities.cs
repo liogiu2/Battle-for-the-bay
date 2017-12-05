@@ -54,6 +54,7 @@ public class PlayerAbilities : MonoBehaviour {
         if (Input.GetMouseButtonDown(0))
         {
             Debug.Log("IM PRESSING");
+            FireTowards(lineShotAim.transform.rotation);
             aimMode = 0;
         }
 
@@ -100,25 +101,23 @@ public class PlayerAbilities : MonoBehaviour {
         }
     }
 
-    private void FireTowards(Vector3 Target)
+    private void FireTowards(Quaternion Target)
     {
-        Vector3 bulletPosition = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+            Vector3 bulletPosition = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
 
-        //CREATE THE BULLET
-        var bullet = (GameObject)Instantiate(
-            bulletPrefab,
-            bulletPosition,
-            //Quaternion.Euler(-10, transform.rotation.y - 90, 0));
-            Quaternion.identity);
-        Destroy(bullet, 1.0f);
+            //CREATE THE BULLET
+            var bullet = (GameObject)Instantiate(
+                bulletPrefab,
+                bulletPosition,
+                Target);
+            //Destroy(bullet, 1.0f);
 
-        bullet.GetComponent<BulletsBehaviour>().GeneratedTag = gameObject.tag;
-        //COLOR THE BULLET
-        bullet.GetComponent<MeshRenderer>().material.color = Color.black;
+            bullet.GetComponent<BulletsBehaviour>().GeneratedTag = gameObject.tag;
+            //COLOR THE BULLET
+            bullet.GetComponent<MeshRenderer>().material.color = Color.red;
 
-        //GIVE INITIAL VELOCITY TO THE BULLET
-        //bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 12;
-        bullet.GetComponent<Rigidbody>().velocity = (Target - bulletPosition).normalized * 10f;
+            //GIVE INITIAL VELOCITY TO THE BULLET
+            bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * 12, ForceMode.Impulse);
 
     }
 }
