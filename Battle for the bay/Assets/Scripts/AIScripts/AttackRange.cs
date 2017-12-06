@@ -18,14 +18,12 @@ public class AttackRange : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other){
 		if(other.gameObject.tag == "Player"){
-			Debug.Log("Player entered the attack range");
 			ai.ChangeState(AIRootMovement.STATE.Idle);
 		}
 	}
 
 	void OnTriggerExit(Collider other){
 		if(other.gameObject.tag == "Player"){
-			Debug.Log("Player exited the attack range");
 			ai.ChangeState(AIRootMovement.STATE.Chase);
 		}
 	}

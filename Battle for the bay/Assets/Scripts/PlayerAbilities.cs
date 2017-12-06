@@ -13,12 +13,18 @@ public class PlayerAbilities : MonoBehaviour {
     SpriteRenderer lineSprite;
 
     GameObject lineShotAim;
-    public GameObject bulletPrefab;
+    public GameObject linePrefab;
+    public GameObject rangePrefab;
+    public GameObject areaPrefab;
 
     private GameObject player;
     private MoveInput moveInput;
 
     private bool clickDelay = false;
+    // Hardcoded, not good.. we need to modularize the abilities
+    private int cooldownQ = 30;
+    private int cooldownW = 30;
+    private int cooldownE = 30;
 
     void Start() {
         lineShotAim = this.gameObject.transform.Find("Aim").gameObject;
@@ -40,17 +46,23 @@ public class PlayerAbilities : MonoBehaviour {
         {
             aimMode = (aimMode == 0) ? 1 : 0;
             lineShotAim.SetActive(true);
-            moveInput.enabled = false;
+            moveInput.enabled = !moveInput.enabled;
         }
         else if (Input.GetKeyDown("w"))
         {
             aimMode = (aimMode == 0) ? 2 : 0;
             lineShotAim.SetActive(true);
-            moveInput.enabled = false;
+            moveInput.enabled = !moveInput.enabled;
         }
         else if (Input.GetKeyDown("e"))
         {
             aimMode = (aimMode == 0) ? 3 : 0;
+        }
+
+        if (clickDelay && Input.GetMouseButtonDown(0))
+        {
+            clickDelay = false;
+            moveInput.enabled = true;
         }
 
         if (aimMode != 0) {
@@ -66,9 +78,10 @@ public class PlayerAbilities : MonoBehaviour {
                     case 1:
                         lineSprite.enabled = true;
                         lineShotAim.transform.LookAt(position);
+
                         if (Input.GetMouseButtonDown(0))
                         {
-                            FireTowards(lineShotAim.transform.rotation);
+                            fireTowards(lineShotAim.transform.rotation);
                             resetSprites();
                             clickDelay = true;
                         }
@@ -77,17 +90,25 @@ public class PlayerAbilities : MonoBehaviour {
                         // Range 
                         rangeSprite.enabled = true;
                         lineShotAim.transform.LookAt(position);
+
                         if (Input.GetMouseButtonDown(0))
                         {
-                            FireTowards(lineShotAim.transform.rotation);
+                            MultiFire(lineShotAim.transform.rotation);
                             resetSprites();
                             clickDelay = true;
                         }
                         break;
                     case 3:
                         // Splash Area mode
-                        areaPointer.position = new Vector3(hit.point.x, areaPointer.position.y, hit.point.z);
                         areaSprite.enabled = true;
+                        areaPointer.position = new Vector3(hit.point.x, areaPointer.position.y, hit.point.z);
+
+                        if (Input.GetMouseButtonDown(0))
+                        {
+                            areaAttack(position, lineShotAim.transform.rotation);
+                            resetSprites();
+                            clickDelay = true;
+                        }
                         break;
                     default:
                         break;
@@ -95,31 +116,51 @@ public class PlayerAbilities : MonoBehaviour {
             }
         } else
         {
-            if (clickDelay && Input.GetMouseButtonDown(0))
-            {
-                clickDelay = false;
-                moveInput.enabled = true;
-            }
             resetSprites();
         }
     }
 
-    private void FireTowards(Quaternion Target)
+    private void MultiFire(Quaternion Target)
     {
-            Vector3 bulletPosition = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
-            //CREATE THE BULLET
-            var bullet = (GameObject)Instantiate(
-                bulletPrefab,
-                bulletPosition,
-                Target);
-            //Destroy(bullet, 1.0f);
+        Vector3 bulletPosition = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+        //CREATE THE BULLET
+        List<GameObject> bullets = new List<GameObject>();
+        for (int i = 0; i < 5; i++)
+        {
+            bullets.Add((GameObject)Instantiate(rangePrefab, bulletPosition, Target));
+            bullets[i].GetComponent<BulletsBehaviour>().GeneratedTag = gameObject.tag;
+        }
 
-            bullet.GetComponent<BulletsBehaviour>().GeneratedTag = gameObject.tag;
-            //COLOR THE BULLET
-            bullet.GetComponent<MeshRenderer>().material.color = Color.red;
+        Vector3 dir = bullets[0].transform.forward;
+        int iterator = 0;
+        for (int j = -10; j <= 10; j += 5)
+        {
+            bullets[iterator].GetComponent<Rigidbody>().AddForce(Quaternion.Euler(0, j, 0) * dir * 12, ForceMode.Impulse);
+            iterator++; 
+        }
+    }
 
-            //GIVE INITIAL VELOCITY TO THE BULLET
-            bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * 12, ForceMode.Impulse);
+    private void fireTowards(Quaternion Target)
+    {
+        Vector3 bulletPosition = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+        //CREATE THE BULLET
+        var bullet = (GameObject)Instantiate(
+            linePrefab,
+            bulletPosition,
+            Target);
+        //Destroy(bullet, 1.0f);
+
+        bullet.GetComponent<BulletsBehaviour>().GeneratedTag = gameObject.tag;
+        //COLOR THE BULLET
+        // bullet.GetComponent<MeshRenderer>().material.color = Color.red;
+
+        //GIVE INITIAL VELOCITY TO THE BULLET
+        bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * 12, ForceMode.Impulse);
+    }
+
+    private void areaAttack(Vector3 target, Quaternion rotation)
+    {
+        var bullet = (GameObject)Instantiate(areaPrefab, target, rotation);
     }
 
     private void resetSprites()
