@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Healt : MonoBehaviour
 {
@@ -10,13 +11,19 @@ public class Healt : MonoBehaviour
     public float HealthRecovery;
     public GameObject Explosion;
     public int MoneyOnDie;
+    public GameObject HealthBar;
     private UpdateEnemyList updateEnemyList;
     private bool _coroutineStarted = false;
-
+    private Image _bar;
     // Use this for initialization
     void Start()
     {
         updateEnemyList = GameObject.Find("GameManager").GetComponent<UpdateEnemyList>();
+        if (HealthBar)
+        {
+            _bar = HealthBar.transform.Find("bar").GetComponentInChildren<Image>();
+            _bar.fillAmount = 1;
+        }
     }
 
     // Update is called once per frame
@@ -32,6 +39,10 @@ public class Healt : MonoBehaviour
     public void DamageOnHit(float DamageOnHit)
     {
         healt -= DamageOnHit;
+        if (gameObject.tag == "Player" && HealthBar)
+        {
+            UpdateHeathBar();
+        }
         if (healt <= 0)
         {
             if (gameObject.tag == "Player")
@@ -57,12 +68,20 @@ public class Healt : MonoBehaviour
         while (healt < MaxHealth && _coroutineStarted)
         {
             healt += HealthRecovery;
+            UpdateHeathBar();
             yield return new WaitForSeconds(0.5f);
         }
         _coroutineStarted = false;
-        if(healt > MaxHealth){
+        if (healt > MaxHealth)
+        {
             healt = MaxHealth;
+            UpdateHeathBar();
         }
 
+    }
+
+    private void UpdateHeathBar()
+    {
+        _bar.fillAmount = healt / MaxHealth;
     }
 }

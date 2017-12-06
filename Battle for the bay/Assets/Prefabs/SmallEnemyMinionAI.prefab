@@ -216,7 +216,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1571076837685520}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 350.363, y: -1.608973e-15, z: 80.04}
+  m_LocalPosition: {x: 347.45, y: -1.608973e-15, z: 75.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4848236017841430}
@@ -431,6 +431,7 @@ MonoBehaviour:
   HealthRecovery: 0
   Explosion: {fileID: 1496793775603666}
   MoneyOnDie: 20
+  HealthBar: {fileID: 0}
 --- !u!114 &114754032000234184
 MonoBehaviour:
   m_ObjectHideFlags: 1
