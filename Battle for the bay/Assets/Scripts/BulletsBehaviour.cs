@@ -26,6 +26,7 @@ public class BulletsBehaviour : MonoBehaviour
         }
         if (other.gameObject.tag == "Ship")
         {
+            Debug.Log("hit minion!");
             other.gameObject.SendMessage("DamageOnHit", DamageOnHit);
             Destroy(gameObject);
         }
@@ -38,7 +39,6 @@ public class BulletsBehaviour : MonoBehaviour
 
         if (other.gameObject.tag == "Terrain")
         {
-            Debug.Log("hit terrain!");
             Destroy(gameObject);
         }
 
