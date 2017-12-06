@@ -112,23 +112,5 @@ public class UpgradeSystem : MonoBehaviour {
             rotation);
             shipLevel = 3;   
         }
-
-        // if(shipLevel == 0)
-        // {
-        //     shipLevel = 1;
-        //     ship1.SetActive(true);
-        // }
-        // else if (shipLevel == 1)
-        // {
-        //     shipLevel = 2;
-        //     ship1.SetActive(false);
-        //     ship2.SetActive(true);
-        // }
-        // else if (shipLevel == 2)
-        // {
-        //     fortLevel = 3;
-        //     ship2.SetActive(false);
-        //     ship3.SetActive(true);
-        // }
     }
 }
