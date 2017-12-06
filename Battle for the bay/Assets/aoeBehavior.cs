@@ -32,7 +32,6 @@ public class aoeBehavior : MonoBehaviour {
         Debug.Log("BURN");
         target.gameObject.SendMessage("DamageOnHit", DamagePerSecond);
         waitPeriod();
-        burn(target);
     }
 
     IEnumerable waitPeriod()
