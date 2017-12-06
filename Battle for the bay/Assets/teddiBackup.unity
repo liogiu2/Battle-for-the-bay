@@ -7561,11 +7561,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!212 &170977623 stripped
-SpriteRenderer:
-  m_PrefabParentObject: {fileID: 212787396950272482, guid: 98d55974ad9e37045812e3240ccf11d2,
-    type: 2}
-  m_PrefabInternal: {fileID: 1646389466}
 --- !u!4 &170977625 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4307399637708622, guid: 98d55974ad9e37045812e3240ccf11d2,
@@ -34108,6 +34103,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114053303813715894, guid: a6fe7226638bb194ba33bb7e308c099e,
+        type: 2}
+      propertyPath: areaPointer
+      value: 
+      objectReference: {fileID: 170977625}
     - target: {fileID: 114951226739000348, guid: a6fe7226638bb194ba33bb7e308c099e,
         type: 2}
       propertyPath: shipPointer
@@ -34123,55 +34123,6 @@ Prefab:
       propertyPath: pointer
       value: 
       objectReference: {fileID: 283082388}
-    - target: {fileID: 114053303813715894, guid: a6fe7226638bb194ba33bb7e308c099e,
-        type: 2}
-      propertyPath: cursorSprite
-      value: 
-      objectReference: {fileID: 170977623}
-    - target: {fileID: 114053303813715894, guid: a6fe7226638bb194ba33bb7e308c099e,
-        type: 2}
-      propertyPath: aimPointer
-      value: 
-      objectReference: {fileID: 170977625}
-    - target: {fileID: 114053303813715894, guid: a6fe7226638bb194ba33bb7e308c099e,
-        type: 2}
-      propertyPath: rangePointer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114053303813715894, guid: a6fe7226638bb194ba33bb7e308c099e,
-        type: 2}
-      propertyPath: areaPointer
-      value: 
-      objectReference: {fileID: 170977625}
-    - target: {fileID: 114053303813715894, guid: a6fe7226638bb194ba33bb7e308c099e,
-        type: 2}
-      propertyPath: lineShotAim
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114053303813715894, guid: a6fe7226638bb194ba33bb7e308c099e,
-        type: 2}
-      propertyPath: bulletPrefab
-      value: 
-      objectReference: {fileID: 1206017651612816, guid: bc82d198bd7be3f4fad1f37ca3322fc2,
-        type: 2}
-    - target: {fileID: 114053303813715894, guid: a6fe7226638bb194ba33bb7e308c099e,
-        type: 2}
-      propertyPath: linePrefab
-      value: 
-      objectReference: {fileID: 1215256041092068, guid: 74f58c3c1683ef247b6edb9a9f0a0fa7,
-        type: 2}
-    - target: {fileID: 114053303813715894, guid: a6fe7226638bb194ba33bb7e308c099e,
-        type: 2}
-      propertyPath: rangePrefab
-      value: 
-      objectReference: {fileID: 1551180887108888, guid: fe7037ce1e159fa488524b8a40d29684,
-        type: 2}
-    - target: {fileID: 114053303813715894, guid: a6fe7226638bb194ba33bb7e308c099e,
-        type: 2}
-      propertyPath: areaPrefab
-      value: 
-      objectReference: {fileID: 1957888558913280, guid: 3f61860399ac2a7449714b5ceb24bb41,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a6fe7226638bb194ba33bb7e308c099e, type: 2}
   m_IsPrefabParent: 0
@@ -55583,28 +55534,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400002, guid: d9921c7e274f6234ba2ba7bf493b0a79, type: 3}
   m_PrefabInternal: {fileID: 506134423}
---- !u!1 &869349272 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1649452630382848, guid: a6fe7226638bb194ba33bb7e308c099e,
-    type: 2}
-  m_PrefabInternal: {fileID: 646798711}
---- !u!95 &869349274
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 869349272}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8e85b25f0144f804d8dcc418469e5abb, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &891494762
 GameObject:
   m_ObjectHideFlags: 0
@@ -73120,24 +73049,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!1 &1078078344 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1407059325152006, guid: a6fe7226638bb194ba33bb7e308c099e,
-    type: 2}
-  m_PrefabInternal: {fileID: 646798711}
---- !u!114 &1078078353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1078078344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f8d75d3952f59f42a4fea22286ab09a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  Explosion: {fileID: 0}
 --- !u!1 &1081724192
 GameObject:
   m_ObjectHideFlags: 0
