@@ -404,11 +404,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimMode: 0
   areaPointer: {fileID: 0}
-  lineShotRange: 10
+  areaPointerRange: 5
   linePrefab: {fileID: 1215256041092068, guid: 74f58c3c1683ef247b6edb9a9f0a0fa7, type: 2}
   rangePrefab: {fileID: 1551180887108888, guid: fe7037ce1e159fa488524b8a40d29684,
     type: 2}
   areaPrefab: {fileID: 1957888558913280, guid: 3f61860399ac2a7449714b5ceb24bb41, type: 2}
+  cooldownQ: 3
+  cooldownW: 3
+  cooldownE: 3
+  cooldownQTimer: 0
+  cooldownWTimer: 0
+  cooldownETimer: 0
 --- !u!114 &114120662535290224
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -2,30 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAbilities : MonoBehaviour {
+public class PlayerAbilities : MonoBehaviour
+{
     public int aimMode = 0;
     public Transform areaPointer;
+    public float areaPointerRange = 5f;
     Transform rangePointer;
     Transform linePointer;
     SpriteRenderer areaSprite;
     SpriteRenderer rangeSprite;
     SpriteRenderer lineSprite;
     GameObject lineShotAim;
-    public float lineShotRange;
     public GameObject linePrefab;
     public GameObject rangePrefab;
     public GameObject areaPrefab;
-
     private GameObject player;
     private MoveInput moveInput;
 
     private bool clickDelay = false;
     // Hardcoded, not good.. we need to modularize the abilities
-    private int cooldownQ = 30;
-    private int cooldownW = 30;
-    private int cooldownE = 30;
+    public float cooldownQ;
+    public float cooldownW;
+    public float cooldownE;
 
-    void Start() {
+    public float cooldownQTimer;
+    public float cooldownWTimer;
+    public float cooldownETimer;
+
+    void Start()
+    {
+        cooldownQTimer = 0f;
+        cooldownWTimer = 0f;
+        cooldownETimer = 0f;
+
         lineShotAim = this.gameObject.transform.Find("Aim").gameObject;
         rangePointer = lineShotAim.transform.Find("RangeAbility");
         linePointer = lineShotAim.transform.Find("LineAbility");
@@ -39,21 +48,22 @@ public class PlayerAbilities : MonoBehaviour {
         moveInput = player.GetComponent<MoveInput>();
     }
 
-    void Update() {
+    void Update()
+    {
         // Toggling aim mode
-        if (Input.GetKeyDown("q"))
+        if (Input.GetKeyDown("q") && cooldownQTimer == 0f)
         {
             aimMode = (aimMode == 0) ? 1 : 0;
             lineShotAim.SetActive(true);
             moveInput.enabled = !moveInput.enabled;
         }
-        else if (Input.GetKeyDown("w"))
+        else if (Input.GetKeyDown("w") && cooldownWTimer == 0f)
         {
             aimMode = (aimMode == 0) ? 2 : 0;
             lineShotAim.SetActive(true);
             moveInput.enabled = !moveInput.enabled;
         }
-        else if (Input.GetKeyDown("e"))
+        else if (Input.GetKeyDown("e") && cooldownETimer == 0f)
         {
             aimMode = (aimMode == 0) ? 3 : 0;
         }
@@ -64,7 +74,8 @@ public class PlayerAbilities : MonoBehaviour {
             moveInput.enabled = true;
         }
 
-        if (aimMode != 0) {
+        if (aimMode != 0)
+        {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
@@ -80,6 +91,7 @@ public class PlayerAbilities : MonoBehaviour {
 
                         if (Input.GetMouseButtonDown(0))
                         {
+                            cooldownQTimer = cooldownQ; 
                             fireTowards(lineShotAim.transform.rotation);
                             resetSprites();
                             clickDelay = true;
@@ -87,6 +99,7 @@ public class PlayerAbilities : MonoBehaviour {
                         break;
                     case 2:
                         // Range 
+                        cooldownWTimer = cooldownW;
                         rangeSprite.enabled = true;
                         lineShotAim.transform.LookAt(position);
 
@@ -98,13 +111,27 @@ public class PlayerAbilities : MonoBehaviour {
                         }
                         break;
                     case 3:
+                        cooldownETimer = cooldownE;
                         // Splash Area mode
                         areaSprite.enabled = true;
-                        areaPointer.position = new Vector3(hit.point.x, areaPointer.position.y, hit.point.z);
 
-                        if (Input.GetMouseButtonDown(0))
+                        Vector3 centerPosition = transform.localPosition; //center of *black circle*
+                        float distance = Vector3.Distance(hit.point, centerPosition); //distance from ~green object~ to *black circle*
+
+                        if (distance > areaPointerRange) //If the distance is less than the radius, it is already within the circle.
                         {
-                            areaAttack(position, lineShotAim.transform.rotation);
+                            Vector3 fromOriginToObject = hit.point - centerPosition; //~GreenPosition~ - *BlackCenter*
+                            fromOriginToObject *= areaPointerRange / distance; //Multiply by radius //Divide by Distance
+                            areaPointer.position = centerPosition + fromOriginToObject; //*BlackCenter* + all that Math
+                        }
+                        else
+                        {
+                            areaPointer.position = new Vector3(hit.point.x, areaPointer.position.y, hit.point.z);
+                        }
+
+                        if (Input.GetMouseButtonDown(0))//&& dist < areaPointerRange)
+                        {
+                            areaAttack(areaPointer.position, lineShotAim.transform.rotation);
                             resetSprites();
                             clickDelay = true;
                         }
@@ -113,10 +140,16 @@ public class PlayerAbilities : MonoBehaviour {
                         break;
                 }
             }
-        } else
+        }
+        else
         {
             resetSprites();
         }
+
+        // update all the cooldowns
+        cooldownQTimer = (cooldownQTimer - Time.deltaTime) > 0f ? (cooldownQTimer - Time.deltaTime) : 0f;   
+        cooldownWTimer = (cooldownWTimer - Time.deltaTime) > 0f ? (cooldownWTimer - Time.deltaTime) : 0f;
+        cooldownETimer = (cooldownETimer - Time.deltaTime) > 0f ? (cooldownETimer - Time.deltaTime) : 0f;
     }
 
     private void MultiFire(Quaternion Target)
@@ -135,7 +168,7 @@ public class PlayerAbilities : MonoBehaviour {
         for (int j = -10; j <= 10; j += 5)
         {
             bullets[iterator].GetComponent<Rigidbody>().AddForce(Quaternion.Euler(0, j, 0) * dir * 12, ForceMode.Impulse);
-            iterator++; 
+            iterator++;
         }
     }
 

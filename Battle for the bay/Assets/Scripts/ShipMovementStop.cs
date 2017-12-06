@@ -19,6 +19,9 @@ public class ShipMovementStop : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
+		if (other == null) return;
+		if (shipMovement == null) return;
+
 		if(other.tag == shipMovement.tag){
 			if(shipMovement.moving == true){
 				shipMovement.moving = false;

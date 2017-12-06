@@ -8,13 +8,13 @@ public class LineShotProjectile : MonoBehaviour
 
     public string GeneratedTag;
     public float DamageOnHit = 20f;
+    public float lineShotProjectileRange;
+
     private Vector3 startingPosition;
     private float travelDistance;
-    private float lineShotProjectileRange;
     // Use this for initialization
     void Start()
     {
-        lineShotProjectileRange = GameObject.Find("Player").GetComponent<PlayerAbilities>().lineShotRange;
         startingPosition = transform.position;
     }
 
