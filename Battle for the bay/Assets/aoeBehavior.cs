@@ -7,10 +7,10 @@ public class aoeBehavior : MonoBehaviour {
     public float Duration = 3f;
 
     // Use this for initialization
-    void Start () {
+    void Start() {
         Object.Destroy(gameObject, Duration);
     }
-	
+
 	// Update is called once per frame
 	void Update () {
         
@@ -18,12 +18,25 @@ public class aoeBehavior : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
+        //other.gameObject.SendMessage("DamageOnHit", DamagePerSecond);
+
         if (other.gameObject.tag == "Ship" || other.gameObject.tag == "Player")
         {
-            other.gameObject.SendMessage("DamageOnHit", DamagePerSecond);
+            StartCoroutine("burn", other);
             //Destroy(gameObject);
         }
-
     }
 
+    void burn(Collider target)
+    {
+        Debug.Log("BURN");
+        target.gameObject.SendMessage("DamageOnHit", DamagePerSecond);
+        waitPeriod();
+        burn(target);
+    }
+
+    IEnumerable waitPeriod()
+    {
+        yield return new WaitForSeconds(1);
+    }
 }

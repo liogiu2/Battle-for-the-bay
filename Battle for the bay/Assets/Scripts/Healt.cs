@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Healt : MonoBehaviour
+public class Health : MonoBehaviour
 {
 
-    public float healt;
+    public float health;
     public GameObject Explosion;
     private UpdateEnemyList updateEnemyList;
 
@@ -23,12 +23,12 @@ public class Healt : MonoBehaviour
 
     public void DamageOnHit(float DamageOnHit)
     {
-        healt -= DamageOnHit;
-        if (healt <= 0)
+        health -= DamageOnHit;
+        if (health <= 0)
         {
             if (gameObject.tag == "Player")
             {
-                healt = 100;
+                health = 100;
             }
             else
             {
