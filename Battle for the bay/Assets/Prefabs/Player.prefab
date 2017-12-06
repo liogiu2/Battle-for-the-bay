@@ -421,8 +421,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  MaxHealth: 0
-  HealthRecovery: 0
+  MaxHealth: 100
+  HealthRecovery: 10
   Explosion: {fileID: 0}
   MoneyOnDie: 0
   HealthBar: {fileID: 0}
@@ -470,7 +470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Money: 0
-  MaxAmountOfMoneyInShip: 0
+  MaxAmountOfMoneyInShip: 200
 --- !u!114 &114679408478077212
 MonoBehaviour:
   m_ObjectHideFlags: 1
