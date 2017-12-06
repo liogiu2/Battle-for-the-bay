@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 23396211996559738}
   - component: {fileID: 54943851528771368}
   - component: {fileID: 114094305203403222}
+  - component: {fileID: 114311440861698630}
   m_Layer: 9
   m_Name: multiBall
   m_TagString: Untagged
@@ -229,13 +230,26 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1551180887108888}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8331864c80c11234d8a0f3bb0393fc23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   GeneratedTag: 
   DamageOnHit: 35
+--- !u!114 &114311440861698630
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1551180887108888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8f8f07a6dd31864baa4b8ee16efd18e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GeneratedTag: 
+  DamageOnHit: 20
 --- !u!135 &135923568007804504
 SphereCollider:
   m_ObjectHideFlags: 1
