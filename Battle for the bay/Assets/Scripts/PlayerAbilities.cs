@@ -149,7 +149,7 @@ public class PlayerAbilities : MonoBehaviour {
             Target);
         //Destroy(bullet, 1.0f);
 
-        bullet.GetComponent<BulletsBehaviour>().GeneratedTag = gameObject.tag;
+        bullet.GetComponent<LineShotProjectile>().GeneratedTag = gameObject.tag;
         //COLOR THE BULLET
         // bullet.GetComponent<MeshRenderer>().material.color = Color.red;
 
