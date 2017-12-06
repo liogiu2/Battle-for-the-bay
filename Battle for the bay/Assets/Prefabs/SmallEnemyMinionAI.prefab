@@ -123,7 +123,6 @@ GameObject:
   - component: {fileID: 195428432092888412}
   - component: {fileID: 114081033714620466}
   - component: {fileID: 114287261972338686}
-  - component: {fileID: 114394956214900462}
   - component: {fileID: 114292342245237744}
   m_Layer: 0
   m_Name: SmallEnemyMinionAI
@@ -428,20 +427,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  MaxHealth: 0
+  HealthRecovery: 0
   Explosion: {fileID: 1496793775603666}
---- !u!114 &114394956214900462
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1571076837685520}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8a5c5ad83efe6444af058a8bfde2351, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healt: 100
-  Explosion: {fileID: 1496793775603666}
+  MoneyOnDie: 0
+  HealthBar: {fileID: 0}
 --- !u!114 &114754032000234184
 MonoBehaviour:
   m_ObjectHideFlags: 1
