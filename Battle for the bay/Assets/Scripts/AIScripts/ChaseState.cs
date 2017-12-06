@@ -33,14 +33,13 @@ public class ChaseState : State<AI>
 
     public override void EnterState(AI _owner)
     {
-        Debug.Log("Entering ChaseState State");
         agent = _owner.GetComponent<NavMeshAgent> ();
         target = GameObject.FindGameObjectWithTag("Player").gameObject;
     }
 
     public override void ExitState(AI _owner)
     {
-        Debug.Log("Exiting ChaseState State");
+        
     }
 
     public override void UpdateState(AI _owner)

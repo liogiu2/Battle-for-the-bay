@@ -25,14 +25,12 @@ public class AttackTarget : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
-		Debug.Log("OnTriggerEnter");
 		if(other.tag == "Player"){
 			shouldAttack = true;
 		}
 	}
 
 	void OnTriggerExit(Collider other){
-		Debug.Log("OnTriggerExit");
 		if(other.tag == "Player"){
 			shouldAttack = false;
 		}

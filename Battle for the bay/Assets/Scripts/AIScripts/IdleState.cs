@@ -32,13 +32,12 @@ public class IdleState : State<AI>
 
     public override void EnterState(AI _owner)
     {
-        Debug.Log("Entering IdleState State");
         agent = _owner.GetComponent<NavMeshAgent> ();
     }
 
     public override void ExitState(AI _owner)
     {
-        Debug.Log("Exiting IdleState State");
+
     }
 
     public override void UpdateState(AI _owner)

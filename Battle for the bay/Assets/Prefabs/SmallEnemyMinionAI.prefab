@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 195428432092888412}
   - component: {fileID: 114081033714620466}
   - component: {fileID: 114287261972338686}
-  - component: {fileID: 114394956214900462}
+  - component: {fileID: 114292342245237744}
   m_Layer: 0
   m_Name: SmallEnemyMinionAI
   m_TagString: Ship
@@ -190,7 +190,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1827191261538854}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.1, y: 0, z: 0.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4374361732328128}
@@ -215,8 +215,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1571076837685520}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 350.363, y: -1.608973e-15, z: 80.04}
+  m_LocalRotation: {x: -0, y: 0.07271123, z: -0, w: -0.997353}
+  m_LocalPosition: {x: 175.00354, y: 0.104, z: -65.283}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4848236017841430}
@@ -389,7 +389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a1d2ba5c818ea74c8266684413bbd24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: 0
+  currentState: 2
   wanderRadius: 50
   wanderTimer: 5
   maxIdleTime: 2
@@ -415,7 +415,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1206017651612816, guid: bc82d198bd7be3f4fad1f37ca3322fc2,
     type: 2}
   BulletSpeed: 5
---- !u!114 &114394956214900462
+--- !u!114 &114292342245237744
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -423,11 +423,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1571076837685520}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8a5c5ad83efe6444af058a8bfde2351, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f8d75d3952f59f42a4fea22286ab09a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healt: 100
+  health: 100
+  MaxHealth: 100
+  HealthRecovery: 0
   Explosion: {fileID: 1496793775603666}
+  MoneyOnDie: 20
+  HealthBar: {fileID: 0}
 --- !u!114 &114754032000234184
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -581,7 +585,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1118386293
+  randomSeed: 1511357159
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3943,7 +3947,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: -988453698
+  randomSeed: 467203692
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -10475,7 +10479,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: -2011440025
+  randomSeed: -1380074466
   InitialModule:
     serializedVersion: 3
     enabled: 1

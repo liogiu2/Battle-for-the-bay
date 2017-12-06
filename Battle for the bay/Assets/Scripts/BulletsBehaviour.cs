@@ -26,17 +26,22 @@ public class BulletsBehaviour : MonoBehaviour
         }
         if (other.gameObject.tag == "Ship")
         {
+            Debug.Log("hit minion!");
             other.gameObject.SendMessage("DamageOnHit", DamageOnHit);
-            Debug.Log("HIT Enemy");
-            Destroy(gameObject, 0.1f);
+            Destroy(gameObject);
         }
 
         if (other.gameObject.tag == "Player")
         {
             other.gameObject.SendMessage("DamageOnHit", DamageOnHit);
-            Debug.Log("HIT Player");
             Destroy(gameObject, 0.1f);
         }
+
+        if (other.gameObject.tag == "Terrain")
+        {
+            Destroy(gameObject);
+        }
+
     }
 
 }
