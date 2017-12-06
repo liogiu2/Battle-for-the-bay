@@ -428,7 +428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  Explosion: {fileID: 1000013462590818, guid: ecdd96beb7f93494880c052dfccf9dc1, type: 2}
+  Explosion: {fileID: 1496793775603666}
 --- !u!114 &114394956214900462
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -595,7 +595,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1118386293
+  randomSeed: 1511357159
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3957,7 +3957,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: -988453698
+  randomSeed: 467203692
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -10489,7 +10489,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: -2011440025
+  randomSeed: -1380074466
   InitialModule:
     serializedVersion: 3
     enabled: 1
