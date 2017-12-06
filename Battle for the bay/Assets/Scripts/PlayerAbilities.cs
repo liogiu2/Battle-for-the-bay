@@ -7,12 +7,11 @@ public class PlayerAbilities : MonoBehaviour {
     public Transform areaPointer;
     Transform rangePointer;
     Transform linePointer;
-
     SpriteRenderer areaSprite;
     SpriteRenderer rangeSprite;
     SpriteRenderer lineSprite;
-
     GameObject lineShotAim;
+    public float lineShotRange;
     public GameObject linePrefab;
     public GameObject rangePrefab;
     public GameObject areaPrefab;
@@ -59,7 +58,7 @@ public class PlayerAbilities : MonoBehaviour {
             aimMode = (aimMode == 0) ? 3 : 0;
         }
 
-        if (clickDelay && Input.GetMouseButtonDown(0))
+        if (clickDelay && Input.GetMouseButtonUp(0))
         {
             clickDelay = false;
             moveInput.enabled = true;
