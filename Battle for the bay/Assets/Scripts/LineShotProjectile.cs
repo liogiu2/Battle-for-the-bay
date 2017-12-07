@@ -50,7 +50,12 @@ public class LineShotProjectile : MonoBehaviour
         if (other.gameObject.tag == "Ship")
         {
             other.gameObject.SendMessage("DamageOnHit", DamageOnHit);
-            Debug.Log("HIT Enemy");
+            Destroy(gameObject, 0.1f);
+        }
+        if (other.gameObject.tag == "destructable")
+        {
+            other.gameObject.SendMessage("DamageOnHit", DamageOnHit);
+            Debug.Log("HIT Building");
             Destroy(gameObject, 0.1f);
         }
     }

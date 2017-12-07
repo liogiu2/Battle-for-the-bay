@@ -11,6 +11,8 @@ TagManager:
   - Fire
   - Cunstractable
   - Fort
+  - Treasure
+  - destructable
   layers:
   - Default
   - TransparentFX

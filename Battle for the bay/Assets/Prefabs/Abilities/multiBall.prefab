@@ -250,7 +250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GeneratedTag: 
   DamageOnHit: 20
-  lineShotProjectileRange: 5
+  lineShotProjectileRange: 7
 --- !u!135 &135923568007804504
 SphereCollider:
   m_ObjectHideFlags: 1

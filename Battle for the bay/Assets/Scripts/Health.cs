@@ -12,9 +12,13 @@ public class Health : MonoBehaviour
     public GameObject Explosion;
     public int MoneyOnDie;
     public GameObject HealthBar;
+    public Slider minionHealthBar;
+
     private UpdateEnemyList updateEnemyList;
     private bool _coroutineStarted = false;
     private Image _bar;
+
+    
     // Use this for initialization
     void Start()
     {
@@ -29,6 +33,10 @@ public class Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (minionHealthBar)
+        {
+            minionHealthBar.value = health / MaxHealth;
+        }
         if (gameObject.tag == "Player" && health < MaxHealth && !_coroutineStarted)
         {
             StartCoroutine(HealthRecoveryRoutine());
