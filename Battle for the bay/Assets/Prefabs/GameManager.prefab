@@ -112,7 +112,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -172,9 +172,9 @@ MonoBehaviour:
   ship1: {fileID: 0}
   ship2Prefab: {fileID: 0}
   ship3Prefab: {fileID: 0}
-  towerLevel: 0
-  fortLevel: 0
-  shipLevel: 0
+  towerLevel: 1
+  fortLevel: 1
+  shipLevel: 1
 --- !u!114 &114357401208363830
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -191,7 +191,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  SecondForSpawn: 0.1
+  SecondForSpawn: 1
   EnemyGameobject: {fileID: 1571076837685520, guid: 7e343911f70696843991a3de785f0319,
     type: 2}
 --- !u!114 &114393909342687798
