@@ -25,8 +25,8 @@ GameObject:
   m_Name: Grass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1020054530607512
 GameObject:
@@ -43,7 +43,7 @@ GameObject:
   m_Name: Tent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1026074993413904
@@ -60,7 +60,7 @@ GameObject:
   m_Name: SparksRising
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1030306700350378
@@ -91,7 +91,7 @@ GameObject:
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1033153986876030
@@ -109,8 +109,8 @@ GameObject:
   m_Name: Tree_Palm_01 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1041368926982324
 GameObject:
@@ -127,8 +127,8 @@ GameObject:
   m_Name: Tree_Dead_02 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1044173790003872
 GameObject:
@@ -144,8 +144,8 @@ GameObject:
   m_Name: Grass (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1066038211014380
 GameObject:
@@ -161,8 +161,8 @@ GameObject:
   m_Name: Grass (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1076170314994124
 GameObject:
@@ -178,8 +178,8 @@ GameObject:
   m_Name: Grass (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1077555778258648
 GameObject:
@@ -210,8 +210,8 @@ GameObject:
   m_Name: Cliff_Desert_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1098841580527402
 GameObject:
@@ -227,7 +227,7 @@ GameObject:
   m_Name: Cylinder_003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1101557944343472
@@ -244,8 +244,8 @@ GameObject:
   m_Name: Grass (23)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1114272148287716
 GameObject:
@@ -261,8 +261,8 @@ GameObject:
   m_Name: Grass (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1135154764691622
 GameObject:
@@ -278,8 +278,8 @@ GameObject:
   m_Name: Grass (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1139813622338290
 GameObject:
@@ -295,7 +295,7 @@ GameObject:
   m_Name: Flames
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1146636050929244
@@ -312,7 +312,7 @@ GameObject:
   m_Name: Cart_Wheels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1152844093289560
@@ -330,7 +330,7 @@ GameObject:
   m_Name: Lantern_post (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1194450464212692
@@ -347,7 +347,7 @@ GameObject:
   m_Name: SmokeLit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1197536588350514
@@ -364,7 +364,7 @@ GameObject:
   m_Name: SparksFalling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1208171117126320
@@ -382,8 +382,8 @@ GameObject:
   m_Name: Tree_Palm_02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1217327464689200
 GameObject:
@@ -400,8 +400,8 @@ GameObject:
   m_Name: Debris_Block_03_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1219760127828352
 GameObject:
@@ -417,8 +417,8 @@ GameObject:
   m_Name: Grass (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1234231198549372
 GameObject:
@@ -434,8 +434,8 @@ GameObject:
   m_Name: Cliff_Desert_03 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1235241555845780
 GameObject:
@@ -451,8 +451,8 @@ GameObject:
   m_Name: Grass (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1239003373773208
 GameObject:
@@ -468,8 +468,8 @@ GameObject:
   m_Name: Grass (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1243862328633916
 GameObject:
@@ -482,12 +482,12 @@ GameObject:
   - component: {fileID: 33570158277193376}
   - component: {fileID: 23750470074781536}
   - component: {fileID: 95150979347722554}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Watchtower_Main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 0
 --- !u!1 &1251898935360158
 GameObject:
@@ -503,8 +503,8 @@ GameObject:
   m_Name: pirat_wood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1269403843981536
 GameObject:
@@ -536,8 +536,8 @@ GameObject:
   m_Name: Plant_Fern_01 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1289166012890644
 GameObject:
@@ -554,7 +554,7 @@ GameObject:
   m_Name: Building_e
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 0
 --- !u!1 &1295724329510120
@@ -570,7 +570,7 @@ GameObject:
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1306988378541010
@@ -587,7 +587,7 @@ GameObject:
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1333268347020678
@@ -604,8 +604,8 @@ GameObject:
   m_Name: Grass (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1344383168580892
 GameObject:
@@ -617,12 +617,12 @@ GameObject:
   - component: {fileID: 4193201172820490}
   - component: {fileID: 33176389718382952}
   - component: {fileID: 23763145885635626}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Watchtower_Window 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1351754221622004
 GameObject:
@@ -639,8 +639,8 @@ GameObject:
   m_Name: Pillar_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1379548398839376
 GameObject:
@@ -671,7 +671,7 @@ GameObject:
   m_Name: Cylinder_002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1407997413017294
@@ -688,8 +688,8 @@ GameObject:
   m_Name: pirat_wood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1423304881942532
 GameObject:
@@ -720,8 +720,8 @@ GameObject:
   m_Name: Cliff_Desert_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1444787275926156
 GameObject:
@@ -738,8 +738,8 @@ GameObject:
   m_Name: Barrel_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1448813415783428
 GameObject:
@@ -755,7 +755,7 @@ GameObject:
   m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1448863780053958
@@ -788,7 +788,7 @@ GameObject:
   m_Name: Building_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 0
 --- !u!1 &1480234957520444
@@ -806,8 +806,8 @@ GameObject:
   m_Name: Crate_01 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1495179071865316
 GameObject:
@@ -824,8 +824,8 @@ GameObject:
   m_Name: Tree_Palm_01 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1528120275108602
 GameObject:
@@ -841,8 +841,8 @@ GameObject:
   m_Name: Grass (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1532235459072828
 GameObject:
@@ -858,8 +858,8 @@ GameObject:
   m_Name: Grass (21)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1566552384209474
 GameObject:
@@ -872,12 +872,12 @@ GameObject:
   - component: {fileID: 33998558556485284}
   - component: {fileID: 23635314018653344}
   - component: {fileID: 95736217555243296}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Watchtower_Flag_Pole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1576364565715254
 GameObject:
@@ -894,8 +894,8 @@ GameObject:
   m_Name: Debris_Block_10_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1602545339887702
 GameObject:
@@ -912,7 +912,7 @@ GameObject:
   m_Name: Well
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1603147816633970
@@ -930,8 +930,8 @@ GameObject:
   m_Name: Plant_Fern_01 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1606341349494414
 GameObject:
@@ -943,12 +943,12 @@ GameObject:
   - component: {fileID: 4981806650835242}
   - component: {fileID: 33596889629397894}
   - component: {fileID: 23560082546702306}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Watchtower_Window
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1608801780240640
 GameObject:
@@ -965,8 +965,8 @@ GameObject:
   m_Name: Tree_Palm_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1608879605268470
 GameObject:
@@ -983,8 +983,8 @@ GameObject:
   m_Name: Cliff_Desert_03 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1610164657608526
 GameObject:
@@ -1001,8 +1001,8 @@ GameObject:
   m_Name: Crate_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1625057306247994
 GameObject:
@@ -1033,7 +1033,7 @@ GameObject:
   m_Name: Fire
   m_TagString: Fire
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1633530796753182
@@ -1049,7 +1049,7 @@ GameObject:
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1633916178321232
@@ -1062,12 +1062,12 @@ GameObject:
   - component: {fileID: 4382652939342304}
   - component: {fileID: 33924852415975268}
   - component: {fileID: 23677063409786664}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Watchtower_Window 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1640837555717102
 GameObject:
@@ -1084,7 +1084,7 @@ GameObject:
   m_Name: Building_d
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1658918343607490
@@ -1102,8 +1102,8 @@ GameObject:
   m_Name: Ground_s_02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1671687873396694
 GameObject:
@@ -1119,8 +1119,8 @@ GameObject:
   m_Name: Cliff_Desert_03 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1682531962696772
 GameObject:
@@ -1137,7 +1137,7 @@ GameObject:
   m_Name: Cart_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1682632896420818
@@ -1155,7 +1155,7 @@ GameObject:
   m_Name: Lantern_post
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1691335113797526
@@ -1171,7 +1171,7 @@ GameObject:
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1698827135993272
@@ -1219,8 +1219,8 @@ GameObject:
   m_Name: Tree_Palm_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1705284214157920
 GameObject:
@@ -1236,8 +1236,8 @@ GameObject:
   m_Name: Grass (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1705688723192774
 GameObject:
@@ -1253,8 +1253,8 @@ GameObject:
   m_Name: Grass (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1714864327332608
 GameObject:
@@ -1271,8 +1271,8 @@ GameObject:
   m_Name: Tree_Palm_02 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1715711060341986
 GameObject:
@@ -1283,7 +1283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4517116024323326}
   - component: {fileID: 95794616704887042}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Watchtower_Window
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1305,8 +1305,8 @@ GameObject:
   m_Name: Crate_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1726284147342560
 GameObject:
@@ -1322,8 +1322,8 @@ GameObject:
   m_Name: Grass (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1743534489153680
 GameObject:
@@ -1354,8 +1354,8 @@ GameObject:
   m_Name: Grass (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1776892771304664
 GameObject:
@@ -1386,8 +1386,8 @@ GameObject:
   m_Name: Grass (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1782553527459698
 GameObject:
@@ -1403,8 +1403,8 @@ GameObject:
   m_Name: Grass (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1783712728966232
 GameObject:
@@ -1421,8 +1421,8 @@ GameObject:
   m_Name: Tree_Palm_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1794521993077050
 GameObject:
@@ -1453,8 +1453,8 @@ GameObject:
   m_Name: Cliff_Desert_03 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1802125032715372
 GameObject:
@@ -1470,8 +1470,8 @@ GameObject:
   m_Name: Grass (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1806662224988574
 GameObject:
@@ -1488,8 +1488,8 @@ GameObject:
   m_Name: Tree_Palm_02 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1818355032913554
 GameObject:
@@ -1506,8 +1506,8 @@ GameObject:
   m_Name: Ground_s_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1832933783977390
 GameObject:
@@ -1519,12 +1519,12 @@ GameObject:
   - component: {fileID: 4330456206157770}
   - component: {fileID: 33002882597358210}
   - component: {fileID: 23911979689972752}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: medivialtower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1839143458840522
 GameObject:
@@ -1536,12 +1536,12 @@ GameObject:
   - component: {fileID: 4850173755052118}
   - component: {fileID: 33773475194621474}
   - component: {fileID: 23896950546057350}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Watchtower_Window 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1852344263368002
 GameObject:
@@ -1558,8 +1558,8 @@ GameObject:
   m_Name: Barrel_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1857698535066078
 GameObject:
@@ -1569,7 +1569,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4469900054848924}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MaxLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1590,8 +1590,8 @@ GameObject:
   m_Name: Grass (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1860466885558050
 GameObject:
@@ -1607,8 +1607,8 @@ GameObject:
   m_Name: Grass (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1892133996756240
 GameObject:
@@ -1625,7 +1625,7 @@ GameObject:
   m_Name: Lantern_post (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1892155158075738
@@ -1636,7 +1636,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4633444226634590}
-  m_Layer: 0
+  - component: {fileID: 135474228888504132}
+  - component: {fileID: 114812621073022034}
+  m_Layer: 2
   m_Name: WatchTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1657,8 +1659,8 @@ GameObject:
   m_Name: Grass (24)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1903736602837674
 GameObject:
@@ -1689,8 +1691,8 @@ GameObject:
   m_Name: Grass (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1909705258280762
 GameObject:
@@ -1706,8 +1708,8 @@ GameObject:
   m_Name: Grass (20)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1910240101348756
 GameObject:
@@ -1724,8 +1726,8 @@ GameObject:
   m_Name: Cliff_Desert_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1984807784948124
 GameObject:
@@ -1742,8 +1744,8 @@ GameObject:
   m_Name: Tree_Palm_02 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1992668038355882
 GameObject:
@@ -2163,9 +2165,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1832933783977390}
-  m_LocalRotation: {x: -0.4296136, y: 0.87928456, z: 0.18452494, w: 0.09078256}
-  m_LocalPosition: {x: -1.3052862, y: 1.5855783, z: 4.9533315}
-  m_LocalScale: {x: 0.328512, y: 0.33043993, z: 0.29342902}
+  m_LocalRotation: {x: -0.70710695, y: -0.0000000074505797, z: 0.000000014901159,
+    w: 0.7071067}
+  m_LocalPosition: {x: 0.021252085, y: 0.32500064, z: 0.015929084}
+  m_LocalScale: {x: 0.33405614, y: 0.28610325, z: 0.33441123}
   m_Children: []
   m_Father: {fileID: 4633444226634590}
   m_RootOrder: 0
@@ -2412,9 +2415,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1857698535066078}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.23958968, y: -0.7522268, z: 0.49126932, w: 0.36797577}
+  m_LocalPosition: {x: 2.202954, y: 4.9783335, z: 2.8845353}
+  m_LocalScale: {x: 0.9110694, y: 0.9547586, z: 1.156542}
   m_Children:
   - {fileID: 4683054289688978}
   - {fileID: 4517116024323326}
@@ -2668,8 +2671,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1892155158075738}
-  m_LocalRotation: {x: 0.23958969, y: -0.7522268, z: 0.49126932, w: 0.36797565}
-  m_LocalPosition: {x: 0.81, y: -1.043, z: 0.52}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.5118, y: -4.03, z: -1.4992}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.7}
   m_Children:
   - {fileID: 4330456206157770}
@@ -2854,9 +2857,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1269403843981536}
-  m_LocalRotation: {x: 0, y: 0.08715578, z: 0, w: 0.9961947}
-  m_LocalPosition: {x: 167.9, y: 6.45, z: -66.4}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalRotation: {x: -0, y: -0.9961948, z: -0, w: -0.08715562}
+  m_LocalPosition: {x: 85.73892, y: 0, z: 111.58727}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4368665180926746}
   - {fileID: 4454122776914116}
@@ -3132,9 +3135,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1243862328633916}
-  m_LocalRotation: {x: -0.4296136, y: 0.8792846, z: 0.18452486, w: 0.09078258}
-  m_LocalPosition: {x: -1.2830552, y: 1.4438188, z: 5.254135}
-  m_LocalScale: {x: 0.06, y: 0.06, z: 0.075}
+  m_LocalRotation: {x: -0.7071068, y: 0.000000011175869, z: 0.000000040978186, w: 0.7071068}
+  m_LocalPosition: {x: -0.0016841291, y: -0.053288933, z: 0.025194881}
+  m_LocalScale: {x: 0.06101258, y: 0.051949535, z: 0.085474975}
   m_Children: []
   m_Father: {fileID: 4633444226634590}
   m_RootOrder: 1
@@ -7004,6 +7007,32 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114812621073022034
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1892155158075738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a90867b56267dd4e9ff2a21a7023472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackList: []
+  bulletPrefab: {fileID: 1206017651612816, guid: bc82d198bd7be3f4fad1f37ca3322fc2,
+    type: 2}
+--- !u!135 &135474228888504132
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1892155158075738}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 6
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &198118437828503688
 ParticleSystem:
   m_ObjectHideFlags: 1
