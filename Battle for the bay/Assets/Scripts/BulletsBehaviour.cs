@@ -24,6 +24,10 @@ public class BulletsBehaviour : MonoBehaviour
         {
             return;
         }
+        if (other.gameObject.tag == "PlayerBase" && GeneratedTag == "PlayerTower")
+        {
+            return;
+        }
         if (other.gameObject.tag == "Ship")
         {
             Debug.Log("hit minion!");
@@ -37,11 +41,27 @@ public class BulletsBehaviour : MonoBehaviour
             Destroy(gameObject, 0.1f);
         }
 
+        if (other.gameObject.tag == "PlayerBase")
+        {
+            other.gameObject.SendMessage("DamageOnHit", DamageOnHit);
+            Destroy(gameObject, 0.1f);
+        }
+
         if (other.gameObject.tag == "Terrain")
         {
             Destroy(gameObject);
         }
 
     }
+
+    // void OnTriggerStay(Collider other)
+    // {
+    //     if (other.gameObject.tag == "PlayerBase")
+    //     {
+    //         other.gameObject.SendMessage("DamageOnHit", DamageOnHit);
+    //         Debug.Log("Hit player base");
+    //         Destroy(gameObject);
+    //     }
+    // }
 
 }
