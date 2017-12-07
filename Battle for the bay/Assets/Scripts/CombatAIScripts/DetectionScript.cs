@@ -6,6 +6,7 @@ public class DetectionScript : MonoBehaviour
 {
 
     public AIRootScript rootScript;
+    private bool _exitUpdate = false;
     // Use this for initialization
     void Start()
     {
@@ -19,14 +20,21 @@ public class DetectionScript : MonoBehaviour
         {
             rootScript.enemies.Clear();
         }
+        rootScript.detected.RemoveAll(item => item == null);
 
         foreach (AIRootScript detectedObject in rootScript.detected)
         {
-            if (detectedObject == null)
+            if (_exitUpdate)
+            {
+                _exitUpdate = false;
+                return;
+            }
+            if (!_exitUpdate && detectedObject == null)
             {
                 rootScript.detected.Remove(detectedObject);
             }
-            if (detectedObject.tag == "Ship")
+
+            if (!_exitUpdate && detectedObject.tag == "Ship")
             {
                 rootScript.enemies.Add(detectedObject);
             }
@@ -43,8 +51,29 @@ public class DetectionScript : MonoBehaviour
         }
     }
 
+    void OnDeleteShip()
+    {
+        _exitUpdate = true;
+    }
+
+    void OnEnable()
+    {
+        UpdateEnemyList.OnDeleteShip += OnDeleteShip;
+    }
+
+
+    void OnDisable()
+    {
+        UpdateEnemyList.OnDeleteShip -= OnDeleteShip;
+    }
+
     void OnTriggerEnter(Collider collider)
     {
+        if (collider.tag == "Treasure")
+        {
+            transform.parent.GetComponent<CollectResources>().GetTreasure();
+            Destroy(collider.gameObject);
+        }
         if (collider.tag != "Terrain" && collider.tag != "Untagged")
         {
             rootScript.detected.Add(collider.gameObject.GetComponent<AIRootScript>());

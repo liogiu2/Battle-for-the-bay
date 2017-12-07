@@ -31,7 +31,6 @@ public class AIRootScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateLists();
         //Let extended class to do something
         OnUpdate();
 
@@ -66,23 +65,6 @@ public class AIRootScript : MonoBehaviour
         currentState = state;
     }
 
-    private void UpdateLists()
-    {
-        if (_updateEnemyList.DestroyingItem != null)
-        {
-            AIRootScript aI = _updateEnemyList.DestroyingItem;
-            if (aI != null)
-            {
-                StopCorutineFire();
-                detected.Remove(aI);
-                enemies.Remove(aI);
-                if (TargetEnemy != null && TargetEnemy.GetComponent<AIRootScript>() == aI)
-                {
-                    TargetEnemy = null;
-                }
-            }
-        }
-    }
     private IEnumerator Fire(GameObject Target)
     {
         _corutineStarted = true;
@@ -118,6 +100,29 @@ public class AIRootScript : MonoBehaviour
     {
         StopCoroutine("Fire");
         _startedFire = false;
+    }
+
+    void OnDeleteShip()
+    {
+        AIRootScript aI = _updateEnemyList.DestroyingItem;
+        StopCorutineFire();
+        detected.Remove(aI);
+        enemies.Remove(aI);
+        if (TargetEnemy != null && TargetEnemy.GetComponent<AIRootScript>() == aI)
+        {
+            TargetEnemy = null;
+        }
+    }
+
+    void OnEnable()
+    {
+        UpdateEnemyList.OnDeleteShip += OnDeleteShip;
+    }
+
+
+    void OnDisable()
+    {
+        UpdateEnemyList.OnDeleteShip -= OnDeleteShip;
     }
 
 }

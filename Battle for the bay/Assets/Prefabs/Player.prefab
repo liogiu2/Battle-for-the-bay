@@ -480,6 +480,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Money: 0
   MaxAmountOfMoneyInShip: 200
+  MoneyForTreasure: 0
 --- !u!114 &114679408478077212
 MonoBehaviour:
   m_ObjectHideFlags: 1

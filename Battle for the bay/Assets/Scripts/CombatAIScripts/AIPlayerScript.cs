@@ -7,8 +7,9 @@ public class AIPlayerScript : AIRootScript
 
     protected override void OnUpdate()
     {
+
     }
-    
+
 
     public void ActivateTarget()
     {
