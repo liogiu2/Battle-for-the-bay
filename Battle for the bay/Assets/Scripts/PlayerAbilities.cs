@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerAbilities : MonoBehaviour
 {
+    public AudioClip QAudioClip;
     public int aimMode = 0;
     public Transform areaPointer;
     public float areaPointerRange = 5f;
@@ -226,6 +227,10 @@ public class PlayerAbilities : MonoBehaviour
 
         //GIVE INITIAL VELOCITY TO THE BULLET
         bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * 12, ForceMode.Impulse);
+        
+        AudioSource audioSource = gameObject.AddComponent<AudioSource>();
+        Destroy(audioSource, QAudioClip.length);
+        audioSource.PlayOneShot(QAudioClip);
     }
 
     private void areaAttack(Vector3 target, Quaternion rotation)
