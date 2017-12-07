@@ -36,9 +36,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4403018352402638}
+  - component: {fileID: 135104049924269288}
   m_Layer: 0
   m_Name: Treasure_Chest_01
-  m_TagString: Untagged
+  m_TagString: Treasure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -232,15 +233,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1924270591223566}
-  m_LocalRotation: {x: 0, y: 0.20791169, z: 0, w: 0.9781476}
-  m_LocalPosition: {x: 138.14, y: -1.1576023e-15, z: 51.29}
+  m_LocalRotation: {x: -0, y: 0.93362075, z: -0, w: -0.35826293}
+  m_LocalPosition: {x: 175.66365, y: 0, z: -66.87133}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4189961849989250}
   - {fileID: 4403018352402638}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 24, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 221.987, z: 0}
 --- !u!4 &4810951091308506
 Transform:
   m_ObjectHideFlags: 1
@@ -461,6 +462,18 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!135 &135104049924269288
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1203283639558134}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5
+  m_Center: {x: 0, y: 2.5, z: 0}
 --- !u!198 &198112891089843426
 ParticleSystem:
   m_ObjectHideFlags: 1

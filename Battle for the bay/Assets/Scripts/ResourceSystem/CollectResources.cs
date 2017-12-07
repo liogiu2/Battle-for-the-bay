@@ -6,6 +6,7 @@ public class CollectResources : MonoBehaviour {
 
 	public int Money;
 	public int MaxAmountOfMoneyInShip;
+	public int MoneyForTreasure;
 	// Use this for initialization
 	void Start () {
 		
@@ -20,6 +21,11 @@ public class CollectResources : MonoBehaviour {
 
 	public void AddMoney(int money){
 		Money += money;
+	}
+
+	public void GetTreasure(){
+		Money += MoneyForTreasure;
+		Debug.Log("Got Treasure");
 	}
 
 	public void inIsland(){

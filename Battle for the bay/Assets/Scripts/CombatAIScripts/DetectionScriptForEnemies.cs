@@ -67,7 +67,7 @@ public class DetectionScriptForEnemies : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.tag != "Terrain" && collider.tag != "Untagged" && collider.tag!="Ship")
+        if (collider.tag != "Terrain" && collider.tag != "Untagged" && collider.tag != "Ship" && collider.tag != "Treasure")
         {
             rootScript.detected.Add(collider.gameObject.GetComponent<AIRootScript>());
         }

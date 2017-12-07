@@ -69,6 +69,11 @@ public class DetectionScript : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
+        if (collider.tag == "Treasure")
+        {
+            transform.parent.GetComponent<CollectResources>().GetTreasure();
+            Destroy(collider.gameObject);
+        }
         if (collider.tag != "Terrain" && collider.tag != "Untagged")
         {
             rootScript.detected.Add(collider.gameObject.GetComponent<AIRootScript>());
