@@ -5,7 +5,6 @@ using UnityEngine;
 public class AiEnemyScript : AIRootScript
 {
 
-    public List<GameObject> Targets;
     public void ActivateTarget()
     {
         transform.Find("Target").gameObject.SetActive(true);

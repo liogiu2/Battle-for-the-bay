@@ -89,7 +89,7 @@ public class AIRootScript : MonoBehaviour
             //GIVE INITIAL VELOCITY TO THE BULLET
             //bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 12;
             Vector3 pos = Target.transform.position;
-            if (Target == Base)
+            if (Base != null && Target.name == Base.name)
             {
                 pos = Base.transform.Find("ShootTarget").transform.position;
             }

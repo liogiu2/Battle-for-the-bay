@@ -84,11 +84,13 @@ public class DetectionScriptForEnemies : MonoBehaviour
         if (collider.tag == "Player")
         {
             rootScript.detected.Remove(collider.GetComponent<AIRootScript>());
+            rootScript.StopCorutineFire();
         }
 
         if (collider.tag == "PlayerBase")
         {
             rootScript.Base = null;
+            rootScript.StopCorutineFire();            
         }
     }
 }
