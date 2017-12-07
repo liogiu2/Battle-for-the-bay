@@ -9,6 +9,7 @@ public class MoveInput : MonoBehaviour
     public ShipMovement shipMovement;
     public float minMoveRange;
     public SpriteRenderer cursorSprite;
+    public GameObject upgradeCanvas;
 
     private AIRootScript rootScript;
 
@@ -39,6 +40,11 @@ public class MoveInput : MonoBehaviour
                         cursorSprite.enabled = true;
                     }
 
+                    if(upgradeCanvas.activeSelf == true)
+                    {
+                        upgradeCanvas.SetActive(false);
+                    }
+
                 }
 
                 if (hit.collider.tag == "Ship")
@@ -51,6 +57,16 @@ public class MoveInput : MonoBehaviour
                     GameObject Ship = hit.collider.gameObject;
                     Ship.SendMessage("ActivateTarget");
                     rootScript.TargetEnemy = Ship;
+                }
+
+                if (hit.collider.tag == "Fort")
+                {
+                    upgradeCanvas.SetActive(true);
+                }
+
+                if (hit.collider.tag == "Constuctable")
+                {
+                    Debug.Log("CONSTRUCTABLE");
                 }
             }
         }
