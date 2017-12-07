@@ -14,8 +14,9 @@ public class AIRootScript : MonoBehaviour
     public List<AIRootScript> detected, enemies;
     public GameObject TargetEnemy;
     public GameObject bulletPrefab;
+    public GameObject EmptyGameObjectPrefab;
     public float BulletSpeed;
-
+    public AudioClip FireAudioClip;    
     bool _startedFire = false;
     private bool _corutineStarted = false;
     protected UpdateEnemyList _updateEnemyList;
@@ -79,6 +80,13 @@ public class AIRootScript : MonoBehaviour
                 //Quaternion.Euler(-10, transform.rotation.y - 90, 0));
                 Quaternion.identity);
             Destroy(bullet, 3.0f);
+
+            // Spawn the sound object
+            GameObject bulletSound = new GameObject("bulletSound");
+            AudioSource audioSource = bulletSound.AddComponent<AudioSource>();
+            Destroy(bulletSound, FireAudioClip.length);
+            audioSource.PlayOneShot(FireAudioClip);
+
 
             bullet.GetComponent<BulletsBehaviour>().GeneratedTag = gameObject.tag;
             //COLOR THE BULLET

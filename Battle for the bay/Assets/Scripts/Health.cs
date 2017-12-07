@@ -8,7 +8,7 @@ public class Health : MonoBehaviour
     public float health;
     public float MaxHealth;
     public float HealthRecovery;
-
+    public AudioClip DeathSound;
     public GameObject Explosion;
     public int MoneyOnDie;
     public GameObject HealthBar;
@@ -57,6 +57,13 @@ public class Health : MonoBehaviour
                 }
                 updateEnemyList.AddDestroyingItem(gameObject.GetComponent<AIRootScript>());
                 GameObject.FindGameObjectWithTag("Player").SendMessage("AddMoney", MoneyOnDie);
+                
+                // Spawn the sound object
+                GameObject explosionSound = new GameObject("bulletSound");
+                AudioSource audioSource = explosionSound.AddComponent<AudioSource>();
+                Destroy(explosionSound, DeathSound.length);
+                audioSource.PlayOneShot(DeathSound);
+
                 Destroy(gameObject, 0.2f);
             }
         }
