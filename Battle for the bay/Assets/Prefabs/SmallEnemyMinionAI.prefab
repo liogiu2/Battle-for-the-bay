@@ -500,6 +500,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1206017651612816, guid: bc82d198bd7be3f4fad1f37ca3322fc2,
     type: 2}
   BulletSpeed: 5
+  Base: {fileID: 0}
+  FireAudioClip: {fileID: 8300000, guid: 8951a99d1a26fea4fbcb3775f8a0b399, type: 3}
 --- !u!114 &114292342245237744
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -514,6 +516,7 @@ MonoBehaviour:
   health: 100
   MaxHealth: 100
   HealthRecovery: 0
+  DeathSound: {fileID: 8300000, guid: 3c495268ef48e6940b71d7cc67f524ad, type: 3}
   Explosion: {fileID: 1496793775603666}
   MoneyOnDie: 20
   HealthBar: {fileID: 0}

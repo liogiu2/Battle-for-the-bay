@@ -436,7 +436,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1333661287839766
 GameObject:
   m_ObjectHideFlags: 1
@@ -462,7 +462,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224821487513465408}
   m_Layer: 0
-  m_Name: EnergyBar
+  m_Name: TreasureBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -652,7 +652,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1514299831493510
 GameObject:
   m_ObjectHideFlags: 1

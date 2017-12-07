@@ -3,16 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Ship
-  - Trigger
-  - Ground
-  - Terrain
-  - Fire
-  - Cunstractable
-  - Fort
-  - Treasure
-  - destructable
+  tags: []
   layers:
   - Default
   - TransparentFX

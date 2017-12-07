@@ -1,38 +1,61 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class CollectResources : MonoBehaviour {
+public class CollectResources : MonoBehaviour
+{
 
-	public int Money;
-	public int MaxAmountOfMoneyInShip;
-	public int MoneyForTreasure;
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if(Money > MaxAmountOfMoneyInShip){
-			Money = MaxAmountOfMoneyInShip;
-		}
-	}
+    public int Money;
+    public int MaxAmountOfMoneyInShip;
+    public int MoneyForTreasure;
+    public GameObject TreasureShipBar;
+    private Image _bar;
+    private Text _text;
+    // Use this for initialization
+    void Start()
+    {
+        if (TreasureShipBar)
+        {
+            _bar = TreasureShipBar.transform.Find("bar").Find("Image").GetComponent<Image>();
+            _text = TreasureShipBar.transform.Find("bar").Find("Image").Find("Text").GetComponent<Text>();
+        }
+    }
 
-	public void AddMoney(int money){
-		Money += money;
-	}
+    // Update is called once per frame
+    void Update()
+    {
+		UpdateMoneyBar();
+        if (Money > MaxAmountOfMoneyInShip)
+        {
+            Money = MaxAmountOfMoneyInShip;
+        }
+    }
 
-	public void GetTreasure(){
-		Money += MoneyForTreasure;
-		Debug.Log("Got Treasure");
-	}
+    public void AddMoney(int money)
+    {
+        Money += money;
+    }
 
-	public void inIsland(){
-		
-	}
+    public void GetTreasure()
+    {
+        Money += MoneyForTreasure;
+        Debug.Log("Got Treasure");
+    }
 
-	public void OutIsland(){
-		
-	}
+    public void inIsland()
+    {
+
+    }
+
+    public void OutIsland()
+    {
+
+    }
+
+    private void UpdateMoneyBar()
+    {
+        _bar.fillAmount = (float)Money / (float)MaxAmountOfMoneyInShip;
+		_text.text = Money+" / "+MaxAmountOfMoneyInShip;
+    }
 }

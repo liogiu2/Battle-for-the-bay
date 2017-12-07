@@ -10,6 +10,11 @@ public class AIPlayerScript : AIRootScript
 
     }
 
+    protected override void ChooseWhoShot()
+    {
+        StartCoroutine(Fire(TargetEnemy));
+    }
+
 
     public void ActivateTarget()
     {

@@ -40,7 +40,7 @@ public class DetectionScriptForEnemies : MonoBehaviour
         }
 
         //Change the state
-        if (rootScript.enemies.Count > 0)
+        if (rootScript.enemies.Count > 0 || rootScript.Base != null)
         {
             rootScript.ChangeState(AIRootScript.STATE.Combat);
         }
@@ -48,6 +48,7 @@ public class DetectionScriptForEnemies : MonoBehaviour
         {
             rootScript.ChangeState(AIRootScript.STATE.Idle);
         }
+
     }
     void OnDeleteShip()
     {
@@ -67,14 +68,29 @@ public class DetectionScriptForEnemies : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.tag != "Terrain" && collider.tag != "Untagged" && collider.tag != "Ship" && collider.tag != "Treasure")
+        if (collider.tag == "Player")
         {
             rootScript.detected.Add(collider.gameObject.GetComponent<AIRootScript>());
+        }
+
+        if (collider.tag == "PlayerBase")
+        {
+            rootScript.Base = collider.gameObject.transform.parent.gameObject;
         }
     }
 
     void OnTriggerExit(Collider collider)
     {
-        rootScript.detected.Remove(collider.GetComponent<AIRootScript>());
+        if (collider.tag == "Player")
+        {
+            rootScript.detected.Remove(collider.GetComponent<AIRootScript>());
+            rootScript.StopCorutineFire();
+        }
+
+        if (collider.tag == "PlayerBase")
+        {
+            rootScript.Base = null;
+            rootScript.StopCorutineFire();            
+        }
     }
 }
