@@ -57,7 +57,7 @@ public class Health : MonoBehaviour
                 }
                 updateEnemyList.AddDestroyingItem(gameObject.GetComponent<AIRootScript>());
                 GameObject.FindGameObjectWithTag("Player").SendMessage("AddMoney", MoneyOnDie);
-                Destroy(gameObject, 0.5f);
+                Destroy(gameObject, 0.2f);
             }
         }
     }
