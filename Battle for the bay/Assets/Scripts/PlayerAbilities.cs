@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerAbilities : MonoBehaviour
 {
@@ -21,10 +22,15 @@ public class PlayerAbilities : MonoBehaviour
 
     private bool clickDelay = false;
     // Hardcoded, not good.. we need to modularize the abilities
+    public GameObject cooldownQIndicator;
+    public GameObject cooldownWIndicator;
+    public GameObject cooldownEIndicator;
     public float cooldownQ;
     public float cooldownW;
     public float cooldownE;
-
+    private Text cooldownQText;
+    private Text cooldownWText;
+    private Text cooldownEText;
     public float cooldownQTimer;
     public float cooldownWTimer;
     public float cooldownETimer;
@@ -34,6 +40,12 @@ public class PlayerAbilities : MonoBehaviour
         cooldownQTimer = 0f;
         cooldownWTimer = 0f;
         cooldownETimer = 0f;
+        cooldownQIndicator.SetActive(false);
+        cooldownWIndicator.SetActive(false);
+        cooldownEIndicator.SetActive(false);
+        cooldownQText = cooldownQIndicator.transform.Find("CoolDownText").GetComponent<Text>();
+        cooldownWText = cooldownWIndicator.transform.Find("CoolDownText").GetComponent<Text>();
+        cooldownEText = cooldownEIndicator.transform.Find("CoolDownText").GetComponent<Text>();
 
         lineShotAim = this.gameObject.transform.Find("Aim").gameObject;
         rangePointer = lineShotAim.transform.Find("RangeAbility");
@@ -91,7 +103,7 @@ public class PlayerAbilities : MonoBehaviour
 
                         if (Input.GetMouseButtonDown(0))
                         {
-                            cooldownQTimer = cooldownQ; 
+                            cooldownQTimer = cooldownQ;
                             fireTowards(lineShotAim.transform.rotation);
                             resetSprites();
                             clickDelay = true;
@@ -147,9 +159,35 @@ public class PlayerAbilities : MonoBehaviour
         }
 
         // update all the cooldowns
-        cooldownQTimer = (cooldownQTimer - Time.deltaTime) > 0f ? (cooldownQTimer - Time.deltaTime) : 0f;   
+        cooldownQTimer = (cooldownQTimer - Time.deltaTime) > 0f ? (cooldownQTimer - Time.deltaTime) : 0f;
         cooldownWTimer = (cooldownWTimer - Time.deltaTime) > 0f ? (cooldownWTimer - Time.deltaTime) : 0f;
         cooldownETimer = (cooldownETimer - Time.deltaTime) > 0f ? (cooldownETimer - Time.deltaTime) : 0f;
+
+        if (cooldownQTimer > 0)
+        {
+            cooldownQIndicator.SetActive(true);
+            cooldownQText.text = cooldownQTimer.ToString("0.0");
+            cooldownQIndicator.GetComponent<Image>().fillAmount = cooldownQTimer / cooldownQ;
+        }
+        else
+            cooldownQIndicator.SetActive(false);
+        if (cooldownWTimer > 0)
+        {
+            cooldownWIndicator.SetActive(true);
+            cooldownWText.text = cooldownWTimer.ToString("0.0");
+            cooldownWIndicator.GetComponent<Image>().fillAmount = cooldownWTimer / cooldownW;
+        }
+        else
+            cooldownWIndicator.SetActive(false);
+        if (cooldownETimer > 0)
+        {
+            cooldownEIndicator.SetActive(true);
+            cooldownEText.text = cooldownETimer.ToString("0.0");
+            cooldownEIndicator.GetComponent<Image>().fillAmount = cooldownETimer / cooldownE;
+        }
+        else
+            cooldownEIndicator.SetActive(false);
+
     }
 
     private void MultiFire(Quaternion Target)

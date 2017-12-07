@@ -409,6 +409,9 @@ MonoBehaviour:
   rangePrefab: {fileID: 1551180887108888, guid: fe7037ce1e159fa488524b8a40d29684,
     type: 2}
   areaPrefab: {fileID: 1957888558913280, guid: 3f61860399ac2a7449714b5ceb24bb41, type: 2}
+  cooldownQIndicator: {fileID: 0}
+  cooldownWIndicator: {fileID: 0}
+  cooldownEIndicator: {fileID: 0}
   cooldownQ: 3
   cooldownW: 3
   cooldownE: 3
@@ -504,6 +507,7 @@ MonoBehaviour:
   shipMovement: {fileID: 114432608139101822}
   minMoveRange: 0
   cursorSprite: {fileID: 0}
+  upgradeCanvas: {fileID: 0}
 --- !u!135 &135196170018176452
 SphereCollider:
   m_ObjectHideFlags: 1
