@@ -15,7 +15,9 @@ public class AIRootScript : MonoBehaviour
     public GameObject TargetEnemy;
     public GameObject bulletPrefab;
     public float BulletSpeed;
+    public GameObject Base;
 
+    public AudioClip FireAudioClip;    
     bool _startedFire = false;
     private bool _corutineStarted = false;
     protected UpdateEnemyList _updateEnemyList;
@@ -31,7 +33,6 @@ public class AIRootScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateLists();
         //Let extended class to do something
         OnUpdate();
 
@@ -46,12 +47,12 @@ public class AIRootScript : MonoBehaviour
                 TargetEnemy = null;
                 return;
             case STATE.Combat:
-                if (TargetEnemy)
+                if (TargetEnemy || Base)
                 {
                     if (!_startedFire && !_corutineStarted)
                     {
                         _startedFire = true;
-                        StartCoroutine(Fire(TargetEnemy));
+                        ChooseWhoShot();
                     }
                 }
                 return;
@@ -60,30 +61,14 @@ public class AIRootScript : MonoBehaviour
 
     //Method to be overrided
     protected virtual void OnUpdate() { }
+    protected virtual void ChooseWhoShot() { }
 
     public void ChangeState(STATE state)
     {
         currentState = state;
     }
 
-    private void UpdateLists()
-    {
-        if (_updateEnemyList.DestroyingItem != null)
-        {
-            AIRootScript aI = _updateEnemyList.DestroyingItem;
-            if (aI != null)
-            {
-                StopCorutineFire();
-                detected.Remove(aI);
-                enemies.Remove(aI);
-                if (TargetEnemy != null && TargetEnemy.GetComponent<AIRootScript>() == aI)
-                {
-                    TargetEnemy = null;
-                }
-            }
-        }
-    }
-    private IEnumerator Fire(GameObject Target)
+    protected IEnumerator Fire(GameObject Target)
     {
         _corutineStarted = true;
         while (_startedFire)
@@ -98,13 +83,25 @@ public class AIRootScript : MonoBehaviour
                 Quaternion.identity);
             Destroy(bullet, 3.0f);
 
+            // Spawn the sound object
+            GameObject bulletSound = new GameObject("bulletSound");
+            AudioSource audioSource = bulletSound.AddComponent<AudioSource>();
+            Destroy(bulletSound, FireAudioClip.length);
+            audioSource.PlayOneShot(FireAudioClip);
+
+
             bullet.GetComponent<BulletsBehaviour>().GeneratedTag = gameObject.tag;
             //COLOR THE BULLET
             bullet.GetComponent<MeshRenderer>().material.color = Color.black;
 
             //GIVE INITIAL VELOCITY TO THE BULLET
             //bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 12;
-            bullet.GetComponent<Rigidbody>().velocity = (Target.transform.position - bulletPosition).normalized * BulletSpeed;
+            Vector3 pos = Target.transform.position;
+            if (Base != null && Target.name == Base.name)
+            {
+                pos = Base.transform.Find("ShootTarget").transform.position;
+            }
+            bullet.GetComponent<Rigidbody>().velocity = (pos - bulletPosition).normalized * BulletSpeed;
 
             yield return new WaitForSeconds(1.0f);
         }
@@ -118,6 +115,29 @@ public class AIRootScript : MonoBehaviour
     {
         StopCoroutine("Fire");
         _startedFire = false;
+    }
+
+    void OnDeleteShip()
+    {
+        AIRootScript aI = _updateEnemyList.DestroyingItem;
+        StopCorutineFire();
+        detected.Remove(aI);
+        enemies.Remove(aI);
+        if (TargetEnemy != null && TargetEnemy.GetComponent<AIRootScript>() == aI)
+        {
+            TargetEnemy = null;
+        }
+    }
+
+    void OnEnable()
+    {
+        UpdateEnemyList.OnDeleteShip += OnDeleteShip;
+    }
+
+
+    void OnDisable()
+    {
+        UpdateEnemyList.OnDeleteShip -= OnDeleteShip;
     }
 
 }

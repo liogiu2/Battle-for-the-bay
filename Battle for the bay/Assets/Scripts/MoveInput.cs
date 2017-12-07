@@ -9,6 +9,7 @@ public class MoveInput : MonoBehaviour
     public ShipMovement shipMovement;
     public float minMoveRange;
     public SpriteRenderer cursorSprite;
+    public GameObject upgradeCanvas;
 
     private AIRootScript rootScript;
 
@@ -21,7 +22,7 @@ public class MoveInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire2"))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -39,6 +40,11 @@ public class MoveInput : MonoBehaviour
                         cursorSprite.enabled = true;
                     }
 
+                    if (upgradeCanvas.activeSelf == true)
+                    {
+                        upgradeCanvas.SetActive(false);
+                    }
+
                 }
 
                 if (hit.collider.tag == "Ship")
@@ -51,6 +57,16 @@ public class MoveInput : MonoBehaviour
                     GameObject Ship = hit.collider.gameObject;
                     Ship.SendMessage("ActivateTarget");
                     rootScript.TargetEnemy = Ship;
+                }
+
+                if (hit.collider.tag == "PlayerBase")
+                {
+                    upgradeCanvas.SetActive(true);
+                }
+
+                if (hit.collider.tag == "Constuctable")
+                {
+                    Debug.Log("CONSTRUCTABLE");
                 }
             }
         }

@@ -5,6 +5,8 @@ using UnityEngine;
 public class UpdateEnemyList : MonoBehaviour
 {
 
+    public delegate void OnDelete();
+    public static event OnDelete OnDeleteShip;
     public AIRootScript DestroyingItem;
     public GameObject DestroyingGameObject;
 
@@ -12,6 +14,10 @@ public class UpdateEnemyList : MonoBehaviour
     {
         DestroyingItem = item;
         DestroyingGameObject = item.gameObject;
+        if (OnDeleteShip != null)
+        {
+            OnDeleteShip();
+        }
         StartCoroutine(NullObjects());
     }
 
@@ -19,7 +25,7 @@ public class UpdateEnemyList : MonoBehaviour
     private IEnumerator NullObjects()
     {
         yield return new WaitForSeconds(0.1f);
-		DestroyingItem = null;
+        DestroyingItem = null;
         DestroyingGameObject = null;
     }
 }

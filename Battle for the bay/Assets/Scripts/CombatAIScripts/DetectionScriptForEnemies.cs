@@ -6,6 +6,8 @@ public class DetectionScriptForEnemies : MonoBehaviour
 {
 
     public AIRootScript rootScript;
+    private bool _exitUpdate = false;
+
     // Use this for initialization
     void Start()
     {
@@ -22,19 +24,23 @@ public class DetectionScriptForEnemies : MonoBehaviour
 
         foreach (AIRootScript detectedObject in rootScript.detected)
         {
-            if (detectedObject == null)
+            if (_exitUpdate)
+            {
+                _exitUpdate = false;
+                return;
+            }
+            if (!_exitUpdate && detectedObject == null)
             {
                 rootScript.detected.Remove(detectedObject);
             }
-
-            if (detectedObject.tag == "Player")
+            if (!_exitUpdate && detectedObject.tag == "Player")
             {
                 rootScript.enemies.Add(detectedObject);
             }
         }
 
         //Change the state
-        if (rootScript.enemies.Count > 0)
+        if (rootScript.enemies.Count > 0 || rootScript.Base != null)
         {
             rootScript.ChangeState(AIRootScript.STATE.Combat);
         }
@@ -42,18 +48,49 @@ public class DetectionScriptForEnemies : MonoBehaviour
         {
             rootScript.ChangeState(AIRootScript.STATE.Idle);
         }
+
+    }
+    void OnDeleteShip()
+    {
+        _exitUpdate = true;
+    }
+
+    void OnEnable()
+    {
+        UpdateEnemyList.OnDeleteShip += OnDeleteShip;
+    }
+
+
+    void OnDisable()
+    {
+        UpdateEnemyList.OnDeleteShip -= OnDeleteShip;
     }
 
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.tag != "Terrain" && collider.tag != "Untagged")
+        if (collider.tag == "Player")
         {
             rootScript.detected.Add(collider.gameObject.GetComponent<AIRootScript>());
+        }
+
+        if (collider.tag == "PlayerBase")
+        {
+            rootScript.Base = collider.gameObject.transform.parent.gameObject;
         }
     }
 
     void OnTriggerExit(Collider collider)
     {
-        rootScript.detected.Remove(collider.GetComponent<AIRootScript>());
+        if (collider.tag == "Player")
+        {
+            rootScript.detected.Remove(collider.GetComponent<AIRootScript>());
+            rootScript.StopCorutineFire();
+        }
+
+        if (collider.tag == "PlayerBase")
+        {
+            rootScript.Base = null;
+            rootScript.StopCorutineFire();            
+        }
     }
 }

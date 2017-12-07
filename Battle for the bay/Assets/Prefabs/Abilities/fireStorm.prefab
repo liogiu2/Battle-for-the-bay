@@ -262,7 +262,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9de5900b4a97574f92fe8b3486e9c93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamagePerSecond: 20
+  DamagePerSecond: 60
+  DamageFrequency: 1
   Duration: 4
 --- !u!135 &135005541860450808
 SphereCollider:

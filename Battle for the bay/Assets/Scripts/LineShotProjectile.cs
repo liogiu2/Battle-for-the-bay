@@ -8,13 +8,13 @@ public class LineShotProjectile : MonoBehaviour
 
     public string GeneratedTag;
     public float DamageOnHit = 20f;
+    public float lineShotProjectileRange;
+
     private Vector3 startingPosition;
     private float travelDistance;
-    private float lineShotProjectileRange;
     // Use this for initialization
     void Start()
     {
-        lineShotProjectileRange = GameObject.Find("Player").GetComponent<PlayerAbilities>().lineShotRange;
         startingPosition = transform.position;
     }
 
@@ -50,7 +50,12 @@ public class LineShotProjectile : MonoBehaviour
         if (other.gameObject.tag == "Ship")
         {
             other.gameObject.SendMessage("DamageOnHit", DamageOnHit);
-            Debug.Log("HIT Enemy");
+            Destroy(gameObject, 0.1f);
+        }
+        if (other.gameObject.tag == "destructable")
+        {
+            other.gameObject.SendMessage("DamageOnHit", DamageOnHit);
+            Debug.Log("HIT Building");
             Destroy(gameObject, 0.1f);
         }
     }

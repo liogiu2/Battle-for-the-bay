@@ -8,20 +8,24 @@ public class Health : MonoBehaviour
     public float health;
     public float MaxHealth;
     public float HealthRecovery;
-
+    public AudioClip DeathSound;
     public GameObject Explosion;
     public int MoneyOnDie;
     public GameObject HealthBar;
+    public Slider minionHealthBar;
+
     private UpdateEnemyList updateEnemyList;
     private bool _coroutineStarted = false;
     private Image _bar;
+
+    
     // Use this for initialization
     void Start()
     {
         updateEnemyList = GameObject.Find("GameManager").GetComponent<UpdateEnemyList>();
         if (HealthBar)
         {
-            _bar = HealthBar.transform.Find("bar").GetComponentInChildren<Image>();
+            _bar = HealthBar.transform.Find("bar").Find("Image").GetComponent<Image>();
             _bar.fillAmount = 1;
         }
     }
@@ -29,9 +33,13 @@ public class Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (minionHealthBar)
+        {
+            minionHealthBar.value = health / MaxHealth;
+        }
         if (gameObject.tag == "Player" && health < MaxHealth && !_coroutineStarted)
         {
-            StartCoroutine(HealthRecoveryRoutine());
+            // StartCoroutine(HealthRecoveryRoutine());
         }
 
     }
@@ -57,7 +65,14 @@ public class Health : MonoBehaviour
                 }
                 updateEnemyList.AddDestroyingItem(gameObject.GetComponent<AIRootScript>());
                 GameObject.FindGameObjectWithTag("Player").SendMessage("AddMoney", MoneyOnDie);
-                Destroy(gameObject, 0.5f);
+                
+                // Spawn the sound object
+                GameObject explosionSound = new GameObject("bulletSound");
+                AudioSource audioSource = explosionSound.AddComponent<AudioSource>();
+                Destroy(explosionSound, DeathSound.length);
+                audioSource.PlayOneShot(DeathSound);
+
+                Destroy(gameObject, 0.2f);
             }
         }
     }

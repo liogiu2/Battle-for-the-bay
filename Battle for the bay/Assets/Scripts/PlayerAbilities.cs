@@ -1,34 +1,59 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PlayerAbilities : MonoBehaviour {
+public class PlayerAbilities : MonoBehaviour
+{
+    public AudioClip QAudioClip;
     public int aimMode = 0;
-    public Transform areaPointer;
+    public float areaPointerRange = 5f;
     Transform rangePointer;
     Transform linePointer;
+    Transform areaPointer;
+
     SpriteRenderer areaSprite;
     SpriteRenderer rangeSprite;
     SpriteRenderer lineSprite;
+
     GameObject lineShotAim;
-    public float lineShotRange;
     public GameObject linePrefab;
     public GameObject rangePrefab;
     public GameObject areaPrefab;
-
     private GameObject player;
     private MoveInput moveInput;
 
     private bool clickDelay = false;
     // Hardcoded, not good.. we need to modularize the abilities
-    private int cooldownQ = 30;
-    private int cooldownW = 30;
-    private int cooldownE = 30;
+    public GameObject cooldownQIndicator;
+    public GameObject cooldownWIndicator;
+    public GameObject cooldownEIndicator;
+    public float cooldownQ;
+    public float cooldownW;
+    public float cooldownE;
+    private Text cooldownQText;
+    private Text cooldownWText;
+    private Text cooldownEText;
+    public float cooldownQTimer;
+    public float cooldownWTimer;
+    public float cooldownETimer;
 
-    void Start() {
+    void Start()
+    {
+        cooldownQTimer = 0f;
+        cooldownWTimer = 0f;
+        cooldownETimer = 0f;
+        cooldownQIndicator.SetActive(false);
+        cooldownWIndicator.SetActive(false);
+        cooldownEIndicator.SetActive(false);
+        cooldownQText = cooldownQIndicator.transform.Find("CoolDownText").GetComponent<Text>();
+        cooldownWText = cooldownWIndicator.transform.Find("CoolDownText").GetComponent<Text>();
+        cooldownEText = cooldownEIndicator.transform.Find("CoolDownText").GetComponent<Text>();
+
         lineShotAim = this.gameObject.transform.Find("Aim").gameObject;
         rangePointer = lineShotAim.transform.Find("RangeAbility");
         linePointer = lineShotAim.transform.Find("LineAbility");
+        areaPointer = lineShotAim.transform.Find("AreaAbility");
 
         lineSprite = linePointer.GetComponent<SpriteRenderer>();
         rangeSprite = rangePointer.GetComponent<SpriteRenderer>();
@@ -39,23 +64,26 @@ public class PlayerAbilities : MonoBehaviour {
         moveInput = player.GetComponent<MoveInput>();
     }
 
-    void Update() {
+    void Update()
+    {
         // Toggling aim mode
-        if (Input.GetKeyDown("q"))
+        if (Input.GetKeyDown("q") && cooldownQTimer == 0f)
         {
             aimMode = (aimMode == 0) ? 1 : 0;
             lineShotAim.SetActive(true);
             moveInput.enabled = !moveInput.enabled;
         }
-        else if (Input.GetKeyDown("w"))
+        else if (Input.GetKeyDown("w") && cooldownWTimer == 0f)
         {
             aimMode = (aimMode == 0) ? 2 : 0;
             lineShotAim.SetActive(true);
             moveInput.enabled = !moveInput.enabled;
         }
-        else if (Input.GetKeyDown("e"))
+        else if (Input.GetKeyDown("e") && cooldownETimer == 0f)
         {
+            lineShotAim.SetActive(true);
             aimMode = (aimMode == 0) ? 3 : 0;
+            moveInput.enabled = !moveInput.enabled;
         }
 
         if (clickDelay && Input.GetMouseButtonUp(0))
@@ -64,7 +92,8 @@ public class PlayerAbilities : MonoBehaviour {
             moveInput.enabled = true;
         }
 
-        if (aimMode != 0) {
+        if (aimMode != 0)
+        {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
@@ -80,6 +109,7 @@ public class PlayerAbilities : MonoBehaviour {
 
                         if (Input.GetMouseButtonDown(0))
                         {
+                            cooldownQTimer = cooldownQ;
                             fireTowards(lineShotAim.transform.rotation);
                             resetSprites();
                             clickDelay = true;
@@ -87,6 +117,7 @@ public class PlayerAbilities : MonoBehaviour {
                         break;
                     case 2:
                         // Range 
+                        cooldownWTimer = cooldownW;
                         rangeSprite.enabled = true;
                         lineShotAim.transform.LookAt(position);
 
@@ -98,13 +129,27 @@ public class PlayerAbilities : MonoBehaviour {
                         }
                         break;
                     case 3:
+                        cooldownETimer = cooldownE;
                         // Splash Area mode
                         areaSprite.enabled = true;
-                        areaPointer.position = new Vector3(hit.point.x, areaPointer.position.y, hit.point.z);
 
-                        if (Input.GetMouseButtonDown(0))
+                        Vector3 centerPosition = transform.localPosition;
+                        float distance = Vector3.Distance(hit.point, centerPosition);
+
+                        if (distance > areaPointerRange) //If the distance is less than the radius, it is already within the circle.
                         {
-                            areaAttack(position, lineShotAim.transform.rotation);
+                            Vector3 fromOriginToObject = hit.point - centerPosition;
+                            fromOriginToObject *= areaPointerRange / distance;
+                            areaPointer.position = centerPosition + fromOriginToObject; 
+                        }
+                        else
+                        {
+                            areaPointer.position = new Vector3(hit.point.x, areaPointer.position.y, hit.point.z);
+                        }
+
+                        if (Input.GetMouseButtonDown(0))//&& dist < areaPointerRange)
+                        {
+                            areaAttack(areaPointer.position, lineShotAim.transform.rotation);
                             resetSprites();
                             clickDelay = true;
                         }
@@ -113,10 +158,42 @@ public class PlayerAbilities : MonoBehaviour {
                         break;
                 }
             }
-        } else
+        }
+        else
         {
             resetSprites();
         }
+
+        // update all the cooldowns
+        cooldownQTimer = (cooldownQTimer - Time.deltaTime) > 0f ? (cooldownQTimer - Time.deltaTime) : 0f;
+        cooldownWTimer = (cooldownWTimer - Time.deltaTime) > 0f ? (cooldownWTimer - Time.deltaTime) : 0f;
+        cooldownETimer = (cooldownETimer - Time.deltaTime) > 0f ? (cooldownETimer - Time.deltaTime) : 0f;
+
+        if (cooldownQTimer > 0)
+        {
+            cooldownQIndicator.SetActive(true);
+            cooldownQText.text = cooldownQTimer.ToString("0.0");
+            cooldownQIndicator.GetComponent<Image>().fillAmount = cooldownQTimer / cooldownQ;
+        }
+        else
+            cooldownQIndicator.SetActive(false);
+        if (cooldownWTimer > 0)
+        {
+            cooldownWIndicator.SetActive(true);
+            cooldownWText.text = cooldownWTimer.ToString("0.0");
+            cooldownWIndicator.GetComponent<Image>().fillAmount = cooldownWTimer / cooldownW;
+        }
+        else
+            cooldownWIndicator.SetActive(false);
+        if (cooldownETimer > 0)
+        {
+            cooldownEIndicator.SetActive(true);
+            cooldownEText.text = cooldownETimer.ToString("0.0");
+            cooldownEIndicator.GetComponent<Image>().fillAmount = cooldownETimer / cooldownE;
+        }
+        else
+            cooldownEIndicator.SetActive(false);
+
     }
 
     private void MultiFire(Quaternion Target)
@@ -135,7 +212,7 @@ public class PlayerAbilities : MonoBehaviour {
         for (int j = -10; j <= 10; j += 5)
         {
             bullets[iterator].GetComponent<Rigidbody>().AddForce(Quaternion.Euler(0, j, 0) * dir * 12, ForceMode.Impulse);
-            iterator++; 
+            iterator++;
         }
     }
 
@@ -155,6 +232,10 @@ public class PlayerAbilities : MonoBehaviour {
 
         //GIVE INITIAL VELOCITY TO THE BULLET
         bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * 12, ForceMode.Impulse);
+        
+        AudioSource audioSource = gameObject.AddComponent<AudioSource>();
+        Destroy(audioSource, QAudioClip.length);
+        audioSource.PlayOneShot(QAudioClip);
     }
 
     private void areaAttack(Vector3 target, Quaternion rotation)
