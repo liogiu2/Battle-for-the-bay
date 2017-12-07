@@ -14,7 +14,6 @@ public class AIRootScript : MonoBehaviour
     public List<AIRootScript> detected, enemies;
     public GameObject TargetEnemy;
     public GameObject bulletPrefab;
-    public GameObject EmptyGameObjectPrefab;
     public float BulletSpeed;
     public GameObject Base;
 

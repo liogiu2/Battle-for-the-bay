@@ -89,6 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4773580359959466}
   - component: {fileID: 135471823985783218}
+  - component: {fileID: 81677414081754012}
   - component: {fileID: 54914812432472494}
   - component: {fileID: 195058580903683966}
   - component: {fileID: 114951226739000348}
@@ -225,7 +226,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1407059325152006}
   m_LocalRotation: {x: -0, y: 0.8977261, z: -0, w: 0.44055408}
-  m_LocalPosition: {x: 170.97269, y: 1.6049447e-15, z: -72.2603}
+  m_LocalPosition: {x: 171.9, y: 1.6049447e-15, z: -71}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4336971943995000}
@@ -374,6 +375,13 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!81 &81677414081754012
+AudioListener:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1407059325152006}
+  m_Enabled: 1
 --- !u!95 &95265657906308098
 Animator:
   serializedVersion: 3
@@ -402,6 +410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 981926098e31e9841b40d5f3fe7f0834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  QAudioClip: {fileID: 8300000, guid: a068476b889255e4d839419842ff5352, type: 3}
   aimMode: 0
   areaPointer: {fileID: 0}
   areaPointerRange: 5
@@ -432,6 +441,7 @@ MonoBehaviour:
   health: 100
   MaxHealth: 100
   HealthRecovery: 10
+  DeathSound: {fileID: 8300000, guid: 3c495268ef48e6940b71d7cc67f524ad, type: 3}
   Explosion: {fileID: 0}
   MoneyOnDie: 0
   HealthBar: {fileID: 0}
@@ -467,6 +477,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1206017651612816, guid: bc82d198bd7be3f4fad1f37ca3322fc2,
     type: 2}
   BulletSpeed: 5
+  Base: {fileID: 0}
+  FireAudioClip: {fileID: 8300000, guid: 8951a99d1a26fea4fbcb3775f8a0b399, type: 3}
 --- !u!114 &114651301064785116
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -480,7 +492,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Money: 0
   MaxAmountOfMoneyInShip: 200
-  MoneyForTreasure: 0
+  MoneyForTreasure: 100
+  TreasureShipBar: {fileID: 0}
 --- !u!114 &114679408478077212
 MonoBehaviour:
   m_ObjectHideFlags: 1
