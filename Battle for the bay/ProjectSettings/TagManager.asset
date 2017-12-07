@@ -11,6 +11,10 @@ TagManager:
   - Fire
   - Cunstractable
   - Fort
+  - Treasure
+  - PlayerBase
+  - EnemyBase
+  - PlayerTower
   layers:
   - Default
   - TransparentFX
