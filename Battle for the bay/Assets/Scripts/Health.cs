@@ -21,7 +21,7 @@ public class Health : MonoBehaviour
         updateEnemyList = GameObject.Find("GameManager").GetComponent<UpdateEnemyList>();
         if (HealthBar)
         {
-            _bar = HealthBar.transform.Find("bar").GetComponentInChildren<Image>();
+            _bar = HealthBar.transform.Find("bar").Find("Image").GetComponent<Image>();
             _bar.fillAmount = 1;
         }
     }
@@ -31,7 +31,7 @@ public class Health : MonoBehaviour
     {
         if (gameObject.tag == "Player" && health < MaxHealth && !_coroutineStarted)
         {
-            StartCoroutine(HealthRecoveryRoutine());
+            // StartCoroutine(HealthRecoveryRoutine());
         }
 
     }

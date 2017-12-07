@@ -40,7 +40,7 @@ public class MoveInput : MonoBehaviour
                         cursorSprite.enabled = true;
                     }
 
-                    if(upgradeCanvas.activeSelf == true)
+                    if (upgradeCanvas.activeSelf == true)
                     {
                         upgradeCanvas.SetActive(false);
                     }
@@ -59,7 +59,7 @@ public class MoveInput : MonoBehaviour
                     rootScript.TargetEnemy = Ship;
                 }
 
-                if (hit.collider.tag == "Fort")
+                if (hit.collider.tag == "PlayerBase")
                 {
                     upgradeCanvas.SetActive(true);
                 }

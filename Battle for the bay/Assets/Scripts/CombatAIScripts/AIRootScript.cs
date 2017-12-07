@@ -15,6 +15,7 @@ public class AIRootScript : MonoBehaviour
     public GameObject TargetEnemy;
     public GameObject bulletPrefab;
     public float BulletSpeed;
+    public GameObject Base;
 
     bool _startedFire = false;
     private bool _corutineStarted = false;
@@ -45,12 +46,12 @@ public class AIRootScript : MonoBehaviour
                 TargetEnemy = null;
                 return;
             case STATE.Combat:
-                if (TargetEnemy)
+                if (TargetEnemy || Base)
                 {
                     if (!_startedFire && !_corutineStarted)
                     {
                         _startedFire = true;
-                        StartCoroutine(Fire(TargetEnemy));
+                        ChooseWhoShot();
                     }
                 }
                 return;
@@ -59,13 +60,14 @@ public class AIRootScript : MonoBehaviour
 
     //Method to be overrided
     protected virtual void OnUpdate() { }
+    protected virtual void ChooseWhoShot() { }
 
     public void ChangeState(STATE state)
     {
         currentState = state;
     }
 
-    private IEnumerator Fire(GameObject Target)
+    protected IEnumerator Fire(GameObject Target)
     {
         _corutineStarted = true;
         while (_startedFire)
@@ -86,7 +88,12 @@ public class AIRootScript : MonoBehaviour
 
             //GIVE INITIAL VELOCITY TO THE BULLET
             //bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 12;
-            bullet.GetComponent<Rigidbody>().velocity = (Target.transform.position - bulletPosition).normalized * BulletSpeed;
+            Vector3 pos = Target.transform.position;
+            if (Target == Base)
+            {
+                pos = Base.transform.Find("ShootTarget").transform.position;
+            }
+            bullet.GetComponent<Rigidbody>().velocity = (pos - bulletPosition).normalized * BulletSpeed;
 
             yield return new WaitForSeconds(1.0f);
         }
