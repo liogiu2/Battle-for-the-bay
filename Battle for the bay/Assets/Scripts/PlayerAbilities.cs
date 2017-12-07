@@ -6,13 +6,15 @@ using UnityEngine.UI;
 public class PlayerAbilities : MonoBehaviour
 {
     public int aimMode = 0;
-    public Transform areaPointer;
     public float areaPointerRange = 5f;
     Transform rangePointer;
     Transform linePointer;
+    Transform areaPointer;
+
     SpriteRenderer areaSprite;
     SpriteRenderer rangeSprite;
     SpriteRenderer lineSprite;
+
     GameObject lineShotAim;
     public GameObject linePrefab;
     public GameObject rangePrefab;
@@ -50,6 +52,7 @@ public class PlayerAbilities : MonoBehaviour
         lineShotAim = this.gameObject.transform.Find("Aim").gameObject;
         rangePointer = lineShotAim.transform.Find("RangeAbility");
         linePointer = lineShotAim.transform.Find("LineAbility");
+        areaPointer = lineShotAim.transform.Find("AreaAbility");
 
         lineSprite = linePointer.GetComponent<SpriteRenderer>();
         rangeSprite = rangePointer.GetComponent<SpriteRenderer>();
@@ -77,7 +80,9 @@ public class PlayerAbilities : MonoBehaviour
         }
         else if (Input.GetKeyDown("e") && cooldownETimer == 0f)
         {
+            lineShotAim.SetActive(true);
             aimMode = (aimMode == 0) ? 3 : 0;
+            moveInput.enabled = !moveInput.enabled;
         }
 
         if (clickDelay && Input.GetMouseButtonUp(0))
@@ -127,14 +132,14 @@ public class PlayerAbilities : MonoBehaviour
                         // Splash Area mode
                         areaSprite.enabled = true;
 
-                        Vector3 centerPosition = transform.localPosition; //center of *black circle*
-                        float distance = Vector3.Distance(hit.point, centerPosition); //distance from ~green object~ to *black circle*
+                        Vector3 centerPosition = transform.localPosition;
+                        float distance = Vector3.Distance(hit.point, centerPosition);
 
                         if (distance > areaPointerRange) //If the distance is less than the radius, it is already within the circle.
                         {
-                            Vector3 fromOriginToObject = hit.point - centerPosition; //~GreenPosition~ - *BlackCenter*
-                            fromOriginToObject *= areaPointerRange / distance; //Multiply by radius //Divide by Distance
-                            areaPointer.position = centerPosition + fromOriginToObject; //*BlackCenter* + all that Math
+                            Vector3 fromOriginToObject = hit.point - centerPosition;
+                            fromOriginToObject *= areaPointerRange / distance;
+                            areaPointer.position = centerPosition + fromOriginToObject; 
                         }
                         else
                         {
