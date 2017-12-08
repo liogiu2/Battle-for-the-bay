@@ -17,7 +17,7 @@ public class AIRootScript : MonoBehaviour
     public float BulletSpeed;
     public GameObject Base;
 
-    public AudioClip FireAudioClip;    
+    public AudioClip FireAudioClip;
     bool _startedFire = false;
     private bool _corutineStarted = false;
     protected UpdateEnemyList _updateEnemyList;
@@ -97,10 +97,6 @@ public class AIRootScript : MonoBehaviour
             //GIVE INITIAL VELOCITY TO THE BULLET
             //bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 12;
             Vector3 pos = Target.transform.position;
-            if (Base != null && Target.name == Base.name)
-            {
-                pos = Base.transform.Find("ShootTarget").transform.position;
-            }
             bullet.GetComponent<Rigidbody>().velocity = (pos - bulletPosition).normalized * BulletSpeed;
 
             yield return new WaitForSeconds(1.0f);

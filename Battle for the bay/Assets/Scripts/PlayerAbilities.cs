@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class PlayerAbilities : MonoBehaviour
 {
-    public AudioClip QAudioClip;
     public int aimMode = 0;
     public float areaPointerRange = 5f;
     Transform rangePointer;
@@ -37,6 +36,11 @@ public class PlayerAbilities : MonoBehaviour
     public float cooldownQTimer;
     public float cooldownWTimer;
     public float cooldownETimer;
+
+    public AudioClip QAudioClip;
+    public AudioClip WAudioClip;
+    public AudioClip EAudioClip;
+    public AudioClip EAudioClip2;
 
     void Start()
     {
@@ -214,6 +218,9 @@ public class PlayerAbilities : MonoBehaviour
             bullets[iterator].GetComponent<Rigidbody>().AddForce(Quaternion.Euler(0, j, 0) * dir * 12, ForceMode.Impulse);
             iterator++;
         }
+
+        // Spawn the sound object
+        playSound(WAudioClip);
     }
 
     private void fireTowards(Quaternion Target)
@@ -232,15 +239,20 @@ public class PlayerAbilities : MonoBehaviour
 
         //GIVE INITIAL VELOCITY TO THE BULLET
         bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * 12, ForceMode.Impulse);
-        
-        AudioSource audioSource = gameObject.AddComponent<AudioSource>();
-        Destroy(audioSource, QAudioClip.length);
-        audioSource.PlayOneShot(QAudioClip);
+
+        // Spawn the sound object
+        playSound(QAudioClip);
     }
 
     private void areaAttack(Vector3 target, Quaternion rotation)
     {
         var bullet = (GameObject)Instantiate(areaPrefab, target, rotation);
+        playSound(EAudioClip);
+
+        GameObject explosionSound = new GameObject("bulletSound");
+        AudioSource audioSource = explosionSound.AddComponent<AudioSource>();
+        Destroy(explosionSound, areaPrefab.GetComponent<aoeBehavior>().Duration);
+        audioSource.PlayOneShot(EAudioClip2);
     }
 
     private void resetSprites()
@@ -250,5 +262,14 @@ public class PlayerAbilities : MonoBehaviour
         rangeSprite.enabled = false;
         lineSprite.enabled = false;
         lineShotAim.SetActive(false);
+    }
+
+    private void playSound(AudioClip audioClip)
+    {
+        // Spawn the sound object
+        GameObject explosionSound = new GameObject("bulletSound");
+        AudioSource audioSource = explosionSound.AddComponent<AudioSource>();
+        Destroy(explosionSound, audioClip.length);
+        audioSource.PlayOneShot(audioClip);
     }
 }

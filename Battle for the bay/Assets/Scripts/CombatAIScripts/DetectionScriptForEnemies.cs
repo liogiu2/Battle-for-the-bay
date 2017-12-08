@@ -71,12 +71,7 @@ public class DetectionScriptForEnemies : MonoBehaviour
         if (collider.tag == "Player")
         {
             rootScript.detected.Add(collider.gameObject.GetComponent<AIRootScript>());
-        }
-
-        if (collider.tag == "PlayerBase")
-        {
-            rootScript.Base = collider.gameObject.transform.parent.gameObject;
-        }
+        } 
     }
 
     void OnTriggerExit(Collider collider)
@@ -85,12 +80,6 @@ public class DetectionScriptForEnemies : MonoBehaviour
         {
             rootScript.detected.Remove(collider.GetComponent<AIRootScript>());
             rootScript.StopCorutineFire();
-        }
-
-        if (collider.tag == "PlayerBase")
-        {
-            rootScript.Base = null;
-            rootScript.StopCorutineFire();            
         }
     }
 }
