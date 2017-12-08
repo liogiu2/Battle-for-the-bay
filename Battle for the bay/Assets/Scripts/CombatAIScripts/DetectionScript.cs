@@ -74,6 +74,10 @@ public class DetectionScript : MonoBehaviour
             transform.parent.GetComponent<CollectResources>().GetTreasure();
             Destroy(collider.gameObject);
         }
+        if (collider.tag == "PlayerBase")
+        {
+            collider.gameObject.transform.parent.GetComponent<ResourcesOnIsland>().GetMoneyFromPlayer();
+        }
         if (collider.tag != "Terrain" && collider.tag != "Untagged")
         {
             rootScript.detected.Add(collider.gameObject.GetComponent<AIRootScript>());
