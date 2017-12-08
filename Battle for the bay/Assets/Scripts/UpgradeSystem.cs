@@ -22,6 +22,7 @@ public class UpgradeSystem : MonoBehaviour
 
     private List<GameObject> TowerUI;
     private List<GameObject> FortUI;
+    private List<GameObject> ShipUI;
 
 
     // Use this for initialization
@@ -42,6 +43,14 @@ public class UpgradeSystem : MonoBehaviour
         FortUI.Add(fort.transform.Find("Fort-Level-3").gameObject);
         FortUI[1].SetActive(false);
         FortUI[2].SetActive(false);
+
+        ShipUI = new List<GameObject>();
+        GameObject ship = GameObject.Find("HUD").gameObject.transform.GetChild(0).transform.GetChild(0).Find("Upgrade").Find("Slot5").gameObject;
+        ShipUI.Add(ship.transform.Find("Ship-Level-1").gameObject);
+        ShipUI.Add(ship.transform.Find("Ship-Level-2").gameObject);
+        ShipUI.Add(ship.transform.Find("Ship-Level-3").gameObject);
+        ShipUI[1].SetActive(false);
+        ShipUI[2].SetActive(false);
 
 
         TowerUI[0].transform.parent.transform.parent.gameObject.SetActive(false);        
@@ -131,6 +140,8 @@ public class UpgradeSystem : MonoBehaviour
             position,
             rotation);
             shipLevel = 2;
+            ShipUI[0].SetActive(false);
+            ShipUI[1].SetActive(true);
         }
         else if (shipLevel == 2)
         {
@@ -146,6 +157,8 @@ public class UpgradeSystem : MonoBehaviour
             position,
             rotation);
             shipLevel = 3;
+            ShipUI[1].SetActive(false);
+            ShipUI[2].SetActive(true);
         }
     }
 }
