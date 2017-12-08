@@ -30,7 +30,6 @@ public class BulletsBehaviour : MonoBehaviour
         }
         if (other.gameObject.tag == "Ship")
         {
-            Debug.Log("hit minion!");
             other.gameObject.SendMessage("DamageOnHit", DamageOnHit);
             Destroy(gameObject);
         }

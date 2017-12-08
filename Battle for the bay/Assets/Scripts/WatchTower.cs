@@ -7,6 +7,7 @@ public class WatchTower : MonoBehaviour
 
     public List<GameObject> attackList;
     public GameObject bulletPrefab;
+    public bool friendly = false;
 
     // Use this for initialization
     void Start()
@@ -45,12 +46,14 @@ public class WatchTower : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Ship") attackList.Add(other.gameObject);
+        if (friendly && other.tag == "Ship") attackList.Add(other.gameObject);
+        if (!friendly && other.tag == "Player") attackList.Add(other.gameObject);
     }
 
     public void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Ship") attackList.Remove(other.gameObject);
+        if (friendly && other.tag == "Ship") attackList.Remove(other.gameObject);
+        if (!friendly && other.tag == "Player") attackList.Remove(other.gameObject);
     }
 
 
