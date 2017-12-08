@@ -121,19 +121,18 @@ public class PlayerAbilities : MonoBehaviour
                         break;
                     case 2:
                         // Range 
-                        cooldownWTimer = cooldownW;
                         rangeSprite.enabled = true;
                         lineShotAim.transform.LookAt(position);
 
                         if (Input.GetMouseButtonDown(0))
                         {
+                            cooldownWTimer = cooldownW;
                             MultiFire(lineShotAim.transform.rotation);
                             resetSprites();
                             clickDelay = true;
                         }
                         break;
                     case 3:
-                        cooldownETimer = cooldownE;
                         // Splash Area mode
                         areaSprite.enabled = true;
 
@@ -153,6 +152,7 @@ public class PlayerAbilities : MonoBehaviour
 
                         if (Input.GetMouseButtonDown(0))//&& dist < areaPointerRange)
                         {
+                            cooldownETimer = cooldownE;
                             areaAttack(areaPointer.position, lineShotAim.transform.rotation);
                             resetSprites();
                             clickDelay = true;
@@ -189,6 +189,7 @@ public class PlayerAbilities : MonoBehaviour
         }
         else
             cooldownWIndicator.SetActive(false);
+
         if (cooldownETimer > 0)
         {
             cooldownEIndicator.SetActive(true);

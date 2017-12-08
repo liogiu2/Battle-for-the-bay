@@ -14,11 +14,16 @@ public class UpgradeSystem : MonoBehaviour
     public GameObject ship1;
     GameObject ship2;
     GameObject ship3;
+
+    public GameObject ship1Prefab;
     public GameObject ship2Prefab;
-    public GameObject ship3Prefab;
+
     public int towerLevel;
     public int fortLevel;
     public int shipLevel;
+
+    private GameObject player;
+    private GameObject ship;
 
     private List<GameObject> TowerUI;
     private List<GameObject> FortUI;
@@ -53,7 +58,8 @@ public class UpgradeSystem : MonoBehaviour
         ShipUI[2].SetActive(false);
 
 
-        TowerUI[0].transform.parent.transform.parent.gameObject.SetActive(false);        
+        TowerUI[0].transform.parent.transform.parent.gameObject.SetActive(false);
+        player = GameObject.Find("Player").gameObject;
     }
 
     // Update is called once per frame
@@ -128,37 +134,8 @@ public class UpgradeSystem : MonoBehaviour
 
         if (shipLevel == 1)
         {
-            //TAKE CURRENT POSITION AND ROTATION OF THE SHIP
-            Vector3 position = ship1.transform.position;
-            Quaternion rotation = ship1.transform.rotation;
-
-            Destroy(ship1);
-
-            //INTANTIATE THE NEW SHIP WITH THE COLLECTED POSITION AND ROTATION
-            ship2 = (GameObject)Instantiate(
-            ship2Prefab,
-            position,
-            rotation);
-            shipLevel = 2;
-            ShipUI[0].SetActive(false);
-            ShipUI[1].SetActive(true);
-        }
-        else if (shipLevel == 2)
-        {
-            //TAKE CURRENT POSITION AND ROTATION OF THE SHIP
-            Vector3 position = ship2.transform.position;
-            Quaternion rotation = ship2.transform.rotation;
-
-            Destroy(ship2);
-
-            //INTANTIATE THE NEW SHIP WITH THE COLLECTED POSITION AND ROTATION
-            var ship3 = (GameObject)Instantiate(
-            ship3Prefab,
-            position,
-            rotation);
-            shipLevel = 3;
-            ShipUI[1].SetActive(false);
-            ShipUI[2].SetActive(true);
+            ship1Prefab.SetActive(false);
+            ship2Prefab.SetActive(true);
         }
     }
 }

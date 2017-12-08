@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -33,15 +34,15 @@ public class Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdateHeathBar();
         if (minionHealthBar)
         {
             minionHealthBar.value = health / MaxHealth;
         }
         if (gameObject.tag == "Player" && health < MaxHealth && !_coroutineStarted)
         {
-            // StartCoroutine(HealthRecoveryRoutine());
+            StartCoroutine(HealthRecoveryRoutine());
         }
-
     }
 
     public void DamageOnHit(float DamageOnHit)
@@ -55,7 +56,7 @@ public class Health : MonoBehaviour
         {
             if (gameObject.tag == "Player")
             {
-                health = MaxHealth;
+                SceneManager.LoadScene(3);
             }
             else
             {
@@ -97,6 +98,7 @@ public class Health : MonoBehaviour
 
     private void UpdateHeathBar()
     {
+        if (_bar == null) return;
         _bar.fillAmount = health / MaxHealth;
     }
 }
