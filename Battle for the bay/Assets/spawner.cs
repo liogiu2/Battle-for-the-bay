@@ -31,11 +31,13 @@ public class spawner : MonoBehaviour {
         _corutineStarted = true;
         while (_spawning)
         {
-            Debug.Log("spawning!");
-            GameObject enemy = (GameObject)Instantiate(EnemyGameobject);
-            enemy.transform.position = transform.position;
-            enemy.transform.rotation = Quaternion.identity;
-
+            if (EnemyGameobject)
+            {
+                Debug.Log("spawning!");
+                GameObject enemy = (GameObject)Instantiate(EnemyGameobject);
+                enemy.transform.position = transform.position;
+                enemy.transform.rotation = Quaternion.identity;
+            }
             yield return new WaitForSeconds(SecondForSpawn);
         }
         _corutineStarted = false;

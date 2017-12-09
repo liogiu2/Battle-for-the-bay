@@ -5,15 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/GameEntrance.unity
     guid: 9729c68be9c493c46a11dcf1a508bcca
   - enabled: 1
     path: Assets/TeddiMain.unity
     guid: 0aeae15e64772dd468ad3a2cbc3346b7
-  - enabled: 1
+  - enabled: 0
     path: Assets/PlayerWon.unity
     guid: 640e2be390042dc4bbfd3d072c5a5c0b
-  - enabled: 1
+  - enabled: 0
     path: Assets/PlayerLost.unity
     guid: a74ee3ad3ba53d0428db6c1cb12e08d4

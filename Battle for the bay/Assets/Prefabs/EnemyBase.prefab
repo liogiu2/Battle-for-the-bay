@@ -4387,7 +4387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0923d83dc3458e240b3a7310ceecafb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 200
+  health: 800
   Explosion: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b, type: 2}
   structureHealthBar: {fileID: 114478792025659638}
 --- !u!114 &114132563856458876
@@ -4563,7 +4563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ca87bb9cc89c746931c00393a65f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SecondForSpawn: 5
+  SecondForSpawn: 10
   EnemyGameobject: {fileID: 1571076837685520, guid: 7e343911f70696843991a3de785f0319,
     type: 2}
   spawnCount: 2
