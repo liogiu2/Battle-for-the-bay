@@ -71,23 +71,59 @@ public class PlayerAbilities : MonoBehaviour
     void Update()
     {
         // Toggling aim mode
-        if (Input.GetKeyDown("q") && cooldownQTimer == 0f)
+        if (Input.GetKeyDown("q"))
         {
-            aimMode = (aimMode == 0) ? 1 : 0;
-            lineShotAim.SetActive(true);
-            moveInput.enabled = !moveInput.enabled;
+            if (aimMode > 0)
+            {
+                resetSprites();
+            }
+            if (aimMode != 1)
+            {
+                aimMode = 1;
+                // aimMode = (aimMode == 0) ? 1 : 0;
+                lineShotAim.SetActive(true);
+                // moveInput.enabled = !moveInput.enabled;
+            }
+            else
+            {
+                aimMode = 0;
+            }
         }
-        else if (Input.GetKeyDown("w") && cooldownWTimer == 0f)
+        else if (Input.GetKeyDown("w"))
         {
-            aimMode = (aimMode == 0) ? 2 : 0;
-            lineShotAim.SetActive(true);
-            moveInput.enabled = !moveInput.enabled;
+            if (aimMode > 0)
+            {
+                resetSprites();
+            }
+            if (aimMode != 2)
+            {
+                aimMode = 2;
+                // aimMode = (aimMode == 0) ? 2 : 0;
+                lineShotAim.SetActive(true);
+                // moveInput.enabled = !moveInput.enable;
+            }
+            else
+            {
+                aimMode = 0;
+            }
         }
-        else if (Input.GetKeyDown("e") && cooldownETimer == 0f)
+        else if (Input.GetKeyDown("e"))
         {
-            lineShotAim.SetActive(true);
-            aimMode = (aimMode == 0) ? 3 : 0;
-            moveInput.enabled = !moveInput.enabled;
+            if (aimMode > 0)
+            {
+                resetSprites();
+            }
+            if (aimMode != 3)
+            {
+                aimMode = 3;
+                lineShotAim.SetActive(true);
+                // aimMode = (aimMode == 0) ? 3 : 0;
+                // moveInput.enabled = !moveInput.enabled;
+            }
+            else
+            {
+                aimMode = 0;
+            }
         }
 
         if (clickDelay && Input.GetMouseButtonUp(0))
@@ -108,54 +144,63 @@ public class PlayerAbilities : MonoBehaviour
                 switch (aimMode)
                 {
                     case 1:
-                        lineSprite.enabled = true;
-                        lineShotAim.transform.LookAt(position);
-
-                        if (Input.GetMouseButtonDown(0))
+                        if (cooldownQTimer == 0f)
                         {
-                            cooldownQTimer = cooldownQ;
-                            fireTowards(lineShotAim.transform.rotation);
-                            resetSprites();
-                            clickDelay = true;
+                            lineSprite.enabled = true;
+                            lineShotAim.transform.LookAt(position);
+
+                            if (Input.GetMouseButtonDown(0))
+                            {
+                                cooldownQTimer = cooldownQ;
+                                fireTowards(lineShotAim.transform.rotation);
+                                // resetSprites();
+                                clickDelay = true;
+                            }
                         }
                         break;
                     case 2:
                         // Range 
-                        rangeSprite.enabled = true;
-                        lineShotAim.transform.LookAt(position);
-
-                        if (Input.GetMouseButtonDown(0))
+                        if (cooldownWTimer == 0f)
                         {
-                            cooldownWTimer = cooldownW;
-                            MultiFire(lineShotAim.transform.rotation);
-                            resetSprites();
-                            clickDelay = true;
+                            rangeSprite.enabled = true;
+                            lineShotAim.transform.LookAt(position);
+
+                            if (Input.GetMouseButtonDown(0))
+                            {
+                                cooldownWTimer = cooldownW;
+                                MultiFire(lineShotAim.transform.rotation);
+                                // resetSprites();
+                                clickDelay = true;
+                            }
                         }
                         break;
                     case 3:
                         // Splash Area mode
-                        areaSprite.enabled = true;
-
-                        Vector3 centerPosition = transform.localPosition;
-                        float distance = Vector3.Distance(hit.point, centerPosition);
-
-                        if (distance > areaPointerRange) //If the distance is less than the radius, it is already within the circle.
+                        if (cooldownETimer == 0f)
                         {
-                            Vector3 fromOriginToObject = hit.point - centerPosition;
-                            fromOriginToObject *= areaPointerRange / distance;
-                            areaPointer.position = centerPosition + fromOriginToObject; 
-                        }
-                        else
-                        {
-                            areaPointer.position = new Vector3(hit.point.x, areaPointer.position.y, hit.point.z);
-                        }
+                            areaSprite.enabled = true;
 
-                        if (Input.GetMouseButtonDown(0))//&& dist < areaPointerRange)
-                        {
-                            cooldownETimer = cooldownE;
-                            areaAttack(areaPointer.position, lineShotAim.transform.rotation);
-                            resetSprites();
-                            clickDelay = true;
+                            Vector3 centerPosition = transform.localPosition;
+                            float distance = Vector3.Distance(hit.point, centerPosition);
+
+                            if (distance > areaPointerRange) //If the distance is less than the radius, it is already within the circle.
+                            {
+                                Vector3 fromOriginToObject = hit.point - centerPosition;
+                                fromOriginToObject *= areaPointerRange / distance;
+                                areaPointer.position = centerPosition + fromOriginToObject;
+                            }
+                            else
+                            {
+                                areaPointer.position = new Vector3(hit.point.x, areaPointer.position.y, hit.point.z);
+                            }
+
+                            if (Input.GetMouseButtonDown(0))//&& dist < areaPointerRange)
+                            {
+                                cooldownETimer = cooldownE;
+                                areaAttack(areaPointer.position, lineShotAim.transform.rotation);
+                                // resetSprites();
+                                clickDelay = true;
+                            }
                         }
                         break;
                     default:
@@ -258,7 +303,7 @@ public class PlayerAbilities : MonoBehaviour
 
     private void resetSprites()
     {
-        aimMode = 0;
+        // aimMode = 0;
         areaSprite.enabled = false;
         rangeSprite.enabled = false;
         lineSprite.enabled = false;
