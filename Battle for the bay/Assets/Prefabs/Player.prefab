@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4787436190881774}
   - component: {fileID: 135560057893641072}
   - component: {fileID: 212625146960498674}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LineAbility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 4032672850014040}
   - component: {fileID: 135692142629678430}
   - component: {fileID: 212192560452547952}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RangeAbility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 135942759054364836}
   - component: {fileID: 212872010290612530}
   - component: {fileID: 114516890984255286}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: AreaAbility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -335,8 +335,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1321589391560644}
-  m_LocalRotation: {x: -0, y: 0.8977261, z: -0, w: 0.44055408}
-  m_LocalPosition: {x: 206.79, y: 1.5108567e-15, z: -50.04}
+  m_LocalRotation: {x: -0, y: -0.40670353, z: -0, w: 0.9135603}
+  m_LocalPosition: {x: 272, y: 1.5108567e-15, z: -10.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4268907687871896}
@@ -346,7 +346,7 @@ Transform:
   - {fileID: 4720368488326466}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -47.996002, z: 0}
 --- !u!4 &4720368488326466
 Transform:
   m_ObjectHideFlags: 1
@@ -754,7 +754,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1206017651612816, guid: bc82d198bd7be3f4fad1f37ca3322fc2,
     type: 2}
   BulletSpeed: 5
-  Base: {fileID: 0}
   FireAudioClip: {fileID: 8300000, guid: 8951a99d1a26fea4fbcb3775f8a0b399, type: 3}
 --- !u!114 &114856745083065884
 MonoBehaviour:

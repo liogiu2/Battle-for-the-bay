@@ -176,32 +176,29 @@ public class PlayerAbilities : MonoBehaviour
                         break;
                     case 3:
                         // Splash Area mode
-                        if (cooldownETimer == 0f)
+                        areaSprite.enabled = true;
+
+                        Vector3 centerPosition = transform.localPosition;
+                        float distance = Vector3.Distance(hit.point, centerPosition);
+
+                        if (distance > areaPointerRange) //If the distance is less than the radius, it is already within the circle.
                         {
-                            areaSprite.enabled = true;
+                            Vector3 fromOriginToObject = hit.point - centerPosition;
+                            fromOriginToObject *= areaPointerRange / distance;
+                            areaPointer.position = centerPosition + fromOriginToObject;
+                            areaPointer.position = new Vector3(areaPointer.position.x, transform.position.y, areaPointer.position.z);
+                        }
+                        else
+                        {
+                            areaPointer.position = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+                        }
+                        if (Input.GetMouseButtonDown(0) && cooldownETimer == 0f)//&& dist < areaPointerRange)
+                        {
+                            cooldownETimer = cooldownE;
 
-                            Vector3 centerPosition = transform.localPosition;
-                            float distance = Vector3.Distance(hit.point, centerPosition);
-
-                            if (distance > areaPointerRange) //If the distance is less than the radius, it is already within the circle.
-                            {
-                                Vector3 fromOriginToObject = hit.point - centerPosition;
-                                fromOriginToObject *= areaPointerRange / distance;
-                                areaPointer.position = centerPosition + fromOriginToObject;
-                            }
-                            else
-                            {
-                                areaPointer.position = new Vector3(hit.point.x, areaPointer.position.y, hit.point.z);
-                            }
-                            areaPointer.position = new Vector3(areaPointer.transform.position.x, transform.position.y, areaPointer.transform.position.z);
-                            if (Input.GetMouseButtonDown(0))//&& dist < areaPointerRange)
-                            {
-                                cooldownETimer = cooldownE;
-
-                                areaAttack(areaPointer.position, lineShotAim.transform.rotation);
-                                // resetSprites();
-                                clickDelay = true;
-                            }
+                            areaAttack(areaPointer.position, lineShotAim.transform.rotation);
+                            // resetSprites();
+                            clickDelay = true;
                         }
                         break;
                     default:
