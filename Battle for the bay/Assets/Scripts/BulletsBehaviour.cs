@@ -46,11 +46,11 @@ public class BulletsBehaviour : MonoBehaviour
             Destroy(gameObject, 0.1f);
         }
 
-        if (other.gameObject.tag == "PlayerBase")
-        {
-            other.gameObject.SendMessage("DamageOnHit", DamageOnHit);
-            Destroy(gameObject, 0.1f);
-        }
+        // if (other.gameObject.tag == "PlayerBase")
+        // {
+        //     other.gameObject.SendMessage("DamageOnHit", DamageOnHit);
+        //     Destroy(gameObject, 0.1f);
+        // }
 
         if (other.gameObject.tag == "Terrain")
         {

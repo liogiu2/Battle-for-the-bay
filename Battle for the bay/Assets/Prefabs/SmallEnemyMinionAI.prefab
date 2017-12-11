@@ -501,7 +501,7 @@ MonoBehaviour:
     type: 2}
   BulletSpeed: 5
   Base: {fileID: 0}
-  FireAudioClip: {fileID: 8300000, guid: 8951a99d1a26fea4fbcb3775f8a0b399, type: 3}
+  FireAudioClip: {fileID: 8300000, guid: 15b61cecc9c413944b23744fbd523914, type: 3}
 --- !u!114 &114292342245237744
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -515,7 +515,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   MaxHealth: 100
-  HealthRecovery: 0
+  HealthRecovery: 1
   DeathSound: {fileID: 8300000, guid: 3c495268ef48e6940b71d7cc67f524ad, type: 3}
   Explosion: {fileID: 1496793775603666}
   MoneyOnDie: 20

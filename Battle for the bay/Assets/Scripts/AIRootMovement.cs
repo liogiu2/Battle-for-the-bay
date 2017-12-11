@@ -26,7 +26,7 @@ public class AIRootMovement : MonoBehaviour
 
 
     // CHASE BEHAVIOUR
-    private GameObject target;
+    public GameObject target;
     private GameObject targetBase;
     // IDLE BEHAVIOUR
     public float maxIdleTime;
