@@ -193,10 +193,11 @@ public class PlayerAbilities : MonoBehaviour
                             {
                                 areaPointer.position = new Vector3(hit.point.x, areaPointer.position.y, hit.point.z);
                             }
-
+                            areaPointer.position = new Vector3(areaPointer.transform.position.x, transform.position.y, areaPointer.transform.position.z);
                             if (Input.GetMouseButtonDown(0))//&& dist < areaPointerRange)
                             {
                                 cooldownETimer = cooldownE;
+
                                 areaAttack(areaPointer.position, lineShotAim.transform.rotation);
                                 // resetSprites();
                                 clickDelay = true;

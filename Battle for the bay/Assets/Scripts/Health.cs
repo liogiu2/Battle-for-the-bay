@@ -56,7 +56,8 @@ public class Health : MonoBehaviour
         {
             if (gameObject.tag == "Player")
             {
-                SceneManager.LoadScene(3);
+                // SceneManager.LoadScene(3);
+                health = 100;
             }
             else
             {

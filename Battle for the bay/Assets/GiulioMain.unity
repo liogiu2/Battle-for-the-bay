@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44869006, g: 0.49874353, b: 0.5756795, a: 1}
+  m_IndirectSpecularColor: {r: 0.44869, g: 0.4987437, b: 0.57567954, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -836,7 +836,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 98355639}
-  m_LocalRotation: {x: -0.42961353, y: 0.8792845, z: 0.18452485, w: 0.090782575}
+  m_LocalRotation: {x: -0.4296136, y: 0.8792846, z: 0.18452486, w: 0.09078258}
   m_LocalPosition: {x: -0.0016841291, y: -0.053288933, z: 0.025194881}
   m_LocalScale: {x: 0.06101258, y: 0.051949535, z: 0.085474975}
   m_Children: []
@@ -10788,7 +10788,7 @@ Prefab:
     - target: {fileID: 224409551035061286, guid: 34372897c2d8ac049b5c672f9e565891,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.000045776367
       objectReference: {fileID: 0}
     - target: {fileID: 224114917673582608, guid: 34372897c2d8ac049b5c672f9e565891,
         type: 2}
@@ -10833,7 +10833,7 @@ Prefab:
     - target: {fileID: 224760136536738628, guid: 34372897c2d8ac049b5c672f9e565891,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.000045776367
       objectReference: {fileID: 0}
     - target: {fileID: 224515619408043188, guid: 34372897c2d8ac049b5c672f9e565891,
         type: 2}
@@ -10858,12 +10858,12 @@ Prefab:
     - target: {fileID: 224987566177006164, guid: 34372897c2d8ac049b5c672f9e565891,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 580.5
+      value: 564.5
       objectReference: {fileID: 0}
     - target: {fileID: 224987566177006164, guid: 34372897c2d8ac049b5c672f9e565891,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 454.5
+      value: 496
       objectReference: {fileID: 0}
     - target: {fileID: 224741788237659692, guid: 34372897c2d8ac049b5c672f9e565891,
         type: 2}
@@ -10913,22 +10913,22 @@ Prefab:
     - target: {fileID: 224069271588686986, guid: 34372897c2d8ac049b5c672f9e565891,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.0000076293945
       objectReference: {fileID: 0}
     - target: {fileID: 224300254492518078, guid: 34372897c2d8ac049b5c672f9e565891,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.0000076293945
       objectReference: {fileID: 0}
     - target: {fileID: 224942155940339038, guid: 34372897c2d8ac049b5c672f9e565891,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.0000076293945
       objectReference: {fileID: 0}
     - target: {fileID: 224973244658876564, guid: 34372897c2d8ac049b5c672f9e565891,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.0000076293945
       objectReference: {fileID: 0}
     - target: {fileID: 114252805551518626, guid: 34372897c2d8ac049b5c672f9e565891,
         type: 2}
@@ -25527,6 +25527,10 @@ Prefab:
       propertyPath: HealthRecovery
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1426963257050026, guid: a6fe7226638bb194ba33bb7e308c099e, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a6fe7226638bb194ba33bb7e308c099e, type: 2}
   m_IsPrefabParent: 0
@@ -32297,7 +32301,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: -292438145
+  randomSeed: 436377948
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -37583,7 +37587,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: -1600796807
+  randomSeed: -2120149212
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -44048,6 +44052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ca87bb9cc89c746931c00393a65f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SecondForSpawn: 0
-  EnemyGameobject: {fileID: 0}
+  SecondForSpawn: 25
+  EnemyGameobject: {fileID: 1571076837685520, guid: 7e343911f70696843991a3de785f0319,
+    type: 2}
   spawnCount: 1
