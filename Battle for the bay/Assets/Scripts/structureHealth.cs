@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class structureHealth : MonoBehaviour {
     public float health = 200f;
-    private float initHealth;
+    public float initHealth;
     public GameObject Explosion;
     public Slider structureHealthBar;
 

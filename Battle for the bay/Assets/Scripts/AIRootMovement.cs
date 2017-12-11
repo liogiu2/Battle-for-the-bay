@@ -161,6 +161,7 @@ public class AIRootMovement : MonoBehaviour
     }
     private void GoToOpponentBase()
     {
+        if(agent == null || targetBase == null) return;
         agent.SetDestination(targetBase.transform.position);
         agent.isStopped = false;
     }
