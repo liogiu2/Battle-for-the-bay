@@ -47,7 +47,7 @@ public class MoveInput : MonoBehaviour
 
                 }
 
-                if (hit.collider.tag == "Ship")
+                if (hit.collider.tag == "EnemyMinion")
                 {
                     if (rootScript.TargetEnemy)
                     {

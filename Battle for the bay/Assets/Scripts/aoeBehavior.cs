@@ -10,6 +10,7 @@ public class aoeBehavior : MonoBehaviour
     private float DurationTimer;
     private float DamageCooldown;
     private List<GameObject> targets;
+    private UpdateEnemyList updateEnemy;
 
     // Use this for initialization
     void Start()
@@ -29,7 +30,8 @@ public class aoeBehavior : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Ship") targets.Add(other.gameObject);
+        if (other.tag == "EnemyMinion") targets.Add(other.gameObject);
+
         //other.gameObject.SendMessage("DamageOnHit", DamagePerSecond);
 
         // if (other.gameObject.tag == "Ship" || other.gameObject.tag == "Player")
@@ -41,29 +43,24 @@ public class aoeBehavior : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Ship") targets.Remove(other.gameObject);
+        if (other.tag == "EnemyMinion") targets.Remove(other.gameObject);
     }
 
     IEnumerator burn()
     {
-
         while (true)
         {
-            while (DamageCooldown < DamageFrequency)
-            {
-                DamageCooldown += Time.deltaTime;
-                yield return null;
-            }
-
+            UpdateTargetList();
             foreach (GameObject target in targets)
             {
-                // Debug.Log("damage to: " + target);
-                target.SendMessage("DamageOnHit", DamagePerSecond);
+                target.SendMessage("DamageOnHit", DamagePerSecond / 10);
             }
-            DamageCooldown = 0f;
-            yield return null;
+            yield return new WaitForSeconds(0.1f);
         }
-
     }
 
+    private void UpdateTargetList()
+    {
+        targets.RemoveAll(obj => obj == null);
+    }
 }

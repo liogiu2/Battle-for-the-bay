@@ -15,12 +15,12 @@ public class AIRootScript : MonoBehaviour
     public GameObject TargetEnemy;
     public GameObject bulletPrefab;
     public float BulletSpeed;
-    public GameObject Base;
 
     public AudioClip FireAudioClip;
     bool _startedFire = false;
     private bool _corutineStarted = false;
     protected UpdateEnemyList _updateEnemyList;
+    protected string _currentTag;
     // Use this for initialization
     void Start()
     {
@@ -33,6 +33,9 @@ public class AIRootScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        detected.RemoveAll(item => item == null);
+        enemies.RemoveAll(item => item == null);
+        
         //Let extended class to do something
         OnUpdate();
 
@@ -47,7 +50,7 @@ public class AIRootScript : MonoBehaviour
                 TargetEnemy = null;
                 return;
             case STATE.Combat:
-                if (TargetEnemy || Base)
+                if (TargetEnemy)
                 {
                     if (!_startedFire && !_corutineStarted)
                     {

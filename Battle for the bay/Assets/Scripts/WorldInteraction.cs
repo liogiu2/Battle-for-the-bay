@@ -16,6 +16,7 @@ public class WorldInteraction : MonoBehaviour {
         }
 
         if (Input.GetKeyDown("s")) {
+            Debug.Log("pressing S");
             playerAgent.Stop(true);
             playerAgent.ResetPath();
         }
