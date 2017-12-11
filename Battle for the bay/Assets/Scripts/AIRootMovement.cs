@@ -26,6 +26,7 @@ public class AIRootMovement : MonoBehaviour
 
 
     // CHASE BEHAVIOUR
+    public List<GameObject> targetsInVision;
     public GameObject target;
     private GameObject targetBase;
     // IDLE BEHAVIOUR
@@ -165,8 +166,26 @@ public class AIRootMovement : MonoBehaviour
     }
     private void Chase()
     {
-        agent.SetDestination(target.transform.position);
-        agent.isStopped = false;
+        targetsInVision.RemoveAll(item => item == null);
+        GameObject opponent = (gameObject.tag == "EnemyMinion") ? targetsInVision.Find(item => item.tag == "Player") : targetsInVision.Find(item => item.tag == "Enemy");
+
+        if (opponent != null)
+        {
+            target = opponent;
+        }
+        else if (targetsInVision.Count > 0)
+        {
+            target = targetsInVision[0];
+        }
+        else
+        {
+            ChangeState(AIRootMovement.STATE.GoToOpponentBase);
+        }
+        if (target != null)
+        {
+            agent.SetDestination(target.transform.position);
+            agent.isStopped = false;
+        }
     }
 
 

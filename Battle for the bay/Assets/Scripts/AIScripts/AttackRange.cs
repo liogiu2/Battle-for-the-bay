@@ -19,11 +19,11 @@ public class AttackRange : MonoBehaviour {
 	void OnTriggerEnter(Collider other){
         if (other.gameObject.tag == "Player" && ai.gameObject.tag == "EnemyMinion")
         {
-            ai.ChangeState(AIRootMovement.STATE.Idle);
+            ai.ChangeState(AIRootMovement.STATE.OrbitAround);
         }
         if (other.gameObject.tag == "Enemy" && ai.gameObject.tag == "PlayerMinion")
         {
-            ai.ChangeState(AIRootMovement.STATE.Idle);
+            ai.ChangeState(AIRootMovement.STATE.OrbitAround);
         }
 	}
 
