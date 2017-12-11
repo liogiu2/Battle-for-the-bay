@@ -24,17 +24,26 @@ public class AiEnemyScript : AIRootScript
         }
         else
         {
-            NewTargetEnemy = enemies.Find(ai => ai.gameObject.tag == TagCostants.Player).gameObject;
-            if (NewTargetEnemy == null)
+            var playerInRange = enemies.Find(ai => ai.gameObject.tag == TagCostants.Player);
+            if (playerInRange == null)
             {
+                List<AIRootScript> minionInRange = new List<AIRootScript>();
                 if (gameObject.tag == TagCostants.PlayerMinion)
                 {
-                    NewTargetEnemy = enemies.FindAll(ai => ai.gameObject.tag == TagCostants.EnemyMinion)[0].gameObject;
+                    minionInRange = enemies.FindAll(ai => ai.gameObject.tag == TagCostants.EnemyMinion);
                 }
                 if (gameObject.tag == TagCostants.EnemyMinion)
                 {
-                    NewTargetEnemy = enemies.FindAll(ai => ai.gameObject.tag == TagCostants.PlayerMinion)[0].gameObject;
+                    minionInRange = enemies.FindAll(ai => ai.gameObject.tag == TagCostants.PlayerMinion);
                 }
+                if (minionInRange.Count > 0)
+                {
+                    NewTargetEnemy = minionInRange[0].gameObject;
+                }
+            }
+            else
+            {
+                NewTargetEnemy = playerInRange.gameObject;
             }
         }
 
