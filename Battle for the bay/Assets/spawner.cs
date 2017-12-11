@@ -10,7 +10,8 @@ public class spawner : MonoBehaviour {
 
     private bool _corutineStarted = false;
     private bool _spawning = true;
-    
+    private float range = 10.0f;
+
     // Use this for initialization
     void Start () {
         StartSpawing();
