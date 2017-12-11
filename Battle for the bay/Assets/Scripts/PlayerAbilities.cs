@@ -252,7 +252,7 @@ public class PlayerAbilities : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             bullets.Add((GameObject)Instantiate(rangePrefab, bulletPosition, Target));
-            bullets[i].GetComponent<BulletsBehaviour>().GeneratedTag = gameObject.tag;
+            bullets[i].GetComponent<LineShotProjectile>().GeneratedTag = gameObject.tag;
         }
 
         Vector3 dir = bullets[0].transform.forward;
