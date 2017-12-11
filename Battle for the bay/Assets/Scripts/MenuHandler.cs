@@ -41,7 +41,7 @@ public class MenuHandler : MonoBehaviour {
 
         fullscreenToggle.isOn = isFullscreen;
 
-        playerBase = GameObject.Find("BasePlayer").gameObject;
+        playerBase = GameObject.Find("Base").gameObject;
         health = 0;
     }
 

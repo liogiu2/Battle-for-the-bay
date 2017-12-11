@@ -12,8 +12,12 @@ public class spawner : MonoBehaviour {
     private bool _spawning = true;
     private float range = 10.0f;
 
+    private Vector3 initPos;
+
+
     // Use this for initialization
-    void Start () {
+    void Start() { 
+        initPos = transform.position;
         StartSpawing();
 
         for (int i = 0; i < spawnCount; i++)
@@ -34,9 +38,8 @@ public class spawner : MonoBehaviour {
         {
             if (EnemyGameobject)
             {
-                Debug.Log("spawning!");
                 GameObject enemy = (GameObject)Instantiate(EnemyGameobject);
-                enemy.transform.position = transform.position;
+                enemy.transform.position = initPos;
                 enemy.transform.rotation = Quaternion.identity;
             }
             yield return new WaitForSeconds(SecondForSpawn);
