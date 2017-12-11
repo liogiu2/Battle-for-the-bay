@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4848236017841430}
+  - component: {fileID: 95838317648074954}
   m_Layer: 0
   m_Name: Boat_Medium_blue
   m_TagString: Untagged
@@ -300,7 +301,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1571076837685520}
   m_LocalRotation: {x: -0, y: 0.07271123, z: -0, w: -0.997353}
-  m_LocalPosition: {x: 270.2, y: 9.712095e-17, z: -6.7}
+  m_LocalPosition: {x: 50.91, y: 1.4504108e-16, z: -49.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4848236017841430}
@@ -463,6 +464,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!95 &95838317648074954
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1064347230436916}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b7b3ea2a4c8bdf542bcafe8896d51236, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114081033714620466
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -477,6 +495,8 @@ MonoBehaviour:
   currentState: 2
   wanderRadius: 50
   wanderTimer: 5
+  targetsInVision: []
+  target: {fileID: 0}
   maxIdleTime: 2
   orbitRadius: 2
   orbitRadiusSpeed: 0.1
@@ -500,7 +520,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1206017651612816, guid: bc82d198bd7be3f4fad1f37ca3322fc2,
     type: 2}
   BulletSpeed: 5
-  Base: {fileID: 0}
   FireAudioClip: {fileID: 8300000, guid: 15b61cecc9c413944b23744fbd523914, type: 3}
 --- !u!114 &114292342245237744
 MonoBehaviour:

@@ -340,7 +340,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1104071182886360}
   m_LocalRotation: {x: -0, y: 0.07271123, z: -0, w: -0.997353}
-  m_LocalPosition: {x: 272.35004, y: 3.2806888e-16, z: -6.9996724}
+  m_LocalPosition: {x: -73.711205, y: -2.165814e-15, z: -14.464645}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4444384971160850}
@@ -481,7 +481,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1206017651612816, guid: bc82d198bd7be3f4fad1f37ca3322fc2,
     type: 2}
   BulletSpeed: 5
-  Base: {fileID: 0}
   FireAudioClip: {fileID: 8300000, guid: 8951a99d1a26fea4fbcb3775f8a0b399, type: 3}
 --- !u!114 &114062298959071498
 MonoBehaviour:
@@ -569,6 +568,8 @@ MonoBehaviour:
   currentState: 2
   wanderRadius: 50
   wanderTimer: 5
+  targetsInVision: []
+  target: {fileID: 0}
   maxIdleTime: 2
   orbitRadius: 2
   orbitRadiusSpeed: 0.1
