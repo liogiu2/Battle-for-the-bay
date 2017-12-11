@@ -47,7 +47,7 @@ public class LineShotProjectile : MonoBehaviour
         {
             return;
         }
-        if (other.gameObject.tag == "Ship")
+        if (other.gameObject.tag == "EnemyMinion")
         {
             other.gameObject.SendMessage("DamageOnHit", DamageOnHit);
             Destroy(gameObject, 0.1f);
@@ -55,7 +55,6 @@ public class LineShotProjectile : MonoBehaviour
         if (other.gameObject.tag == "destructable")
         {
             other.gameObject.SendMessage("DamageOnHit", DamageOnHit);
-            Debug.Log("HIT Building");
             Destroy(gameObject, 0.1f);
         }
     }

@@ -29,7 +29,7 @@ public class aoeBehavior : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Ship") targets.Add(other.gameObject);
+        if (other.tag == "EnemyMinion") targets.Add(other.gameObject);
         //other.gameObject.SendMessage("DamageOnHit", DamagePerSecond);
 
         // if (other.gameObject.tag == "Ship" || other.gameObject.tag == "Player")
@@ -41,7 +41,7 @@ public class aoeBehavior : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Ship") targets.Remove(other.gameObject);
+        if (other.tag == "EnemyMinion") targets.Remove(other.gameObject);
     }
 
     IEnumerator burn()

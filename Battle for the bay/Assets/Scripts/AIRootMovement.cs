@@ -11,8 +11,10 @@ public class AIRootMovement : MonoBehaviour
         Idle,
         OrbitAround,
         Wander,
+        GoToOpponentBase,
         Chase,
     }
+
     public STATE currentState;
 
     // WANDERING BEHAVIOUR
@@ -25,7 +27,7 @@ public class AIRootMovement : MonoBehaviour
 
     // CHASE BEHAVIOUR
     private GameObject target;
-
+    private GameObject targetBase;
     // IDLE BEHAVIOUR
     public float maxIdleTime;
     private float idleTime;
@@ -38,6 +40,7 @@ public class AIRootMovement : MonoBehaviour
     public float orbitRadius;
     public float orbitRadiusSpeed;
     public float rotationSpeed;
+    private int orbitDirection;
     public float maxOrbitTime;
     private float orbitTime;
     private float orbitTimer;
@@ -45,6 +48,7 @@ public class AIRootMovement : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        orbitDirection = 1; // clockwise
         orbitRadius = 2.0f;
         orbitTimer = 0f;
         // wanderTimer = 10f;
@@ -52,9 +56,18 @@ public class AIRootMovement : MonoBehaviour
         agent = gameObject.GetComponent<NavMeshAgent>();
         timer = wanderTimer;
 
-        target = GameObject.FindGameObjectWithTag("Player").gameObject;
-
-        ChangeState(STATE.Wander);
+        if (gameObject.tag == "EnemyMinion")
+        {
+            target = GameObject.FindGameObjectWithTag("Player").gameObject;
+            targetBase = GameObject.FindGameObjectWithTag("PlayerBase").gameObject;
+            Debug.Log("targetBase: " + targetBase);
+        }
+        else if (gameObject.tag == "PlayerMinion")
+        {
+            target = GameObject.FindGameObjectWithTag("Enemy").gameObject;
+            targetBase = GameObject.FindGameObjectWithTag("EnemyBase").gameObject;
+        }
+        ChangeState(STATE.GoToOpponentBase);
     }
 
     // Update is called once per frame
@@ -74,6 +87,9 @@ public class AIRootMovement : MonoBehaviour
                 return;
             case STATE.Wander:
                 Wander();
+                return;
+            case STATE.GoToOpponentBase:
+                GoToOpponentBase();
                 return;
             case STATE.Chase:
                 Chase();
@@ -95,7 +111,7 @@ public class AIRootMovement : MonoBehaviour
 
         if (idleTimer >= idleTime)
         {
-            orbitTime = Random.Range( 0f, maxOrbitTime );
+            orbitTime = Random.Range(0f, maxOrbitTime);
             idleTimer = 0f;
             ChangeState(STATE.OrbitAround);
         }
@@ -106,7 +122,7 @@ public class AIRootMovement : MonoBehaviour
     {
         agent.isStopped = true;
 
-        transform.RotateAround(target.transform.position, axis, rotationSpeed * Time.deltaTime);
+        transform.RotateAround(target.transform.position, axis, orbitDirection * rotationSpeed * Time.deltaTime);
         //desiredRotation = new GameObject().transform;
         //desiredRotation.LookAt(target.transform.position);
         Quaternion neededRotation = Quaternion.LookRotation(target.transform.position - transform.position);
@@ -114,10 +130,16 @@ public class AIRootMovement : MonoBehaviour
         //desiredPosition = (transform.position - target.transform.position).normalized * orbitRadius + target.transform.position;
         //transform.position = Vector3.MoveTowards(transform.position, desiredPosition, Time.deltaTime * orbitRadiusSpeed);
 
-        if(orbitTimer >= orbitTime)
+        if (orbitTimer >= orbitTime)
         {
-            idleTime = Random.Range( 0f, maxIdleTime );
+            idleTime = Random.Range(0f, maxIdleTime);
             orbitTimer = 0f;
+            Random random = new Random();
+            do
+            {
+                orbitDirection = Random.Range(-1, 2);
+            } while (orbitDirection == 0);
+            Debug.Log("direction: " + orbitDirection);
             ChangeState(STATE.Idle);
         }
         orbitTimer += Time.deltaTime;
@@ -135,7 +157,11 @@ public class AIRootMovement : MonoBehaviour
             agent.isStopped = false;
             timer = 0;
         }
-
+    }
+    private void GoToOpponentBase()
+    {
+        agent.SetDestination(targetBase.transform.position);
+        agent.isStopped = false;
     }
     private void Chase()
     {

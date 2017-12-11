@@ -28,11 +28,17 @@ public class BulletsBehaviour : MonoBehaviour
         {
             return;
         }
-        if (other.gameObject.tag == "Ship")
+        if (other.gameObject.tag == "EnemyMinion")
         {
             other.gameObject.SendMessage("DamageOnHit", DamageOnHit);
             Destroy(gameObject);
         }
+        if (other.gameObject.tag == "PlayerMinion")
+        {
+            other.gameObject.SendMessage("DamageOnHit", DamageOnHit);
+            Destroy(gameObject);
+        }
+
 
         if (other.gameObject.tag == "Player")
         {
