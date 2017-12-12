@@ -153,7 +153,7 @@ public class PlayerAbilities : MonoBehaviour
                             {
                                 cooldownQTimer = cooldownQ;
                                 fireTowards(lineShotAim.transform.rotation);
-                                // resetSprites();
+                                resetSprites();
                                 clickDelay = true;
                             }
                         }
@@ -169,7 +169,7 @@ public class PlayerAbilities : MonoBehaviour
                             {
                                 cooldownWTimer = cooldownW;
                                 MultiFire(lineShotAim.transform.rotation);
-                                // resetSprites();
+                                resetSprites();
                                 clickDelay = true;
                             }
                         }
@@ -197,7 +197,7 @@ public class PlayerAbilities : MonoBehaviour
                             cooldownETimer = cooldownE;
 
                             areaAttack(areaPointer.position, lineShotAim.transform.rotation);
-                            // resetSprites();
+                            resetSprites();
                             clickDelay = true;
                         }
                         break;

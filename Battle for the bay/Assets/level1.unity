@@ -1641,13 +1641,13 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 129522942}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bed0ad6f4caf6d84693f167b97ea6553, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerBase: {fileID: 0}
-  enemyBase: {fileID: 0}
+  playerBase: {fileID: 1217928866}
+  enemyBase: {fileID: 285620977}
 --- !u!114 &129522944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3288,6 +3288,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a00dd31d891ff50469014fc131852b9e, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &285620977 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1168041422400232, guid: 080ec904684cfef4b99bd18cd4beb1ef,
+    type: 2}
+  m_PrefabInternal: {fileID: 1424564512}
 --- !u!1 &295330950
 GameObject:
   m_ObjectHideFlags: 0
@@ -40417,6 +40422,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1204235752}
   m_Mesh: {fileID: 4300002, guid: ae9d2cce92da4ea4eb57d2b4488f9617, type: 3}
+--- !u!1 &1217928866 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1069812669539850, guid: 4e689d7bdd765a840a756877d0728016,
+    type: 2}
+  m_PrefabInternal: {fileID: 542741724}
 --- !u!1 &1236866753
 GameObject:
   m_ObjectHideFlags: 0

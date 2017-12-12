@@ -65,7 +65,7 @@ public class AIRootMovement : MonoBehaviour
         }
         else if (gameObject.tag == "PlayerMinion")
         {
-            target = GameObject.FindGameObjectWithTag("EnemyBase").gameObject;
+    
             targetBase = GameObject.FindGameObjectWithTag("EnemyBase").gameObject;
         }
         ChangeState(STATE.GoToOpponentBase);
