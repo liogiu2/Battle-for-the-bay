@@ -46,12 +46,15 @@ public class AiEnemyScript : AIRootScript
                 NewTargetEnemy = playerInRange.gameObject;
             }
         }
-
         if (NewTargetEnemy != TargetEnemy)
         {
             StopCorutineFire();
+        }
+        if (NewTargetEnemy != null)
+        {
             TargetEnemy = NewTargetEnemy;
         }
+
     }
 
     protected override void ChooseWhoShot()
