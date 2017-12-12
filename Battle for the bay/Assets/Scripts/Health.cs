@@ -102,4 +102,8 @@ public class Health : MonoBehaviour
         if (_bar == null) return;
         _bar.fillAmount = health / MaxHealth;
     }
+
+    public void upgradeHealthBar(){
+        _bar = HealthBar.transform.Find("bar upgraded").Find("Image").GetComponent<Image>();
+    }
 }

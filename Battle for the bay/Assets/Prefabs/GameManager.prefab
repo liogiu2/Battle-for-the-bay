@@ -20,11 +20,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4440532388609880}
   - component: {fileID: 114132875244693244}
-  - component: {fileID: 114357401208363830}
   - component: {fileID: 114126116542111462}
   - component: {fileID: 114393909342687798}
   - component: {fileID: 114170030649683072}
   - component: {fileID: 82712398773422750}
+  - component: {fileID: 114574018970639398}
+  - component: {fileID: 114256211715776752}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -131,7 +132,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1665556573040420}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0506998f51fa4425bb5c41b4d7fb5fa1, type: 3}
   m_Name: 
@@ -169,13 +170,14 @@ MonoBehaviour:
   fort1: {fileID: 0}
   fort2: {fileID: 0}
   fort3: {fileID: 0}
-  ship1: {fileID: 0}
+  ship1: {fileID: 1911794234753684, guid: 3f2a50c500b700144808cedbb521d1eb, type: 2}
+  healthBar: {fileID: 0}
+  ship1Prefab: {fileID: 0}
   ship2Prefab: {fileID: 0}
-  ship3Prefab: {fileID: 0}
   towerLevel: 1
   fortLevel: 1
   shipLevel: 1
---- !u!114 &114357401208363830
+--- !u!114 &114256211715776752
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -183,17 +185,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1665556573040420}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba36ff7405d57492499beeaa0d15852d, type: 3}
+  m_Script: {fileID: 11500000, guid: 76ce2caeeebadfd428224bc5d8088540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  SecondForSpawn: 1
-  EnemyGameobject: {fileID: 1571076837685520, guid: 7e343911f70696843991a3de785f0319,
-    type: 2}
+  statusPlayer: {fileID: 0}
+  volumeSliders: []
+  resolutionToggles: []
+  fullscreenToggle: {fileID: 0}
+  screenWidths: 
 --- !u!114 &114393909342687798
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -207,3 +206,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minimap: {fileID: 0}
   map: {fileID: 0}
+--- !u!114 &114574018970639398
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1665556573040420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bed0ad6f4caf6d84693f167b97ea6553, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerBase: {fileID: 0}
+  enemyBase: {fileID: 0}
