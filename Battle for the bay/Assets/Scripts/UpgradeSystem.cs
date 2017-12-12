@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UpgradeSystem : MonoBehaviour {
 
+    public GameObject upgradeEffectPrefab;
     public GameObject tower1;
     public GameObject tower2;
     public GameObject tower3;
@@ -34,23 +35,11 @@ public class UpgradeSystem : MonoBehaviour {
     public void UpgradeTower()
     {
         Debug.Log("UPGRADE TOWER");
-
-        if(towerLevel == 0)
-        {
-            towerLevel = 1;
-            tower1.SetActive(true);
-        }
-        else if (towerLevel == 1)
-        {
-            towerLevel = 2;
-            tower1.SetActive(false);
-            tower2.SetActive(true);
-        }
-        else if (towerLevel == 2)
-        {
-            towerLevel = 3;
-            tower3.SetActive(true);
-        }
+        Vector3 position = new Vector3(tower1.transform.position.x, tower1.transform.position.y + 1f, tower1.transform.position.z);        
+        GameObject upgradeEffect = Instantiate(upgradeEffectPrefab, position, Quaternion.identity);
+        Tower();
+        Destroy(upgradeEffect, 3f);
+        Invoke("Tower", 3f);
     }
 
     public void UpgradeFort()
@@ -111,6 +100,29 @@ public class UpgradeSystem : MonoBehaviour {
             position,
             rotation);
             shipLevel = 3;   
+        }
+    }
+
+    public void Tower()
+    {
+        if (towerLevel == 1)
+        {
+            towerLevel = 2;
+            tower1.SetActive(false);
+        }
+        else if (towerLevel == 2)
+        {
+            towerLevel = 3;
+            tower2.SetActive(true);
+        }
+        else if (towerLevel == 3)
+        {
+            towerLevel = 4;
+        }
+        else if (towerLevel == 4)
+        {
+            towerLevel = 5;
+            tower3.SetActive(true);
         }
     }
 }
