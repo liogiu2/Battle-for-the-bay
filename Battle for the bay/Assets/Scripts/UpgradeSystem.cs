@@ -8,14 +8,13 @@ public class UpgradeSystem : MonoBehaviour
 
     public GameObject upgradeEffectPrefab;
     public int[] towerUpgradeCost;
+    public int[] fortUpgradeCost;
     private GameObject[] friendlyTowers;
 
     public GameObject fort1;
     public GameObject fort2;
     public GameObject fort3;
-    public GameObject ship1;
-    GameObject ship2;
-    GameObject ship3;
+
     private Health playerHealth;
     public GameObject healthBar;
     public GameObject healthBarUpgraded;
@@ -25,7 +24,9 @@ public class UpgradeSystem : MonoBehaviour
     public int towersLevel;
     public int towersMaxLevel;
     public int fortLevel;
+    public int fortMaxLevel;
     public int shipLevel;
+    public int shipMaxLevel;
 
     private GameObject player;
     private GameObject ship;
@@ -102,10 +103,10 @@ public class UpgradeSystem : MonoBehaviour
         }
     }
 
-    public void UpgradeChest()
+    public void UpgradeFort()
     {
 
-        if (ResourcesOnIsland.MoneyOnIsland >= towerUpgradeCost[towersLevel] && towersLevel <= towersMaxLevel)
+        if (ResourcesOnIsland.MoneyOnIsland >= fortUpgradeCost[fortLevel] && fortLevel <= fortMaxLevel)
         {
             ResourcesOnIsland.MoneyOnIsland -= towerUpgradeCost[towersLevel];
             foreach (GameObject tower in friendlyTowers)
