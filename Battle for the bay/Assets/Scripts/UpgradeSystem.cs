@@ -81,6 +81,7 @@ public class UpgradeSystem : MonoBehaviour
 
     }
 
+
     public void UpgradeTower()
     {
 
@@ -91,7 +92,30 @@ public class UpgradeSystem : MonoBehaviour
             {
                 Debug.LogWarning(tower.transform.parent);
                 GameObject towerCurrentLvl = tower.transform.parent.transform.Find("lvl" + (towersLevel)).gameObject;
-                if(towerCurrentLvl) towerCurrentLvl.SetActive(false);
+                if (towerCurrentLvl) towerCurrentLvl.SetActive(false);
+                else Debug.Log("Could not find current lvl");
+                TowerUI[towersLevel - 1].SetActive(false);
+                TowerUI[towersLevel].SetActive(true);
+                Vector3 position = new Vector3(tower.transform.position.x, tower.transform.position.y + 1f, tower.transform.position.z);
+                GameObject upgradeEffect = Instantiate(upgradeEffectPrefab, position, Quaternion.identity);
+                Destroy(upgradeEffect, 3f);
+                StartCoroutine(ExecuteAfterTime(tower, 3));
+            }
+            towersLevel += 1;
+        }
+    }
+
+    public void UpgradeChest()
+    {
+
+        if (ResourcesOnIsland.MoneyOnIsland >= towerUpgradeCost[towersLevel] && towersLevel <= towersMaxLevel)
+        {
+            ResourcesOnIsland.MoneyOnIsland -= towerUpgradeCost[towersLevel];
+            foreach (GameObject tower in friendlyTowers)
+            {
+                Debug.LogWarning(tower.transform.parent);
+                GameObject towerCurrentLvl = tower.transform.parent.transform.Find("lvl" + (towersLevel)).gameObject;
+                if (towerCurrentLvl) towerCurrentLvl.SetActive(false);
                 else Debug.Log("Could not find current lvl");
                 TowerUI[towersLevel - 1].SetActive(false);
                 TowerUI[towersLevel].SetActive(true);
@@ -107,7 +131,7 @@ public class UpgradeSystem : MonoBehaviour
     IEnumerator ExecuteAfterTime(GameObject tower, float time)
     {
         yield return new WaitForSeconds(time);
-    
+
         // Code to execute after the delay
         tower.transform.parent.transform.Find("lvl" + (towersLevel)).gameObject.SetActive(true);
     }
