@@ -258,6 +258,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4015358934346392}
+  - component: {fileID: 65668548389425886}
   m_Layer: 0
   m_Name: Faction
   m_TagString: PlayerBase
@@ -2160,8 +2161,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1069812669539850}
-  m_LocalRotation: {x: -0.0019373072, y: 0.9200557, z: 0.0039474303, w: 0.39176297}
-  m_LocalPosition: {x: -77.14, y: 0.1, z: -11.25}
+  m_LocalRotation: {x: -0.0010555936, y: 0.98223245, z: 0.004268619, w: 0.18761708}
+  m_LocalPosition: {x: -75.33559, y: 0.14, z: -10.491131}
   m_LocalScale: {x: 0.19685037, y: 0.19685039, z: 0.19685037}
   m_Children:
   - {fileID: 4933113415626060}
@@ -2194,7 +2195,7 @@ Transform:
   - {fileID: 4228773887654902}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -0.503, y: 133.871, z: -0.027}
+  m_LocalEulerAnglesHint: {x: -0.503, y: 158.37201, z: -0.027}
 --- !u!4 &4828339232290726
 Transform:
   m_ObjectHideFlags: 1
@@ -4164,6 +4165,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.2791632, y: 3.1378431, z: 0.86216694}
   m_Center: {x: 0.027140561, y: 0.9899902, z: 0.019618742}
+--- !u!65 &65668548389425886
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1114972410245334}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 19.569025, y: 13.5631695, z: 24.657776}
+  m_Center: {x: 0.5264272, y: 6.2815824, z: -1.5779731}
 --- !u!65 &65727509482518960
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -4760,6 +4773,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1206017651612816, guid: bc82d198bd7be3f4fad1f37ca3322fc2,
     type: 2}
   friendly: 1
+  MultiAttack: 0
 --- !u!114 &114496507855837626
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4808,6 +4822,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1206017651612816, guid: bc82d198bd7be3f4fad1f37ca3322fc2,
     type: 2}
   friendly: 1
+  MultiAttack: 0
 --- !u!114 &114597402524619578
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5043,7 +5058,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 2030834649
+  randomSeed: 841162071
   InitialModule:
     serializedVersion: 3
     enabled: 1

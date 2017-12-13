@@ -45,15 +45,15 @@ public class AiEnemyScript : AIRootScript
                     List<GameObject> towerOrBaseInRange = new List<GameObject>();
                     if (gameObject.tag == TagCostants.PlayerMinion)
                     {
-                        minionInRange = enemies.FindAll(ai => ai.gameObject.tag == TagCostants.EnemyTower || ai.gameObject.tag == TagCostants.EnemyBase);
+                        towerOrBaseInRange = enemies.FindAll(ai => ai.gameObject.tag == TagCostants.EnemyTower || ai.gameObject.tag == TagCostants.EnemyBase);
                     }
                     if (gameObject.tag == TagCostants.EnemyMinion)
                     {
-                        minionInRange = enemies.FindAll(ai => ai.gameObject.tag == TagCostants.PlayerTower || ai.gameObject.tag == TagCostants.PlayerBase);
+                        towerOrBaseInRange = enemies.FindAll(ai => ai.gameObject.tag == TagCostants.PlayerTower || ai.gameObject.tag == TagCostants.PlayerBase);
                     }
-                    if (minionInRange.Count > 0)
+                    if (towerOrBaseInRange.Count > 0)
                     {
-                        NewTargetEnemy = minionInRange[0].gameObject.transform.parent.gameObject;
+                        NewTargetEnemy = towerOrBaseInRange[0].gameObject.transform.parent.gameObject;
                         Debug.Log("Try shoot base: "+NewTargetEnemy.name);                                                
                     }
                 }

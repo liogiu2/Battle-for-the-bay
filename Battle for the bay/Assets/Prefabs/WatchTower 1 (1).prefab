@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 135537348149373164}
   m_Layer: 2
   m_Name: AttackRange
-  m_TagString: PlayerTower
+  m_TagString: EnemyTower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -289,8 +289,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1756930943202568}
   m_LocalRotation: {x: -0, y: -0.97989255, z: -0, w: 0.19952637}
-  m_LocalPosition: {x: 6.98, y: -0.76, z: 10.19}
-  m_LocalScale: {x: 4.5720034, y: 4.572, z: 5.334004}
+  m_LocalPosition: {x: 12.348509, y: 9.52275, z: -63.74013}
+  m_LocalScale: {x: 6.202184, y: 14.783508, z: 7.2358828}
   m_Children:
   - {fileID: 4613399252292126}
   - {fileID: 4235897061257466}
@@ -740,8 +740,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.2791632, y: 3.1378431, z: 0.86216694}
-  m_Center: {x: 0.027140561, y: 0.9899902, z: 0.019618742}
+  m_Size: {x: 1.5913556, y: 3.137843, z: 1.190365}
+  m_Center: {x: 0.0012609642, y: 0.9899901, z: 0.062045157}
 --- !u!95 &95112320284837584
 Animator:
   serializedVersion: 3
@@ -902,6 +902,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 50
+  initHealth: 200
   Explosion: {fileID: 0}
   structureHealthBar: {fileID: 0}
 --- !u!114 &114628979967541082
@@ -945,7 +946,8 @@ MonoBehaviour:
   attackList: []
   bulletPrefab: {fileID: 1206017651612816, guid: bc82d198bd7be3f4fad1f37ca3322fc2,
     type: 2}
-  friendly: 1
+  friendly: 0
+  MultiAttack: 0
 --- !u!114 &114829020539077160
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -957,7 +959,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0923d83dc3458e240b3a7310ceecafb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 600
+  initHealth: 600
   Explosion: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b, type: 2}
   structureHealthBar: {fileID: 114581883305316360}
 --- !u!114 &114854762386669130

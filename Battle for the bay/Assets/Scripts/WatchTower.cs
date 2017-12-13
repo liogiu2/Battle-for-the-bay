@@ -8,6 +8,7 @@ public class WatchTower : MonoBehaviour
     public List<GameObject> attackList;
     public GameObject bulletPrefab;
     public bool friendly = false;
+    public bool MultiAttack = false;
 
     // Use this for initialization
     void Start()
@@ -19,29 +20,6 @@ public class WatchTower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // foreach (GameObject Target in attackList)
-        // {
-
-        //     Vector3 bulletPosition = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
-
-        //     //CREATE THE BULLET
-        //     var bullet = (GameObject)Instantiate(
-        //         bulletPrefab,
-        //         bulletPosition,
-        //         //Quaternion.Euler(-10, transform.rotation.y - 90, 0));
-        //         Quaternion.identity);
-        //     Destroy(bullet, 3.0f);
-
-        //     bullet.GetComponent<BulletsBehaviour>().GeneratedTag = gameObject.tag;
-        //     //COLOR THE BULLET
-        //     bullet.GetComponent<MeshRenderer>().material.color = Color.black;
-
-        //     //GIVE INITIAL VELOCITY TO THE BULLET
-        //     //bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 12;
-        //     bullet.GetComponent<Rigidbody>().velocity = (Target.transform.position - bulletPosition).normalized * 12;
-
-        //     new return WaitForSeconds(1.0f);
-        // }
     }
 
     public void OnTriggerEnter(Collider other)
@@ -66,31 +44,41 @@ public class WatchTower : MonoBehaviour
         while (true)
         {
             attackList.RemoveAll(item => item == null);
-            foreach (GameObject Target in attackList)
+            if (MultiAttack)
             {
-                // if (Target != null)
-                // {
-                Vector3 bulletPosition = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
-
-                //CREATE THE BULLET
-                var bullet = (GameObject)Instantiate(
-                    bulletPrefab,
-                    bulletPosition,
-                    //Quaternion.Euler(-10, transform.rotation.y - 90, 0));
-                    Quaternion.identity);
-                Destroy(bullet, 3.0f);
-
-                bullet.GetComponent<BulletsBehaviour>().GeneratedTag = gameObject.tag;
-                //COLOR THE BULLET
-                bullet.GetComponent<MeshRenderer>().material.color = Color.black;
-
-                //GIVE INITIAL VELOCITY TO THE BULLET
-                //bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 12;
-                bullet.GetComponent<Rigidbody>().velocity = (Target.transform.position - bulletPosition).normalized * 12;
-                // }
+                foreach (GameObject Target in attackList)
+                {
+                    FireFunction(Target);
+                }
+            }
+            else
+            {
+                if (attackList.Count > 0)
+                {
+                    FireFunction(attackList[0]);
+                }
             }
             yield return new WaitForSeconds(1.0f);
         }
+    }
+
+    private void FireFunction(GameObject Target)
+    {
+        Vector3 bulletPosition = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+
+        //CREATE THE BULLET
+        var bullet = (GameObject)Instantiate(
+            bulletPrefab,
+            bulletPosition,
+            Quaternion.identity);
+        Destroy(bullet, 3.0f);
+
+        bullet.GetComponent<BulletsBehaviour>().GeneratedTag = gameObject.tag;
+        //COLOR THE BULLET
+        bullet.GetComponent<MeshRenderer>().material.color = Color.black;
+
+        //GIVE INITIAL VELOCITY TO THE BULLET
+        bullet.GetComponent<Rigidbody>().velocity = (Target.transform.position - bulletPosition).normalized * 12;
     }
 
 }

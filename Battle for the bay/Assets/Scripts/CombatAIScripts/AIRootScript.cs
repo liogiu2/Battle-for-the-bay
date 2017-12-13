@@ -84,7 +84,7 @@ public class AIRootScript : MonoBehaviour
                 bulletPosition,
                 //Quaternion.Euler(-10, transform.rotation.y - 90, 0));
                 Quaternion.identity);
-            Destroy(bullet, 3.0f);
+            Destroy(bullet, 4.0f);
 
             // Spawn the sound object
             GameObject bulletSound = new GameObject("bulletSound");
