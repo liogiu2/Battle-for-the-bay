@@ -47,7 +47,7 @@ public class MoveInput : MonoBehaviour
 
                 }
 
-                if (hit.collider.tag == "Ship")
+                if (hit.collider.tag == "EnemyMinion")
                 {
                     if (rootScript.TargetEnemy)
                     {
@@ -59,7 +59,7 @@ public class MoveInput : MonoBehaviour
                     rootScript.TargetEnemy = Ship;
                 }
 
-                if (hit.collider.tag == "PlayerBase")
+                if (hit.collider.tag == "Fort")
                 {
                     upgradeCanvas.SetActive(true);
                 }

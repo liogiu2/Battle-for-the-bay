@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class PlayerAbilities : MonoBehaviour
 {
-    public AudioClip QAudioClip;
     public int aimMode = 0;
     public float areaPointerRange = 5f;
     Transform rangePointer;
@@ -38,6 +37,11 @@ public class PlayerAbilities : MonoBehaviour
     public float cooldownWTimer;
     public float cooldownETimer;
 
+    public AudioClip QAudioClip;
+    public AudioClip WAudioClip;
+    public AudioClip EAudioClip;
+    public AudioClip EAudioClip2;
+
     void Start()
     {
         cooldownQTimer = 0f;
@@ -67,23 +71,59 @@ public class PlayerAbilities : MonoBehaviour
     void Update()
     {
         // Toggling aim mode
-        if (Input.GetKeyDown("q") && cooldownQTimer == 0f)
+        if (Input.GetKeyDown("q"))
         {
-            aimMode = (aimMode == 0) ? 1 : 0;
-            lineShotAim.SetActive(true);
-            moveInput.enabled = !moveInput.enabled;
+            if (aimMode > 0)
+            {
+                resetSprites();
+            }
+            if (aimMode != 1)
+            {
+                aimMode = 1;
+                // aimMode = (aimMode == 0) ? 1 : 0;
+                lineShotAim.SetActive(true);
+                // moveInput.enabled = !moveInput.enabled;
+            }
+            else
+            {
+                aimMode = 0;
+            }
         }
-        else if (Input.GetKeyDown("w") && cooldownWTimer == 0f)
+        else if (Input.GetKeyDown("w"))
         {
-            aimMode = (aimMode == 0) ? 2 : 0;
-            lineShotAim.SetActive(true);
-            moveInput.enabled = !moveInput.enabled;
+            if (aimMode > 0)
+            {
+                resetSprites();
+            }
+            if (aimMode != 2)
+            {
+                aimMode = 2;
+                // aimMode = (aimMode == 0) ? 2 : 0;
+                lineShotAim.SetActive(true);
+                // moveInput.enabled = !moveInput.enable;
+            }
+            else
+            {
+                aimMode = 0;
+            }
         }
-        else if (Input.GetKeyDown("e") && cooldownETimer == 0f)
+        else if (Input.GetKeyDown("e"))
         {
-            lineShotAim.SetActive(true);
-            aimMode = (aimMode == 0) ? 3 : 0;
-            moveInput.enabled = !moveInput.enabled;
+            if (aimMode > 0)
+            {
+                resetSprites();
+            }
+            if (aimMode != 3)
+            {
+                aimMode = 3;
+                lineShotAim.SetActive(true);
+                // aimMode = (aimMode == 0) ? 3 : 0;
+                // moveInput.enabled = !moveInput.enabled;
+            }
+            else
+            {
+                aimMode = 0;
+            }
         }
 
         if (clickDelay && Input.GetMouseButtonUp(0))
@@ -104,32 +144,37 @@ public class PlayerAbilities : MonoBehaviour
                 switch (aimMode)
                 {
                     case 1:
-                        lineSprite.enabled = true;
-                        lineShotAim.transform.LookAt(position);
-
-                        if (Input.GetMouseButtonDown(0))
+                        if (cooldownQTimer == 0f)
                         {
-                            cooldownQTimer = cooldownQ;
-                            fireTowards(lineShotAim.transform.rotation);
-                            resetSprites();
-                            clickDelay = true;
+                            lineSprite.enabled = true;
+                            lineShotAim.transform.LookAt(position);
+
+                            if (Input.GetMouseButtonDown(0))
+                            {
+                                cooldownQTimer = cooldownQ;
+                                fireTowards(lineShotAim.transform.rotation);
+                                resetSprites();
+                                clickDelay = true;
+                            }
                         }
                         break;
                     case 2:
                         // Range 
-                        cooldownWTimer = cooldownW;
-                        rangeSprite.enabled = true;
-                        lineShotAim.transform.LookAt(position);
-
-                        if (Input.GetMouseButtonDown(0))
+                        if (cooldownWTimer == 0f)
                         {
-                            MultiFire(lineShotAim.transform.rotation);
-                            resetSprites();
-                            clickDelay = true;
+                            rangeSprite.enabled = true;
+                            lineShotAim.transform.LookAt(position);
+
+                            if (Input.GetMouseButtonDown(0))
+                            {
+                                cooldownWTimer = cooldownW;
+                                MultiFire(lineShotAim.transform.rotation);
+                                resetSprites();
+                                clickDelay = true;
+                            }
                         }
                         break;
                     case 3:
-                        cooldownETimer = cooldownE;
                         // Splash Area mode
                         areaSprite.enabled = true;
 
@@ -140,15 +185,17 @@ public class PlayerAbilities : MonoBehaviour
                         {
                             Vector3 fromOriginToObject = hit.point - centerPosition;
                             fromOriginToObject *= areaPointerRange / distance;
-                            areaPointer.position = centerPosition + fromOriginToObject; 
+                            areaPointer.position = centerPosition + fromOriginToObject;
+                            areaPointer.position = new Vector3(areaPointer.position.x, transform.position.y, areaPointer.position.z);
                         }
                         else
                         {
-                            areaPointer.position = new Vector3(hit.point.x, areaPointer.position.y, hit.point.z);
+                            areaPointer.position = new Vector3(hit.point.x, transform.position.y, hit.point.z);
                         }
-
-                        if (Input.GetMouseButtonDown(0))//&& dist < areaPointerRange)
+                        if (Input.GetMouseButtonDown(0) && cooldownETimer == 0f)//&& dist < areaPointerRange)
                         {
+                            cooldownETimer = cooldownE;
+
                             areaAttack(areaPointer.position, lineShotAim.transform.rotation);
                             resetSprites();
                             clickDelay = true;
@@ -185,6 +232,7 @@ public class PlayerAbilities : MonoBehaviour
         }
         else
             cooldownWIndicator.SetActive(false);
+
         if (cooldownETimer > 0)
         {
             cooldownEIndicator.SetActive(true);
@@ -204,7 +252,7 @@ public class PlayerAbilities : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             bullets.Add((GameObject)Instantiate(rangePrefab, bulletPosition, Target));
-            bullets[i].GetComponent<BulletsBehaviour>().GeneratedTag = gameObject.tag;
+            bullets[i].GetComponent<LineShotProjectile>().GeneratedTag = gameObject.tag;
         }
 
         Vector3 dir = bullets[0].transform.forward;
@@ -214,6 +262,9 @@ public class PlayerAbilities : MonoBehaviour
             bullets[iterator].GetComponent<Rigidbody>().AddForce(Quaternion.Euler(0, j, 0) * dir * 12, ForceMode.Impulse);
             iterator++;
         }
+
+        // Spawn the sound object
+        playSound(WAudioClip);
     }
 
     private void fireTowards(Quaternion Target)
@@ -232,23 +283,37 @@ public class PlayerAbilities : MonoBehaviour
 
         //GIVE INITIAL VELOCITY TO THE BULLET
         bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * 12, ForceMode.Impulse);
-        
-        AudioSource audioSource = gameObject.AddComponent<AudioSource>();
-        Destroy(audioSource, QAudioClip.length);
-        audioSource.PlayOneShot(QAudioClip);
+
+        // Spawn the sound object
+        playSound(QAudioClip);
     }
 
     private void areaAttack(Vector3 target, Quaternion rotation)
     {
         var bullet = (GameObject)Instantiate(areaPrefab, target, rotation);
+        playSound(EAudioClip);
+
+        GameObject explosionSound = new GameObject("bulletSound");
+        AudioSource audioSource = explosionSound.AddComponent<AudioSource>();
+        Destroy(explosionSound, areaPrefab.GetComponent<aoeBehavior>().Duration);
+        audioSource.PlayOneShot(EAudioClip2);
     }
 
     private void resetSprites()
     {
-        aimMode = 0;
+        // aimMode = 0;
         areaSprite.enabled = false;
         rangeSprite.enabled = false;
         lineSprite.enabled = false;
         lineShotAim.SetActive(false);
+    }
+
+    private void playSound(AudioClip audioClip)
+    {
+        // Spawn the sound object
+        GameObject explosionSound = new GameObject("bulletSound");
+        AudioSource audioSource = explosionSound.AddComponent<AudioSource>();
+        Destroy(explosionSound, audioClip.length);
+        audioSource.PlayOneShot(audioClip);
     }
 }

@@ -17,14 +17,24 @@ public class AttackRange : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
-		if(other.gameObject.tag == "Player"){
-			ai.ChangeState(AIRootMovement.STATE.Idle);
-		}
+        if (other.gameObject.tag == "Player" && ai.gameObject.tag == "EnemyMinion")
+        {
+            ai.ChangeState(AIRootMovement.STATE.OrbitAround);
+        }
+        if (other.gameObject.tag == "Enemy" && ai.gameObject.tag == "PlayerMinion")
+        {
+            ai.ChangeState(AIRootMovement.STATE.OrbitAround);
+        }
 	}
 
 	void OnTriggerExit(Collider other){
-		if(other.gameObject.tag == "Player"){
-			ai.ChangeState(AIRootMovement.STATE.Chase);
-		}
+        if (other.gameObject.tag == "Player" && ai.gameObject.tag == "EnemyMinion")
+        {
+            ai.ChangeState(AIRootMovement.STATE.Chase);
+        }
+        if (other.gameObject.tag == "Enemy" && ai.gameObject.tag == "PlayerMinion")
+        {
+            ai.ChangeState(AIRootMovement.STATE.Chase);
+        }
 	}
 }

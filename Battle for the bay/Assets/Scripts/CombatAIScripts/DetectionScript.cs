@@ -22,7 +22,7 @@ public class DetectionScript : MonoBehaviour
         }
         rootScript.detected.RemoveAll(item => item == null);
 
-        foreach (AIRootScript detectedObject in rootScript.detected)
+        foreach (GameObject detectedObject in rootScript.detected)
         {
             if (_exitUpdate)
             {
@@ -74,14 +74,18 @@ public class DetectionScript : MonoBehaviour
             transform.parent.GetComponent<CollectResources>().GetTreasure();
             Destroy(collider.gameObject);
         }
+        if (collider.tag == "PlayerBase")
+        {
+            collider.gameObject.transform.parent.GetComponent<ResourcesOnIsland>().GetMoneyFromPlayer();
+        }
         if (collider.tag != "Terrain" && collider.tag != "Untagged")
         {
-            rootScript.detected.Add(collider.gameObject.GetComponent<AIRootScript>());
+            rootScript.detected.Add(collider.gameObject);
         }
     }
 
     void OnTriggerExit(Collider collider)
     {
-        rootScript.detected.Remove(collider.GetComponent<AIRootScript>());
+        rootScript.detected.Remove(collider.gameObject);
     }
 }

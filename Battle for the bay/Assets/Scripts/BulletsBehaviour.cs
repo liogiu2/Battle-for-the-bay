@@ -28,29 +28,93 @@ public class BulletsBehaviour : MonoBehaviour
         {
             return;
         }
-        if (other.gameObject.tag == "Ship")
-        {
-            other.gameObject.SendMessage("DamageOnHit", DamageOnHit);
-            Destroy(gameObject);
-        }
 
-        if (other.gameObject.tag == "Player")
+
+
+        if (other.gameObject.tag == TagCostants.Destructable && !GeneratedTag.Contains("Tower"))
         {
             other.gameObject.SendMessage("DamageOnHit", DamageOnHit);
             Destroy(gameObject, 0.1f);
+            return;
         }
 
-        if (other.gameObject.tag == "PlayerBase")
+        if (other.gameObject.tag == TagCostants.EnemyMinion)
         {
-            other.gameObject.SendMessage("DamageOnHit", DamageOnHit);
-            Destroy(gameObject, 0.1f);
+            if (!GeneratedTag.Contains("Enemy"))
+            {
+                other.gameObject.SendMessage("DamageOnHit", DamageOnHit);
+                Destroy(gameObject, 0.1f);
+                return;
+
+            }
         }
+        else if (other.gameObject.tag == TagCostants.PlayerMinion)
+        {
+            if (!GeneratedTag.Contains("Player"))
+            {
+                other.gameObject.SendMessage("DamageOnHit", DamageOnHit);
+                Destroy(gameObject, 0.1f);
+                return;
+
+            }
+        }
+        else if (other.gameObject.tag == TagCostants.Player)
+        {
+            if (!GeneratedTag.Contains("Player"))
+            {
+                other.gameObject.SendMessage("DamageOnHit", DamageOnHit);
+                Destroy(gameObject, 0.1f);
+                return;
+
+            }
+        }
+        else if (other.gameObject.tag == TagCostants.PlayerBase)
+        {
+            if (!GeneratedTag.Contains("Player"))
+            {
+                other.gameObject.transform.parent.SendMessage("DamageOnHit", DamageOnHit);
+                Destroy(gameObject, 0.1f);
+                return;
+
+            }
+        }
+        else if (other.gameObject.tag == TagCostants.EnemyBase)
+        {
+            if (!GeneratedTag.Contains("Enemy"))
+            {
+                other.gameObject.transform.parent.SendMessage("DamageOnHit", DamageOnHit);
+                Destroy(gameObject, 0.1f);
+                return;
+
+            }
+        }
+        // else if (other.gameObject.tag == TagCostants.EnemyTower)
+        // {
+        //     if (!GeneratedTag.Contains("Enemy"))
+        //     {
+        //         other.gameObject.transform.parent.SendMessage("DamageOnHit", DamageOnHit);
+        //         Destroy(gameObject, 0.1f);
+        //         return;
+
+        //     }
+        // }
+        // else if (other.gameObject.tag == TagCostants.PlayerTower)
+        // {
+        //     if (!GeneratedTag.Contains("Player"))
+        //     {
+        //         other.gameObject.transform.parent.SendMessage("DamageOnHit", DamageOnHit);
+        //         Destroy(gameObject, 0.1f);
+        //         return;
+
+        //     }
+        // }
 
         if (other.gameObject.tag == "Terrain")
         {
             Destroy(gameObject);
-        }
+            return;
 
+        }
     }
 
     // void OnTriggerStay(Collider other)

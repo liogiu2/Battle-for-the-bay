@@ -7,10 +7,12 @@ public class DetectionScriptForEnemies : MonoBehaviour
 
     public AIRootScript rootScript;
     private bool _exitUpdate = false;
+    private string _currentTag;
 
     // Use this for initialization
     void Start()
     {
+        _currentTag = rootScript.tag;
     }
 
     // Update is called once per frame
@@ -22,25 +24,18 @@ public class DetectionScriptForEnemies : MonoBehaviour
             rootScript.enemies.Clear();
         }
 
-        foreach (AIRootScript detectedObject in rootScript.detected)
+        rootScript.detected.RemoveAll(obj => obj == null);
+
+        foreach (GameObject detectedObject in rootScript.detected)
         {
-            if (_exitUpdate)
-            {
-                _exitUpdate = false;
-                return;
-            }
-            if (!_exitUpdate && detectedObject == null)
-            {
-                rootScript.detected.Remove(detectedObject);
-            }
-            if (!_exitUpdate && detectedObject.tag == "Player")
+            if (CheckWho(detectedObject))
             {
                 rootScript.enemies.Add(detectedObject);
             }
         }
 
         //Change the state
-        if (rootScript.enemies.Count > 0 || rootScript.Base != null)
+        if (rootScript.enemies.Count > 0)
         {
             rootScript.ChangeState(AIRootScript.STATE.Combat);
         }
@@ -50,47 +45,62 @@ public class DetectionScriptForEnemies : MonoBehaviour
         }
 
     }
-    void OnDeleteShip()
-    {
-        _exitUpdate = true;
-    }
 
-    void OnEnable()
-    {
-        UpdateEnemyList.OnDeleteShip += OnDeleteShip;
-    }
-
-
-    void OnDisable()
-    {
-        UpdateEnemyList.OnDeleteShip -= OnDeleteShip;
-    }
 
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.tag == "Player")
+        if (CheckWho(collider.gameObject))
         {
-            rootScript.detected.Add(collider.gameObject.GetComponent<AIRootScript>());
-        }
-
-        if (collider.tag == "PlayerBase")
-        {
-            rootScript.Base = collider.gameObject.transform.parent.gameObject;
+            rootScript.detected.Add(collider.gameObject);
         }
     }
 
     void OnTriggerExit(Collider collider)
     {
-        if (collider.tag == "Player")
+        if (rootScript.detected.Contains(collider.gameObject))
         {
-            rootScript.detected.Remove(collider.GetComponent<AIRootScript>());
+            rootScript.detected.Remove(collider.gameObject);
             rootScript.StopCorutineFire();
         }
+    }
 
-        if (collider.tag == "PlayerBase")
+    private bool CheckWho(GameObject collider)
+    {
+        bool _check = false;
+        if (collider.tag == TagCostants.Player && _currentTag == TagCostants.EnemyMinion)
         {
-            rootScript.Base = null;
-            rootScript.StopCorutineFire();            
+            _check = true;
         }
+
+        else if (collider.tag == TagCostants.EnemyMinion && _currentTag == TagCostants.PlayerMinion)
+        {
+            _check = true;
+        }
+
+        else if (collider.tag == TagCostants.PlayerMinion && _currentTag == TagCostants.EnemyMinion)
+        {
+            _check = true;
+        }
+
+        else if (collider.tag == TagCostants.PlayerTower && _currentTag == TagCostants.EnemyMinion)
+        {
+            _check = true;
+        }
+
+        else if (collider.tag == TagCostants.EnemyTower && _currentTag == TagCostants.PlayerMinion)
+        {
+            _check = true;
+        }
+
+        else if (collider.tag == TagCostants.PlayerBase && _currentTag == TagCostants.EnemyMinion)
+        {
+            _check = true;
+        }
+
+        else if (collider.tag == TagCostants.EnemyBase && _currentTag == TagCostants.PlayerMinion)
+        {
+            _check = true;
+        }
+        return _check;
     }
 }

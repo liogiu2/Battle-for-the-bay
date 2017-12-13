@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -13,12 +14,13 @@ public class Health : MonoBehaviour
     public int MoneyOnDie;
     public GameObject HealthBar;
     public Slider minionHealthBar;
+    public bool GodMode = false;
 
     private UpdateEnemyList updateEnemyList;
     private bool _coroutineStarted = false;
     private Image _bar;
 
-    
+
     // Use this for initialization
     void Start()
     {
@@ -33,15 +35,15 @@ public class Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdateHeathBar();
         if (minionHealthBar)
         {
             minionHealthBar.value = health / MaxHealth;
         }
         if (gameObject.tag == "Player" && health < MaxHealth && !_coroutineStarted)
         {
-            // StartCoroutine(HealthRecoveryRoutine());
+            StartCoroutine(HealthRecoveryRoutine());
         }
-
     }
 
     public void DamageOnHit(float DamageOnHit)
@@ -55,7 +57,15 @@ public class Health : MonoBehaviour
         {
             if (gameObject.tag == "Player")
             {
-                health = MaxHealth;
+                // SceneManager.LoadScene(3);
+                if (GodMode)
+                {
+                    health = 100;
+                }
+                if (Explosion)
+                {
+                    Explosion.SetActive(true);
+                }
             }
             else
             {
@@ -65,7 +75,7 @@ public class Health : MonoBehaviour
                 }
                 updateEnemyList.AddDestroyingItem(gameObject.GetComponent<AIRootScript>());
                 GameObject.FindGameObjectWithTag("Player").SendMessage("AddMoney", MoneyOnDie);
-                
+
                 // Spawn the sound object
                 GameObject explosionSound = new GameObject("bulletSound");
                 AudioSource audioSource = explosionSound.AddComponent<AudioSource>();
@@ -97,6 +107,12 @@ public class Health : MonoBehaviour
 
     private void UpdateHeathBar()
     {
+        if (_bar == null) return;
         _bar.fillAmount = health / MaxHealth;
+    }
+
+    public void upgradeHealthBar()
+    {
+        _bar = HealthBar.transform.Find("bar upgraded").Find("Image").GetComponent<Image>();
     }
 }

@@ -11,28 +11,31 @@ public class AIRootScript : MonoBehaviour
         Combat
     }
     public STATE currentState;
-    public List<AIRootScript> detected, enemies;
+    public List<GameObject> detected, enemies;
     public GameObject TargetEnemy;
     public GameObject bulletPrefab;
     public float BulletSpeed;
-    public GameObject Base;
 
-    public AudioClip FireAudioClip;    
+    public AudioClip FireAudioClip;
     bool _startedFire = false;
     private bool _corutineStarted = false;
     protected UpdateEnemyList _updateEnemyList;
+    protected string _currentTag;
     // Use this for initialization
     void Start()
     {
         ChangeState(STATE.Idle);
-        detected = new List<AIRootScript>();
-        enemies = new List<AIRootScript>();
+        detected = new List<GameObject>();
+        enemies = new List<GameObject>();
         _updateEnemyList = GameObject.Find("GameManager").GetComponent<UpdateEnemyList>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        detected.RemoveAll(item => item == null);
+        enemies.RemoveAll(item => item == null);
+        
         //Let extended class to do something
         OnUpdate();
 
@@ -47,7 +50,7 @@ public class AIRootScript : MonoBehaviour
                 TargetEnemy = null;
                 return;
             case STATE.Combat:
-                if (TargetEnemy || Base)
+                if (TargetEnemy)
                 {
                     if (!_startedFire && !_corutineStarted)
                     {
@@ -81,7 +84,7 @@ public class AIRootScript : MonoBehaviour
                 bulletPosition,
                 //Quaternion.Euler(-10, transform.rotation.y - 90, 0));
                 Quaternion.identity);
-            Destroy(bullet, 3.0f);
+            Destroy(bullet, 4.0f);
 
             // Spawn the sound object
             GameObject bulletSound = new GameObject("bulletSound");
@@ -97,10 +100,6 @@ public class AIRootScript : MonoBehaviour
             //GIVE INITIAL VELOCITY TO THE BULLET
             //bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 12;
             Vector3 pos = Target.transform.position;
-            if (Base != null && Target.name == Base.name)
-            {
-                pos = Base.transform.Find("ShootTarget").transform.position;
-            }
             bullet.GetComponent<Rigidbody>().velocity = (pos - bulletPosition).normalized * BulletSpeed;
 
             yield return new WaitForSeconds(1.0f);
@@ -119,7 +118,7 @@ public class AIRootScript : MonoBehaviour
 
     void OnDeleteShip()
     {
-        AIRootScript aI = _updateEnemyList.DestroyingItem;
+        GameObject aI = _updateEnemyList.DestroyingGameObject;
         StopCorutineFire();
         detected.Remove(aI);
         enemies.Remove(aI);
