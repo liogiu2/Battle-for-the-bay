@@ -10,9 +10,12 @@ public class MenuHandler : MonoBehaviour {
     private GameObject hud;
     private float health;
     private GameObject playerBase;
+    private GameObject enemyBase;
+    
     private float initHealth;
 
     private Image statusPlayer;
+    private Image statusEnemy;
     public Slider[] volumeSliders;
     public Toggle[] resolutionToggles;
     private Toggle fullscreenToggle;
@@ -24,6 +27,8 @@ public class MenuHandler : MonoBehaviour {
         hud = GameObject.Find("HUD").gameObject;                
         menu = GameObject.Find("Menu").gameObject;
         statusPlayer = hud.transform.Find("Canvas/Panel/StatusBar/ContainerPlayer/PlayerStatus").gameObject.GetComponent<Image>();
+        statusEnemy = hud.transform.Find("Canvas/Panel/StatusBar/ContainerEnemy/EnemyStatus").gameObject.GetComponent<Image>();
+        
         fullscreenToggle = menu.transform.Find("Canvas/Panel/Options/Screen/Fullscreen").gameObject.GetComponent<Toggle>();
         menu.transform.Find("Canvas/Panel/Options").gameObject.SetActive(false);
         menu.SetActive(false);
@@ -46,6 +51,7 @@ public class MenuHandler : MonoBehaviour {
             fullscreenToggle.isOn = isFullscreen;
 
         playerBase = GameObject.Find("PlayerBase").gameObject;
+        enemyBase = GameObject.Find("EnemyBase").gameObject;
         health = 0;
     }
 
@@ -73,6 +79,10 @@ public class MenuHandler : MonoBehaviour {
         health = playerBase.GetComponent<structureHealth>().health;
         initHealth = playerBase.GetComponent<structureHealth>().initHealth;
         statusPlayer.fillAmount = health / initHealth;
+
+        health = enemyBase.GetComponent<structureHealth>().health;
+        initHealth = enemyBase.GetComponent<structureHealth>().initHealth;
+        statusEnemy.fillAmount = health / initHealth;
     }
 
     public void SetScreenResolution(int i)

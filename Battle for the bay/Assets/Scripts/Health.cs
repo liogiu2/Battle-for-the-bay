@@ -62,6 +62,7 @@ public class Health : MonoBehaviour
                 {
                     health = 100;
                 }
+                else SceneManager.LoadScene(3);
                 if (Explosion)
                 {
                     Explosion.SetActive(true);
