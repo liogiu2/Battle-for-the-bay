@@ -18,7 +18,10 @@ public class Health : MonoBehaviour
 
     private UpdateEnemyList updateEnemyList;
     private bool _coroutineStarted = false;
+    private bool _coroutineStartedRespawn = false;
+
     private Image _bar;
+    private Vector3 _startPosition;
 
 
     // Use this for initialization
@@ -30,6 +33,7 @@ public class Health : MonoBehaviour
             _bar = HealthBar.transform.Find("bar").Find("Image").GetComponent<Image>();
             _bar.fillAmount = 1;
         }
+        _startPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -61,10 +65,22 @@ public class Health : MonoBehaviour
                 if (GodMode)
                 {
                     health = 100;
+                    return;
                 }
-                if (Explosion)
+                if (!_coroutineStartedRespawn)
                 {
-                    Explosion.SetActive(true);
+                    Dictionary<string, bool> old = new Dictionary<string, bool>();
+                    for (int i = 0; i < transform.childCount; i++)
+                    {
+                        GameObject child = transform.GetChild(i).gameObject;
+                        old.Add(child.name, child.activeSelf);
+                        child.SetActive(false);
+                    }
+                    StartCoroutine(Respawn(old));
+                    if (Explosion)
+                    {
+                        Explosion.SetActive(true);
+                    }
                 }
             }
             else
@@ -85,6 +101,22 @@ public class Health : MonoBehaviour
                 Destroy(gameObject, 0.2f);
             }
         }
+    }
+
+    private IEnumerator Respawn(Dictionary<string, bool> old)
+    {
+        _coroutineStartedRespawn = true;
+        yield return new WaitForSeconds(1.5f);
+        Debug.Log("respawn");
+        health = MaxHealth;        
+        transform.position = _startPosition;
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            GameObject child = transform.GetChild(i).gameObject;
+            child.SetActive(old[child.name]);
+        }
+        _coroutineStartedRespawn = false;
+        
     }
 
     private IEnumerator HealthRecoveryRoutine()
