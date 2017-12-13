@@ -11,4 +11,6 @@ public static class TagCostants
     public static string PlayerTower = "PlayerTower";
     public static string EnemyBase = "EnemyBase";
     public static string PlayerBase = "PlayerBase";
+    public static string Destructable = "destructable";
+    
 }

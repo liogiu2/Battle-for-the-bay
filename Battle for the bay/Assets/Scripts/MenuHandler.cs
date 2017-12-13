@@ -12,17 +12,20 @@ public class MenuHandler : MonoBehaviour {
     private GameObject playerBase;
     private float initHealth;
 
-    public Image statusPlayer;
+    private Image statusPlayer;
     public Slider[] volumeSliders;
     public Toggle[] resolutionToggles;
-    public Toggle fullscreenToggle;
+    private Toggle fullscreenToggle;
     public int[] screenWidths;
     int activeScreenResIndex;
 
     // Use this for initialization
     void Start () {
+        hud = GameObject.Find("HUD").gameObject;                
         menu = GameObject.Find("Menu").gameObject;
-        hud = GameObject.Find("HUD").gameObject;
+        statusPlayer = hud.transform.Find("Canvas/Panel/StatusBar/ContainerPlayer/PlayerStatus").gameObject.GetComponent<Image>();
+        fullscreenToggle = menu.transform.Find("Canvas/Panel/Options/Screen/Fullscreen").gameObject.GetComponent<Toggle>();
+        menu.transform.Find("Canvas/Panel/Options").gameObject.SetActive(false);
         menu.SetActive(false);
         isOpen = false;
 
