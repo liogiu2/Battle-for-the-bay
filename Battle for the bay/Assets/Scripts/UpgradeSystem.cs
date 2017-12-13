@@ -134,35 +134,35 @@ public class UpgradeSystem : MonoBehaviour
         tower.transform.parent.transform.Find("lvl" + (towersLevel)).gameObject.SetActive(true);
     }
 
-    public void UpgradeFort()
-    {
-        Debug.Log("UPGRADE FORT");
-        int money = ResourcesOnIsland.MoneyOnIsland;
+    // public void UpgradeFort()
+    // {
+    //     Debug.Log("UPGRADE FORT");
+    //     int money = ResourcesOnIsland.MoneyOnIsland;
 
-        if (fortLevel == 0)
-        {
-            fortLevel = 1;
-            fort1.SetActive(true);
-        }
-        else if (fortLevel == 1 && money >= 50)
-        {
-            fortLevel = 2;
-            ResourcesOnIsland.MoneyOnIsland -= 50;
-            FortUI[0].SetActive(false);
-            FortUI[1].SetActive(true);
-            fort1.SetActive(false);
-            fort2.SetActive(true);
-        }
-        else if (fortLevel == 2 && money >= 100)
-        {
-            fortLevel = 3;
-            ResourcesOnIsland.MoneyOnIsland -= 100;
-            FortUI[1].SetActive(false);
-            FortUI[2].SetActive(true);
-            fort2.SetActive(false);
-            fort3.SetActive(true);
-        }
-    }
+    //     if (fortLevel == 0)
+    //     {
+    //         fortLevel = 1;
+    //         fort1.SetActive(true);
+    //     }
+    //     else if (fortLevel == 1 && money >= 50)
+    //     {
+    //         fortLevel = 2;
+    //         ResourcesOnIsland.MoneyOnIsland -= 50;
+    //         FortUI[0].SetActive(false);
+    //         FortUI[1].SetActive(true);
+    //         fort1.SetActive(false);
+    //         fort2.SetActive(true);
+    //     }
+    //     else if (fortLevel == 2 && money >= 100)
+    //     {
+    //         fortLevel = 3;
+    //         ResourcesOnIsland.MoneyOnIsland -= 100;
+    //         FortUI[1].SetActive(false);
+    //         FortUI[2].SetActive(true);
+    //         fort2.SetActive(false);
+    //         fort3.SetActive(true);
+    //     }
+    // }
 
 
     public void UpgradeShip()
