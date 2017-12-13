@@ -649,6 +649,7 @@ MonoBehaviour:
   MoneyOnDie: 20
   HealthBar: {fileID: 0}
   minionHealthBar: {fileID: 114860320602220810}
+  GodMode: 0
 --- !u!114 &114785151707610874
 MonoBehaviour:
   m_ObjectHideFlags: 1
