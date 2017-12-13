@@ -109,7 +109,7 @@ public class Health : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         Debug.Log("respawn");
         health = MaxHealth;        
-        transform.position = _startPosition;
+        transform.position = GameObject.Find("PlayerBase").transform.Find("Spawner").transform.position;
         for (int i = 0; i < transform.childCount; i++)
         {
             GameObject child = transform.GetChild(i).gameObject;
