@@ -11,7 +11,7 @@ public class AIRootScript : MonoBehaviour
         Combat
     }
     public STATE currentState;
-    public List<AIRootScript> detected, enemies;
+    public List<GameObject> detected, enemies;
     public GameObject TargetEnemy;
     public GameObject bulletPrefab;
     public float BulletSpeed;
@@ -25,8 +25,8 @@ public class AIRootScript : MonoBehaviour
     void Start()
     {
         ChangeState(STATE.Idle);
-        detected = new List<AIRootScript>();
-        enemies = new List<AIRootScript>();
+        detected = new List<GameObject>();
+        enemies = new List<GameObject>();
         _updateEnemyList = GameObject.Find("GameManager").GetComponent<UpdateEnemyList>();
     }
 
@@ -118,7 +118,7 @@ public class AIRootScript : MonoBehaviour
 
     void OnDeleteShip()
     {
-        AIRootScript aI = _updateEnemyList.DestroyingItem;
+        GameObject aI = _updateEnemyList.DestroyingGameObject;
         StopCorutineFire();
         detected.Remove(aI);
         enemies.Remove(aI);

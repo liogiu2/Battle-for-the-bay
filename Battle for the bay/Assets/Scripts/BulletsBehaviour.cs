@@ -28,29 +28,41 @@ public class BulletsBehaviour : MonoBehaviour
         {
             return;
         }
-        if (other.gameObject.tag == "EnemyMinion")
-        {
-            other.gameObject.SendMessage("DamageOnHit", DamageOnHit);
-            Destroy(gameObject);
-        }
-        if (other.gameObject.tag == "PlayerMinion")
-        {
-            other.gameObject.SendMessage("DamageOnHit", DamageOnHit);
-            Destroy(gameObject);
-        }
-
-
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == TagCostants.EnemyMinion)
         {
             other.gameObject.SendMessage("DamageOnHit", DamageOnHit);
             Destroy(gameObject, 0.1f);
         }
-
-        // if (other.gameObject.tag == "PlayerBase")
-        // {
-        //     other.gameObject.SendMessage("DamageOnHit", DamageOnHit);
-        //     Destroy(gameObject, 0.1f);
-        // }
+        else if (other.gameObject.tag == TagCostants.PlayerMinion)
+        {
+            other.gameObject.SendMessage("DamageOnHit", DamageOnHit);
+            Destroy(gameObject, 0.1f);
+        }
+        else if (other.gameObject.tag == TagCostants.Player)
+        {
+            other.gameObject.SendMessage("DamageOnHit", DamageOnHit);
+            Destroy(gameObject, 0.1f);
+        }
+        else if (other.gameObject.tag == TagCostants.PlayerBase)
+        {
+            other.gameObject.transform.parent.SendMessage("DamageOnHit", DamageOnHit);
+            Destroy(gameObject, 0.1f);
+        }
+        else if (other.gameObject.tag == TagCostants.EnemyBase)
+        {
+            other.gameObject.transform.parent.SendMessage("DamageOnHit", DamageOnHit);
+            Destroy(gameObject, 0.1f);
+        }
+        else if (other.gameObject.tag == TagCostants.EnemyTower)
+        {
+            other.gameObject.transform.parent.SendMessage("DamageOnHit", DamageOnHit);
+            Destroy(gameObject, 0.1f);
+        }
+        else if (other.gameObject.tag == TagCostants.PlayerTower)
+        {
+            other.gameObject.transform.parent.SendMessage("DamageOnHit", DamageOnHit);
+            Destroy(gameObject, 0.1f);
+        }
 
         if (other.gameObject.tag == "Terrain")
         {

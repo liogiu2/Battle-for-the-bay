@@ -5,6 +5,11 @@ using UnityEngine;
 public class UpgradeSystem : MonoBehaviour
 {
 
+
+    public GameObject upgradeEffectPrefab;
+    public int[] towerUpgradeCost;
+    private GameObject[] friendlyTowers;
+    private GameObject[] towersUpgrades;
     public GameObject tower1;
     public GameObject tower2;
     public GameObject tower3;
@@ -14,11 +19,14 @@ public class UpgradeSystem : MonoBehaviour
     public GameObject ship1;
     GameObject ship2;
     GameObject ship3;
-
+    private Health playerHealth;
+    public GameObject healthBar;
+    public GameObject healthBarUpgraded;
     public GameObject ship1Prefab;
     public GameObject ship2Prefab;
 
-    public int towerLevel;
+    public int towersLevel;
+    public int towersMaxLevel;
     public int fortLevel;
     public int shipLevel;
 
@@ -33,6 +41,10 @@ public class UpgradeSystem : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+
+        friendlyTowers = GameObject.FindGameObjectsWithTag("PlayerTower");
+        towersLevel = 1;
+
         TowerUI = new List<GameObject>();
         GameObject app = GameObject.Find("HUD").gameObject.transform.GetChild(0).transform.GetChild(0).Find("Upgrade").Find("Slot1").gameObject;
         TowerUI.Add(app.transform.Find("Tower-Level-1").gameObject);
@@ -60,6 +72,7 @@ public class UpgradeSystem : MonoBehaviour
 
         TowerUI[0].transform.parent.transform.parent.gameObject.SetActive(false);
         player = GameObject.Find("Player").gameObject;
+        playerHealth = player.GetComponent<Health>();
     }
 
     // Update is called once per frame
@@ -68,32 +81,59 @@ public class UpgradeSystem : MonoBehaviour
 
     }
 
+
     public void UpgradeTower()
     {
-        Debug.Log("UPGRADE TOWER");
-        int money = ResourcesOnIsland.MoneyOnIsland;
-        if (towerLevel == 0)
+
+        if (ResourcesOnIsland.MoneyOnIsland >= towerUpgradeCost[towersLevel] && towersLevel <= towersMaxLevel)
         {
-            towerLevel = 1;
-            tower1.SetActive(true);
+            ResourcesOnIsland.MoneyOnIsland -= towerUpgradeCost[towersLevel];
+            foreach (GameObject tower in friendlyTowers)
+            {
+                Debug.LogWarning(tower.transform.parent);
+                GameObject towerCurrentLvl = tower.transform.parent.transform.Find("lvl" + (towersLevel)).gameObject;
+                if (towerCurrentLvl) towerCurrentLvl.SetActive(false);
+                else Debug.Log("Could not find current lvl");
+                TowerUI[towersLevel - 1].SetActive(false);
+                TowerUI[towersLevel].SetActive(true);
+                Vector3 position = new Vector3(tower.transform.position.x, tower.transform.position.y + 1f, tower.transform.position.z);
+                GameObject upgradeEffect = Instantiate(upgradeEffectPrefab, position, Quaternion.identity);
+                Destroy(upgradeEffect, 3f);
+                StartCoroutine(ExecuteAfterTime(tower, 3));
+            }
+            towersLevel += 1;
         }
-        else if (towerLevel == 1 && money >= 50)
+    }
+
+    public void UpgradeChest()
+    {
+
+        if (ResourcesOnIsland.MoneyOnIsland >= towerUpgradeCost[towersLevel] && towersLevel <= towersMaxLevel)
         {
-            ResourcesOnIsland.MoneyOnIsland -= 50;
-            towerLevel = 2;
-            TowerUI[0].SetActive(false);
-            TowerUI[1].SetActive(true);
-            tower1.SetActive(false);
-            tower2.SetActive(true);
+            ResourcesOnIsland.MoneyOnIsland -= towerUpgradeCost[towersLevel];
+            foreach (GameObject tower in friendlyTowers)
+            {
+                Debug.LogWarning(tower.transform.parent);
+                GameObject towerCurrentLvl = tower.transform.parent.transform.Find("lvl" + (towersLevel)).gameObject;
+                if (towerCurrentLvl) towerCurrentLvl.SetActive(false);
+                else Debug.Log("Could not find current lvl");
+                TowerUI[towersLevel - 1].SetActive(false);
+                TowerUI[towersLevel].SetActive(true);
+                Vector3 position = new Vector3(tower.transform.position.x, tower.transform.position.y + 1f, tower.transform.position.z);
+                GameObject upgradeEffect = Instantiate(upgradeEffectPrefab, position, Quaternion.identity);
+                Destroy(upgradeEffect, 3f);
+                StartCoroutine(ExecuteAfterTime(tower, 3));
+            }
+            towersLevel += 1;
         }
-        else if (towerLevel == 2 && money >= 100)
-        {
-            ResourcesOnIsland.MoneyOnIsland -= 100;
-            TowerUI[1].SetActive(false);
-            TowerUI[2].SetActive(true);
-            towerLevel = 3;
-            tower3.SetActive(true);
-        }
+    }
+
+    IEnumerator ExecuteAfterTime(GameObject tower, float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        // Code to execute after the delay
+        tower.transform.parent.transform.Find("lvl" + (towersLevel)).gameObject.SetActive(true);
     }
 
     public void UpgradeFort()
@@ -136,6 +176,14 @@ public class UpgradeSystem : MonoBehaviour
         {
             ship1Prefab.SetActive(false);
             ship2Prefab.SetActive(true);
+            playerHealth.MaxHealth *= 2;
+            playerHealth.health = playerHealth.MaxHealth;
+            healthBar.SetActive(false);
+            healthBarUpgraded.SetActive(true);
+            playerHealth.upgradeHealthBar();
+            //healthBar.GetComponent<RectTransform>().sizeDelta = new Vector2 (((RectTransform)healthBar.transform).rect.width *2, ((RectTransform)healthBar.transform).rect.height);
+            // healthBar.transform.localScale += new Vector3(1F, 0, 0);
+            //healthBar.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 0, ((RectTransform)healthBar.transform).rect.width *2);
         }
     }
 }

@@ -92,8 +92,8 @@ GameObject:
   m_Name: Quad (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1275937492054722
 GameObject:
@@ -109,7 +109,7 @@ GameObject:
   m_Name: pirate_boat_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1321589391560644
@@ -200,8 +200,8 @@ GameObject:
   m_Name: Quad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1744257498190720
 GameObject:
@@ -217,8 +217,8 @@ GameObject:
   m_Name: pirate_boat_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1814850708970168
 GameObject:
@@ -228,6 +228,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4769336291012874}
+  - component: {fileID: 95849506507581616}
   m_Layer: 0
   m_Name: Boat_Big_black
   m_TagString: Untagged
@@ -335,8 +336,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1321589391560644}
-  m_LocalRotation: {x: -0, y: -0.40670353, z: -0, w: 0.9135603}
-  m_LocalPosition: {x: 272, y: 1.5108567e-15, z: -10.6}
+  m_LocalRotation: {x: -0, y: 0.8977261, z: -0, w: 0.44055408}
+  m_LocalPosition: {x: -71.8, y: 1.5108567e-15, z: -16.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4268907687871896}
@@ -630,6 +631,23 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1321589391560644}
   m_Enabled: 1
+--- !u!95 &95849506507581616
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1814850708970168}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4607a4683eaa5eb4286bf82ba97e08e5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114132281589434532
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -669,9 +687,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f8d75d3952f59f42a4fea22286ab09a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 200
-  MaxHealth: 250
-  HealthRecovery: 4
+  health: 150
+  MaxHealth: 150
+  HealthRecovery: 2
   DeathSound: {fileID: 8300000, guid: 3c495268ef48e6940b71d7cc67f524ad, type: 3}
   Explosion: {fileID: 1000013462590818, guid: ecdd96beb7f93494880c052dfccf9dc1, type: 2}
   MoneyOnDie: 0
@@ -702,7 +720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84970050d75184810b999e8a9ed45291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Money: 200
+  Money: 0
   MaxAmountOfMoneyInShip: 200
   MoneyForTreasure: 100
   TreasureShipBar: {fileID: 0}

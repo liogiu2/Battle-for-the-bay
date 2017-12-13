@@ -23,20 +23,12 @@ public class DetectionScriptForEnemies : MonoBehaviour
         {
             rootScript.enemies.Clear();
         }
-        
+
         rootScript.detected.RemoveAll(obj => obj == null);
-        
-        foreach (AIRootScript detectedObject in rootScript.detected)
+
+        foreach (GameObject detectedObject in rootScript.detected)
         {
-            if (detectedObject.tag == TagCostants.Player && _currentTag == TagCostants.EnemyMinion)
-            {
-                rootScript.enemies.Add(detectedObject);
-            }
-            if (detectedObject.tag == TagCostants.PlayerMinion && _currentTag == TagCostants.EnemyMinion)
-            {
-                rootScript.enemies.Add(detectedObject);
-            }
-            if (detectedObject.tag == TagCostants.EnemyMinion && _currentTag == TagCostants.PlayerMinion)
+            if (CheckWho(detectedObject))
             {
                 rootScript.enemies.Add(detectedObject);
             }
@@ -53,58 +45,62 @@ public class DetectionScriptForEnemies : MonoBehaviour
         }
 
     }
-    // void OnDeleteShip()
-    // {
-    //     _exitUpdate = true;
-    // }
 
-    // void OnEnable()
-    // {
-    //     UpdateEnemyList.OnDeleteShip += OnDeleteShip;
-    // }
-
-
-    // void OnDisable()
-    // {
-    //     UpdateEnemyList.OnDeleteShip -= OnDeleteShip;
-    // }
 
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.tag == TagCostants.Player && _currentTag == TagCostants.EnemyMinion)
+        if (CheckWho(collider.gameObject))
         {
-            rootScript.detected.Add(collider.gameObject.GetComponent<AIRootScript>());
-        }
-
-        if (collider.tag == TagCostants.EnemyMinion && _currentTag == TagCostants.PlayerMinion)
-        {
-            rootScript.detected.Add(collider.gameObject.GetComponent<AIRootScript>());
-        }
-
-        if (collider.tag == TagCostants.PlayerMinion && _currentTag == TagCostants.EnemyMinion)
-        {
-            rootScript.detected.Add(collider.gameObject.GetComponent<AIRootScript>());
+            rootScript.detected.Add(collider.gameObject);
         }
     }
 
     void OnTriggerExit(Collider collider)
     {
+        if (rootScript.detected.Contains(collider.gameObject))
+        {
+            rootScript.detected.Remove(collider.gameObject);
+            rootScript.StopCorutineFire();
+        }
+    }
+
+    private bool CheckWho(GameObject collider)
+    {
+        bool _check = false;
         if (collider.tag == TagCostants.Player && _currentTag == TagCostants.EnemyMinion)
         {
-            rootScript.detected.Remove(collider.GetComponent<AIRootScript>());
-            rootScript.StopCorutineFire();
+            _check = true;
         }
 
-        if (collider.tag == TagCostants.EnemyMinion && _currentTag == TagCostants.PlayerMinion)
+        else if (collider.tag == TagCostants.EnemyMinion && _currentTag == TagCostants.PlayerMinion)
         {
-            rootScript.detected.Add(collider.gameObject.GetComponent<AIRootScript>()); 
-            rootScript.StopCorutineFire();                       
+            _check = true;
         }
 
-        if (collider.tag == TagCostants.PlayerMinion && _currentTag == TagCostants.EnemyMinion)
+        else if (collider.tag == TagCostants.PlayerMinion && _currentTag == TagCostants.EnemyMinion)
         {
-            rootScript.detected.Add(collider.gameObject.GetComponent<AIRootScript>());
-            rootScript.StopCorutineFire();
+            _check = true;
         }
+
+        else if (collider.tag == TagCostants.PlayerTower && _currentTag == TagCostants.EnemyMinion)
+        {
+            _check = true;
+        }
+
+        else if (collider.tag == TagCostants.EnemyTower && _currentTag == TagCostants.PlayerMinion)
+        {
+            _check = true;
+        }
+
+        else if (collider.tag == TagCostants.PlayerBase && _currentTag == TagCostants.EnemyMinion)
+        {
+            _check = true;
+        }
+
+        else if (collider.tag == TagCostants.EnemyBase && _currentTag == TagCostants.PlayerMinion)
+        {
+            _check = true;
+        }
+        return _check;
     }
 }
