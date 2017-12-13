@@ -35,7 +35,7 @@ public class VisionRange : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         // if(ai.targetsInVision != null) ai.targetsInVision.RemoveAll(item => item == null);
-        if (ai.gameObject.tag == "EnemyMinion" && (other.gameObject.tag == "PlayerMinion" || other.gameObject.tag == "Player"))
+        if (ai.gameObject.tag == "EnemyMinion" && (other.gameObject.tag == "PlayerMinion" || other.gameObject.tag == "Player" || other.gameObject.tag == "PlayerTower" ))
         {
             ai.targetsInVision.Add(other.gameObject);
             // if(currentTarget == null) currentTarget = other.gameObject;
@@ -43,7 +43,7 @@ public class VisionRange : MonoBehaviour
             // ai.target = currentTarget;
             ai.ChangeState(AIRootMovement.STATE.Chase);
         }
-        if (ai.gameObject.tag == "PlayerMinion" && (other.gameObject.tag == "EnemyMinion" || other.gameObject.tag == "Enemy"))
+        if (ai.gameObject.tag == "PlayerMinion" && (other.gameObject.tag == "EnemyMinion" || other.gameObject.tag == "Enemy" || other.gameObject.tag == "EnemyTower"))
         {
             ai.targetsInVision.Add(other.gameObject);
             // if(currentTarget == null) currentTarget = other.gameObject;
@@ -55,11 +55,11 @@ public class VisionRange : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (ai.gameObject.tag == "EnemyMinion" && (other.gameObject.tag == "PlayerMinion" || other.gameObject.tag == "Player"))
+        if (ai.gameObject.tag == "EnemyMinion" && (other.gameObject.tag == "PlayerMinion" || other.gameObject.tag == "Player" || other.gameObject.tag == "PlayerTower"))
         {
             ai.targetsInVision.Remove(other.gameObject);
         }
-        if (ai.gameObject.tag == "PlayerMinion" && (other.gameObject.tag == "EnemyMinion" || other.gameObject.tag == "Enemy"))
+        if (ai.gameObject.tag == "PlayerMinion" && (other.gameObject.tag == "EnemyMinion" || other.gameObject.tag == "Enemy" || other.gameObject.tag == "EnemyTower"))
         {
             ai.targetsInVision.Remove(other.gameObject);
         }
