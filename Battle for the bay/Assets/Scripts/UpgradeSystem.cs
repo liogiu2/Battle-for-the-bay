@@ -9,10 +9,7 @@ public class UpgradeSystem : MonoBehaviour
     public GameObject upgradeEffectPrefab;
     public int[] towerUpgradeCost;
     private GameObject[] friendlyTowers;
-    private GameObject[] towersUpgrades;
-    public GameObject tower1;
-    public GameObject tower2;
-    public GameObject tower3;
+
     public GameObject fort1;
     public GameObject fort2;
     public GameObject fort3;
