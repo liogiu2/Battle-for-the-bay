@@ -4,26 +4,34 @@ using UnityEngine;
 
 public class MoveInput : MonoBehaviour
 {
+    private Transform pointerTransform;
+    private SpriteRenderer pointerSprite;
+    private AIRootScript rootScript;
 
-    public Transform shipPointer;
     public ShipMovement shipMovement;
     public float minMoveRange;
-    public SpriteRenderer cursorSprite;
     public GameObject upgradeCanvas;
-
-    private AIRootScript rootScript;
 
     // Use this for initialization
     void Start()
     {
+        GameObject shipPointer = GameObject.Find("ShipPointer").gameObject;
+        pointerTransform = shipPointer.GetComponent<Transform>();
+        pointerSprite = shipPointer.GetComponent<SpriteRenderer>();
         rootScript = GetComponent<AIRootScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (pointerTransform.localScale.x > 1f)
+        {
+            pointerTransform.localScale -= new Vector3(.1f, .1f, .1f);
+        }
+
         if (Input.GetButton("Fire2"))
         {
+            
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100))
@@ -31,13 +39,13 @@ public class MoveInput : MonoBehaviour
                 if (hit.collider.tag == "Terrain")
                 {
                     Debug.DrawLine(ray.origin, hit.point);
+                    if(pointerTransform.localScale.x < 2f)  pointerTransform.localScale += new Vector3(1f, 1f, 1f);
+                    pointerTransform.position = new Vector3(hit.point.x, pointerTransform.position.y, hit.point.z);
 
-                    shipPointer.position = new Vector3(hit.point.x, shipPointer.position.y, hit.point.z);
-
-                    if (Vector3.Distance(shipPointer.position, shipMovement.transform.position) > minMoveRange)
+                    if (Vector3.Distance(pointerTransform.position, shipMovement.transform.position) > minMoveRange)
                     {
                         shipMovement.moving = true;
-                        cursorSprite.enabled = true;
+                        pointerSprite.enabled = true;
                     }
 
                     if (upgradeCanvas.activeSelf == true)
@@ -59,7 +67,7 @@ public class MoveInput : MonoBehaviour
                     rootScript.TargetEnemy = Ship;
                 }
 
-                if (hit.collider.tag == "Fort")
+                if (hit.collider.tag == "PlayerBase")
                 {
                     upgradeCanvas.SetActive(true);
                 }
@@ -70,6 +78,10 @@ public class MoveInput : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void setPointer(Vector3 pos){
+        pointerTransform.position = pos;
     }
 
 }

@@ -15,6 +15,14 @@ public class AIRootMovement : MonoBehaviour
         Chase,
     }
 
+    public enum DESTINATION
+    {
+        None,
+        OpponentBase,
+        Opponent
+    }
+
+    private DESTINATION dest;
     public STATE currentState;
 
     // WANDERING BEHAVIOUR
@@ -46,6 +54,8 @@ public class AIRootMovement : MonoBehaviour
     private float orbitTime;
     private float orbitTimer;
 
+
+    private NavMeshPath path;
     // Use this for initialization
     void Start()
     {
@@ -61,14 +71,23 @@ public class AIRootMovement : MonoBehaviour
         {
             target = GameObject.FindGameObjectWithTag("Player").gameObject;
             targetBase = GameObject.FindGameObjectWithTag("PlayerBase").gameObject;
-            Debug.Log("targetBase: " + targetBase);
         }
         else if (gameObject.tag == "PlayerMinion")
         {
-    
+
             targetBase = GameObject.FindGameObjectWithTag("EnemyBase").gameObject;
         }
         ChangeState(STATE.GoToOpponentBase);
+        dest = DESTINATION.None;
+
+        path = new NavMeshPath();
+        NavMeshHit navHit;
+        Vector3 testTarget = new Vector3(targetBase.transform.position.x, transform.position.y, targetBase.transform.position.z);
+        bool pointFound = NavMesh.SamplePosition(testTarget, out navHit, 10.0f, NavMesh.AllAreas);
+        // Debug.Log("pointFound: " + pointFound + " testTarget: " + testTarget +  " navHit: " + navHit.position);
+        bool pathFound = NavMesh.CalculatePath(transform.position, navHit.position, NavMesh.AllAreas, path);
+        // Debug.Log("pathFound: " + pathFound);
+        // foreach (Vector3 corner in path.corners) Debug.Log(corner);
     }
 
     // Update is called once per frame
@@ -161,10 +180,45 @@ public class AIRootMovement : MonoBehaviour
     }
     private void GoToOpponentBase()
     {
-        if(agent == null || targetBase == null) return;
-        agent.SetDestination(targetBase.transform.position);
+
+        // if (path == null) return;
+        // float distanceToTravel = 1f;
+        // for (int i = 0; i < path.corners.Length - 1; i++)
+        // {
+        //     Debug.Log("GoToOpponentBase");
+        //     float distance = Vector3.Distance(path.corners[i], path.corners[i + 1]);
+        //     if (distance < distanceToTravel)
+        //     {
+        //         distanceToTravel -= distance;
+        //         continue;
+        //     }
+        //     else
+        //     {
+        //         Vector3 pos = Vector3.Lerp(path.corners[i], path.corners[i + 1], distanceToTravel / distance);
+        //         transform.position = pos;
+        //         break;
+        //     }
+        // }
+
+        if (agent == null || targetBase == null) return;
+        if (dest != DESTINATION.OpponentBase)
+        {
+            agent.SetDestination(targetBase.transform.position);
+            dest = DESTINATION.OpponentBase;
+            Debug.Log("Setting destination - opponent base");
+        }
         agent.isStopped = false;
     }
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        for (int i = 0; i < path.corners.Length - 1; i++)
+        {
+            Debug.Log("OnDrawGizmosSelectedForLoop");
+            Gizmos.DrawLine(path.corners[i], path.corners[i + 1]);
+        }
+    }
+
     private void Chase()
     {
         targetsInVision.RemoveAll(item => item == null);
@@ -184,7 +238,7 @@ public class AIRootMovement : MonoBehaviour
         }
         if (target != null)
         {
-            agent.SetDestination(target.transform.position);
+            if (agent.destination != target.transform.position) agent.SetDestination(target.transform.position);
             agent.isStopped = false;
         }
     }
@@ -203,5 +257,12 @@ public class AIRootMovement : MonoBehaviour
         NavMesh.SamplePosition(randDirection, out navHit, dist, layermask);
 
         return navHit.position;
+    }
+
+    public void SetDestination(DESTINATION destination){
+        dest = destination;
+    }
+    public DESTINATION GetDestination(){
+        return dest;
     }
 }

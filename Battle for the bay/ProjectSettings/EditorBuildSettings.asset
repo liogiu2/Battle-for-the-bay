@@ -5,12 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/GameEntrance.unity
-    guid: 9729c68be9c493c46a11dcf1a508bcca
+    guid: d56fc29bd7f261347aad8263159fca3c
   - enabled: 1
-    path: Assets/level1.unity
-    guid: 30e6ccd917727ee4c9e13cf134ea19b0
+    path: Assets/michelangeloMain.unity
+    guid: 04dd8110e0489554cacaf07560d4dd0a
   - enabled: 1
     path: Assets/PlayerWon.unity
     guid: 640e2be390042dc4bbfd3d072c5a5c0b
