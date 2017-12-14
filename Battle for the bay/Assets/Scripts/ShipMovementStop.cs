@@ -5,12 +5,13 @@ using UnityEngine;
 public class ShipMovementStop : MonoBehaviour {
 
 	public float rotoSpeed;
-	public ShipMovement shipMovement;
+	private ShipMovement shipMovement;
 	public SpriteRenderer cursorSprite; 
 
 	// Use this for initialization
 	void Start () {
 		cursorSprite.enabled = false;
+		shipMovement = GameObject.Find("Player").GetComponent<ShipMovement>();
 	}
 	
 	// Update is called once per frame
@@ -20,8 +21,6 @@ public class ShipMovementStop : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other){
 		if (other == null) return;
-		if (shipMovement == null) return;
-
 		if(other.tag == shipMovement.tag){
 			if(shipMovement.moving == true){
 				shipMovement.moving = false;

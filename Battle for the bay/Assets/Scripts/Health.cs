@@ -162,7 +162,7 @@ public class Health : MonoBehaviour
         }
         GetComponent<NavMeshAgent>().enabled = true;
         GetComponent<MoveInput>().enabled = true;
-        GetComponent<MoveInput>().shipPointer.position = pos;
+        GetComponent<MoveInput>().setPointer(pos);
         GetComponent<ShipMovement>().enabled = true;
         _coroutineStartedRespawn = false;
 
