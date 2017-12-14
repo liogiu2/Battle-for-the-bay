@@ -646,7 +646,7 @@ MonoBehaviour:
   HealthRecovery: 0
   DeathSound: {fileID: 8300000, guid: 3c495268ef48e6940b71d7cc67f524ad, type: 3}
   Explosion: {fileID: 1063353638610936}
-  MoneyOnDie: 20
+  MoneyOnDie: 0
   HealthBar: {fileID: 0}
   minionHealthBar: {fileID: 114860320602220810}
   GodMode: 0
