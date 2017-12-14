@@ -17,10 +17,11 @@ public class ShipMovementStop : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		transform.Rotate(Vector3.forward * rotoSpeed * Time.deltaTime);
+		// if(shipMovement == null) shipMovement = GameObject.Find("Player").GetComponent<ShipMovement>();
 	}
 
 	void OnTriggerEnter(Collider other){
-		if (other == null) return;
+		if (other == null || shipMovement == null) return;
 		if(other.tag == shipMovement.tag){
 			if(shipMovement.moving == true){
 				shipMovement.moving = false;

@@ -15,7 +15,7 @@ public class AIRootMovement : MonoBehaviour
         Chase,
     }
 
-    private enum DESTINATION
+    public enum DESTINATION
     {
         None,
         OpponentBase,
@@ -257,5 +257,12 @@ public class AIRootMovement : MonoBehaviour
         NavMesh.SamplePosition(randDirection, out navHit, dist, layermask);
 
         return navHit.position;
+    }
+
+    public void SetDestination(DESTINATION destination){
+        dest = destination;
+    }
+    public DESTINATION GetDestination(){
+        return dest;
     }
 }
