@@ -80,16 +80,22 @@ public class UpgradeSystem : MonoBehaviour
 
     public void UpgradeTower()
     {
-
+        friendlyTowers = GameObject.FindGameObjectsWithTag("PlayerTower");
         if (ResourcesOnIsland.MoneyOnIsland >= towerUpgradeCost[towersLevel - 1] && towersLevel <= towersMaxLevel)
         {
             ResourcesOnIsland.MoneyOnIsland -= towerUpgradeCost[towersLevel - 1];
             foreach (GameObject tower in friendlyTowers)
             {
-                Debug.LogWarning(tower);//.transform.parent);
+                // Debug.LogWarning(tower);//.transform.parent);
                 GameObject towerCurrentLvl = tower.transform.parent.transform.Find("lvl" + (towersLevel)).gameObject;
                 if (towerCurrentLvl) towerCurrentLvl.SetActive(false);
                 else Debug.Log("Could not find current lvl");
+                
+                tower.GetComponent<WatchTower>().damage *= 2;
+                
+                tower.transform.parent.GetComponent<structureHealth>().initHealth *= 2;
+                tower.transform.parent.GetComponent<structureHealth>().health =  tower.transform.parent.GetComponent<structureHealth>().initHealth;
+
                 TowerUI[towersLevel - 1].SetActive(false);
                 TowerUI[towersLevel].SetActive(true);
                 Vector3 position = new Vector3(tower.transform.position.x, tower.transform.position.y + 1f, tower.transform.position.z);
@@ -108,6 +114,9 @@ public class UpgradeSystem : MonoBehaviour
         {
             ResourcesOnIsland.MoneyOnIsland -= fortUpgradeCost[fortLevel - 1];
             
+            player.GetComponent<CollectResources>().MaxAmountOfMoneyInShip *= 2;
+            playerBase.transform.Find("Spawner").GetComponent<spawner>().spawnCount += 1;
+
             GameObject chest = playerBase.transform.Find("Chest").gameObject;
             Vector3 position = new Vector3(chest.transform.position.x, chest.transform.position.y + 1f, chest.transform.position.z);
             GameObject fortCurrentLvl = chest.transform.Find("lvl" + (fortLevel)).gameObject;

@@ -1136,6 +1136,7 @@ MonoBehaviour:
     type: 2}
   friendly: 1
   MultiAttack: 0
+  damage: 20
 --- !u!114 &114770944552243960
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1147,8 +1148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0923d83dc3458e240b3a7310ceecafb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  initHealth: 200
+  health: 500
+  initHealth: 500
   Explosion: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b, type: 2}
   structureHealthBar: {fileID: 114278419687347666}
 --- !u!114 &114884723428547706
