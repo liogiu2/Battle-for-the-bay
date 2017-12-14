@@ -16,9 +16,12 @@ public class Health : MonoBehaviour
     public GameObject Smoke;
     public GameObject Fire;
     public int MoneyOnDie;
+    public int WaitAfterRespawn = 5;
     public GameObject HealthBar;
     public Slider minionHealthBar;
     public bool GodMode = false;
+    public int LosePointOnDiePlayer = 0;
+    public int PointOnDieMinion = 10;
 
     private UpdateEnemyList updateEnemyList;
     private bool _coroutineStarted = false;
@@ -26,6 +29,8 @@ public class Health : MonoBehaviour
 
     private Image _bar;
     private Vector3 _startPosition;
+    private Score _score;
+    private bool _countdown = true;
 
 
     // Use this for initialization
@@ -38,6 +43,7 @@ public class Health : MonoBehaviour
             _bar.fillAmount = 1;
         }
         _startPosition = new Vector3(-73.4f, 0.02f, -14.4f);
+        _score = GameObject.Find("Score").GetComponent<Score>();
     }
 
     // Update is called once per frame
@@ -124,16 +130,21 @@ public class Health : MonoBehaviour
                     {
                         Explosion.SetActive(true);
                     }
+                    _score.AddPoints(-LosePointOnDiePlayer);
                 }
             }
             else
             {
+                updateEnemyList.AddDestroyingItem(gameObject.GetComponent<AIRootScript>());
                 if (Explosion)
                 {
                     Explosion.SetActive(true);
                 }
-                updateEnemyList.AddDestroyingItem(gameObject.GetComponent<AIRootScript>());
-                GameObject.FindGameObjectWithTag("Player").SendMessage("AddMoney", MoneyOnDie);
+                if (tag.Contains("Enemy"))
+                {
+                    GameObject.FindGameObjectWithTag("Player").SendMessage("AddMoney", MoneyOnDie);
+                    _score.AddPoints(PointOnDieMinion);
+                }
 
                 // Spawn the sound object
                 GameObject explosionSound = new GameObject("bulletSound");
@@ -152,6 +163,8 @@ public class Health : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         Debug.Log("respawn");
         Explosion.SetActive(false);
+        _countdown = true;
+        yield return new WaitForSeconds(WaitAfterRespawn);
         Vector3 pos = GameObject.Find("PlayerBase").transform.Find("Spawner").transform.position;
         transform.position = pos;
         health = MaxHealth;
@@ -196,4 +209,5 @@ public class Health : MonoBehaviour
     {
         _bar = HealthBar.transform.Find("bar upgraded").Find("Image").GetComponent<Image>();
     }
+
 }

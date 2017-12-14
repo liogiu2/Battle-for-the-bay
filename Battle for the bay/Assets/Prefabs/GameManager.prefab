@@ -164,21 +164,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d8411c1d86d0554190a6f7dcbaa3967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeEffectPrefab: {fileID: 0}
-  tower1: {fileID: 0}
-  tower2: {fileID: 0}
-  tower3: {fileID: 0}
-  fort1: {fileID: 0}
-  fort2: {fileID: 0}
-  fort3: {fileID: 0}
-  ship1: {fileID: 1911794234753684, guid: 3f2a50c500b700144808cedbb521d1eb, type: 2}
+  upgradeEffectPrefab: {fileID: 1247655853185400, guid: bb399c5ea8eed4f4398a581fbe6d3d68,
+    type: 2}
+  towerUpgradeCost: 320000006400000096000000
+  fortUpgradeCost: 320000006400000096000000
+  shipUpgradeCost: 150
   healthBar: {fileID: 0}
   healthBarUpgraded: {fileID: 0}
   ship1Prefab: {fileID: 0}
   ship2Prefab: {fileID: 0}
-  towerLevel: 1
+  towersLevel: 1
+  towersMaxLevel: 3
   fortLevel: 1
+  fortMaxLevel: 3
   shipLevel: 1
+  shipMaxLevel: 2
 --- !u!114 &114393909342687798
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -216,8 +216,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76ce2caeeebadfd428224bc5d8088540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statusPlayer: {fileID: 0}
   volumeSliders: []
   resolutionToggles: []
-  fullscreenToggle: {fileID: 0}
   screenWidths: 
