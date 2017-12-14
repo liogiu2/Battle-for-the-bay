@@ -86,7 +86,7 @@ public class UpgradeSystem : MonoBehaviour
             ResourcesOnIsland.MoneyOnIsland -= towerUpgradeCost[towersLevel - 1];
             foreach (GameObject tower in friendlyTowers)
             {
-                //Debug.LogWarning(tower.transform.parent);
+                Debug.LogWarning(tower);//.transform.parent);
                 GameObject towerCurrentLvl = tower.transform.parent.transform.Find("lvl" + (towersLevel)).gameObject;
                 if (towerCurrentLvl) towerCurrentLvl.SetActive(false);
                 else Debug.Log("Could not find current lvl");
