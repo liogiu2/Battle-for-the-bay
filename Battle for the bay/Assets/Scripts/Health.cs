@@ -13,6 +13,8 @@ public class Health : MonoBehaviour
     public float HealthRecovery;
     public AudioClip DeathSound;
     public GameObject Explosion;
+    public GameObject Smoke;
+    public GameObject Fire;
     public int MoneyOnDie;
     public GameObject HealthBar;
     public Slider minionHealthBar;
@@ -46,12 +48,46 @@ public class Health : MonoBehaviour
         {
             minionHealthBar.value = health / MaxHealth;
         }
+        if (tag == TagCostants.Player)
+        {
+            CheckSmokeAndFire();
+        }
         if (gameObject.tag == "Player" && health < MaxHealth && !_coroutineStarted)
         {
             StartCoroutine(HealthRecoveryRoutine());
         }
     }
 
+    private void CheckSmokeAndFire()
+    {
+        float percentage = (health / MaxHealth) * 100;
+        if (percentage <= 50)
+        {
+            if (!Smoke.activeSelf)
+            {
+                Smoke.SetActive(true);
+            }
+            if (percentage <= 30)
+            {
+                if (!Fire.activeSelf)
+                {
+                    Fire.SetActive(true);
+                }
+            }
+            else if (Fire.activeSelf)
+            {
+                Fire.SetActive(false);
+            }
+        }
+        else if (Smoke.activeSelf)
+        {
+            Smoke.SetActive(false);
+            if (Fire.activeSelf)
+            {
+                Fire.SetActive(false);
+            }
+        }
+    }
     public void DamageOnHit(float DamageOnHit)
     {
         if (!_coroutineStartedRespawn)
@@ -112,20 +148,20 @@ public class Health : MonoBehaviour
 
     private IEnumerator Respawn(Dictionary<string, bool> old)
     {
-        _coroutineStartedRespawn = true;        
+        _coroutineStartedRespawn = true;
         yield return new WaitForSeconds(1.5f);
-        Debug.Log("respawn");        
-        Explosion.SetActive(false);        
-        Vector3 pos = GameObject.Find("PlayerBase").transform.Find("Spawner").transform.position;        
-        transform.position = pos;        
+        Debug.Log("respawn");
+        Explosion.SetActive(false);
+        Vector3 pos = GameObject.Find("PlayerBase").transform.Find("Spawner").transform.position;
+        transform.position = pos;
         health = MaxHealth;
         for (int i = 0; i < transform.childCount; i++)
         {
             GameObject child = transform.GetChild(i).gameObject;
             child.SetActive(old[child.name]);
         }
-        GetComponent<NavMeshAgent>().enabled = true;        
-        GetComponent<MoveInput>().enabled = true;        
+        GetComponent<NavMeshAgent>().enabled = true;
+        GetComponent<MoveInput>().enabled = true;
         GetComponent<MoveInput>().shipPointer.position = pos;
         GetComponent<ShipMovement>().enabled = true;
         _coroutineStartedRespawn = false;
