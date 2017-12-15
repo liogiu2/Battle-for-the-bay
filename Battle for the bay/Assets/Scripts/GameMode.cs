@@ -13,6 +13,10 @@ public class GameMode : MonoBehaviour
         SceneManager.LoadScene(newGameLevel);
     }
 
+    void Start(){
+        GameObject.Find("Score").GetComponent<Score>().ResetPoint();
+    }
+
     private void Update()
     {
         if (!playerBase)
