@@ -352,6 +352,7 @@ public class PlayerAbilities : MonoBehaviour
         rangeSprite.enabled = false;
         lineSprite.enabled = false;
         lineShotAim.SetActive(false);
+        aimMode = 0;
     }
 
     private void playSound(AudioClip audioClip)
