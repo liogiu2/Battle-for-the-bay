@@ -45829,22 +45829,22 @@ Prefab:
     - target: {fileID: 224891657144370476, guid: 9aa462da114b6c649ae3c95e7fffbf73,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1956.3674
+      value: 413.99365
       objectReference: {fileID: 0}
     - target: {fileID: 224173534656516672, guid: 9aa462da114b6c649ae3c95e7fffbf73,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1191.1631
+      value: -351.2107
       objectReference: {fileID: 0}
     - target: {fileID: 224089593058777314, guid: 9aa462da114b6c649ae3c95e7fffbf73,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1191.1632
+      value: -351.21057
       objectReference: {fileID: 0}
     - target: {fileID: 224587629547868142, guid: 9aa462da114b6c649ae3c95e7fffbf73,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1191.1638
+      value: -351.21002
       objectReference: {fileID: 0}
     - target: {fileID: 224473913991841074, guid: 9aa462da114b6c649ae3c95e7fffbf73,
         type: 2}
@@ -45859,7 +45859,27 @@ Prefab:
     - target: {fileID: 224473913991841074, guid: 9aa462da114b6c649ae3c95e7fffbf73,
         type: 2}
       propertyPath: m_LocalPosition.z
-      value: 211.00021
+      value: 211.00076
+      objectReference: {fileID: 0}
+    - target: {fileID: 114882847095731196, guid: 9aa462da114b6c649ae3c95e7fffbf73,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 845494325}
+    - target: {fileID: 114882847095731196, guid: 9aa462da114b6c649ae3c95e7fffbf73,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: resumeGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 114011874514028982, guid: 9aa462da114b6c649ae3c95e7fffbf73,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 845494325}
+    - target: {fileID: 114011874514028982, guid: 9aa462da114b6c649ae3c95e7fffbf73,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: endGame
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9aa462da114b6c649ae3c95e7fffbf73, type: 2}
@@ -46300,6 +46320,12 @@ Prefab:
       propertyPath: fortUpgradeCost.Array.data[2]
       value: 150
       objectReference: {fileID: 0}
+    - target: {fileID: 114886594446059476, guid: 16b3029bb8b2f4cfb940605c7c86d531,
+        type: 2}
+      propertyPath: menuProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 1e7cddf7ed72c684fb929c393630c3c3,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 16b3029bb8b2f4cfb940605c7c86d531, type: 2}
   m_IsPrefabParent: 0
