@@ -41,6 +41,7 @@ public class VisionRange : MonoBehaviour
             // if(currentTarget == null) currentTarget = other.gameObject;
             // else if(currentTarget.tag != "Player" && other.gameObject.tag == "Player") currentTarget = other.gameObject;
             // ai.target = currentTarget;
+            ai.SetDestination(AIRootMovement.DESTINATION.Opponent);
             ai.ChangeState(AIRootMovement.STATE.Chase);
         }
         if (ai.gameObject.tag == "PlayerMinion" && (other.gameObject.tag == "EnemyMinion" || other.gameObject.tag == "Enemy" || other.gameObject.tag == "EnemyTower"))
@@ -49,6 +50,7 @@ public class VisionRange : MonoBehaviour
             // if(currentTarget == null) currentTarget = other.gameObject;
             // else if(currentTarget.tag != "Enemy" && other.gameObject.tag == "Enemy") currentTarget = other.gameObject;
             // ai.target = currentTarget;
+            ai.SetDestination(AIRootMovement.DESTINATION.Opponent);
             ai.ChangeState(AIRootMovement.STATE.Chase);
         }
     }

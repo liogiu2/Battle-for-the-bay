@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.PostProcessing;
+using UnityEngine.SceneManagement;
 
 public class MenuHandler : MonoBehaviour {
 
@@ -10,21 +12,36 @@ public class MenuHandler : MonoBehaviour {
     private GameObject hud;
     private float health;
     private GameObject playerBase;
+    private GameObject enemyBase;
+    
     private float initHealth;
 
     private Image statusPlayer;
+    private Image statusEnemy;
     public Slider[] volumeSliders;
     public Toggle[] resolutionToggles;
     private Toggle fullscreenToggle;
     public int[] screenWidths;
     int activeScreenResIndex;
 
+    public PostProcessingProfile menuProfile;
+    private PostProcessingProfile currentProfile;
+
+    private GameObject mainCamera;
+
+    // Screens
+    private GameObject MainPage;
+    private GameObject Options;
+    private GameObject Controls;
+
     // Use this for initialization
     void Start () {
         hud = GameObject.Find("HUD").gameObject;                
         menu = GameObject.Find("Menu").gameObject;
         statusPlayer = hud.transform.Find("Canvas/Panel/StatusBar/ContainerPlayer/PlayerStatus").gameObject.GetComponent<Image>();
-        fullscreenToggle = menu.transform.Find("Canvas/Panel/Options/Screen/Fullscreen").gameObject.GetComponent<Toggle>();
+        statusEnemy = hud.transform.Find("Canvas/Panel/StatusBar/ContainerEnemy/EnemyStatus").gameObject.GetComponent<Image>();
+        
+        fullscreenToggle = menu.transform.Find("Canvas/Panel/Options/leftPanel").gameObject.GetComponent<Toggle>();
         menu.transform.Find("Canvas/Panel/Options").gameObject.SetActive(false);
         menu.SetActive(false);
         isOpen = false;
@@ -46,7 +63,19 @@ public class MenuHandler : MonoBehaviour {
             fullscreenToggle.isOn = isFullscreen;
 
         playerBase = GameObject.Find("PlayerBase").gameObject;
+        enemyBase = GameObject.Find("EnemyBase").gameObject;
         health = 0;
+
+        mainCamera = GameObject.Find("Main Camera");
+        currentProfile = mainCamera.GetComponent<PostProcessingBehaviour>().profile;
+
+        MainPage = menu.transform.Find("Canvas/Panel/MainPage").gameObject;
+        Options = menu.transform.Find("Canvas/Panel/Options").gameObject;
+        Controls = menu.transform.Find("Canvas/Panel/Controls").gameObject;
+
+        MainPage.SetActive(true);
+        Options.SetActive(false);
+        Controls.SetActive(false);
     }
 
     // Update is called once per frame
@@ -56,15 +85,23 @@ public class MenuHandler : MonoBehaviour {
         {
             if (isOpen)
             {
-                isOpen = false;
-                menu.SetActive(false);
-                hud.SetActive(true);
+                if (MainPage.activeSelf)
+                {
+                    resumeGame();
+                } else
+                {
+                    MainPage.SetActive(true);
+                    Options.SetActive(false);
+                    Controls.SetActive(false);
+                }
             }
             else
             {
+                Time.timeScale = 0.0f;
                 isOpen = true;
                 menu.SetActive(true);
                 hud.SetActive(false);
+                mainCamera.GetComponent<PostProcessingBehaviour>().profile = menuProfile;
             }
         }
 
@@ -73,6 +110,10 @@ public class MenuHandler : MonoBehaviour {
         health = playerBase.GetComponent<structureHealth>().health;
         initHealth = playerBase.GetComponent<structureHealth>().initHealth;
         statusPlayer.fillAmount = health / initHealth;
+
+        health = enemyBase.GetComponent<structureHealth>().health;
+        initHealth = enemyBase.GetComponent<structureHealth>().initHealth;
+        statusEnemy.fillAmount = health / initHealth;
     }
 
     public void SetScreenResolution(int i)
@@ -117,5 +158,20 @@ public class MenuHandler : MonoBehaviour {
 
         PlayerPrefs.SetInt("fullscreen", ((isFullscreen) ? 1 : 0));
         PlayerPrefs.Save();
+    }
+
+    public void resumeGame()
+    {
+        isOpen = false;
+        menu.SetActive(false);
+        hud.SetActive(true);
+
+        mainCamera.GetComponent<PostProcessingBehaviour>().profile = currentProfile;
+        Time.timeScale = 1.0f;
+    }
+
+    public void endGame()
+    {
+        SceneManager.LoadScene(3);
     }
 }

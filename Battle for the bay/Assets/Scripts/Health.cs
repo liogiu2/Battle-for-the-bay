@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+//using UnityEngine.SceneManagement;
+using UnityEngine.AI;
+using System;
+using mixpanel;
 
 public class Health : MonoBehaviour
 {
@@ -11,25 +14,40 @@ public class Health : MonoBehaviour
     public float HealthRecovery;
     public AudioClip DeathSound;
     public GameObject Explosion;
+    public GameObject Smoke;
+    public GameObject Fire;
     public int MoneyOnDie;
+    public int WaitAfterRespawn = 5;
     public GameObject HealthBar;
     public Slider minionHealthBar;
     public bool GodMode = false;
+    public int LosePointOnDiePlayer = 0;
+    public int PointOnDieMinion = 10;
+    public Font font;
 
     private UpdateEnemyList updateEnemyList;
     private bool _coroutineStarted = false;
+    private bool _coroutineStartedRespawn = false;
+
     private Image _bar;
+    private Vector3 _startPosition;
+    private Score _score;
+    private bool _countdown = false;
+    private float TimeLeft = 5;
 
 
     // Use this for initialization
     void Start()
     {
+        Mixpanel.Track("Plan Selected");
         updateEnemyList = GameObject.Find("GameManager").GetComponent<UpdateEnemyList>();
         if (HealthBar)
         {
             _bar = HealthBar.transform.Find("bar").Find("Image").GetComponent<Image>();
             _bar.fillAmount = 1;
         }
+        _startPosition = new Vector3(-73.4f, 0.02f, -14.4f);
+        _score = GameObject.Find("Score").GetComponent<Score>();
     }
 
     // Update is called once per frame
@@ -40,15 +58,53 @@ public class Health : MonoBehaviour
         {
             minionHealthBar.value = health / MaxHealth;
         }
+        if (tag == TagCostants.Player)
+        {
+            CheckSmokeAndFire();
+        }
         if (gameObject.tag == "Player" && health < MaxHealth && !_coroutineStarted)
         {
             StartCoroutine(HealthRecoveryRoutine());
         }
     }
 
+    private void CheckSmokeAndFire()
+    {
+        float percentage = (health / MaxHealth) * 100;
+        if (health > 1 && Smoke && Fire)
+        {
+            if (percentage <= 50)
+            {
+                if (!Smoke.activeSelf)
+                {
+                    Smoke.SetActive(true);
+                }
+                if (percentage <= 30)
+                {
+                    if (!Fire.activeSelf)
+                    {
+                        Fire.SetActive(true);
+                    }
+                }
+                else if (Fire.activeSelf)
+                {
+                    Fire.SetActive(false);
+                }
+            }
+            else if (Smoke.activeSelf)
+            {
+                Smoke.SetActive(false);
+                if (Fire.activeSelf)
+                {
+                    Fire.SetActive(false);
+                }
+            }
+        }
+    }
     public void DamageOnHit(float DamageOnHit)
     {
-        health -= DamageOnHit;
+        if (!_coroutineStartedRespawn)
+            health -= DamageOnHit;
         if (gameObject.tag == "Player" && HealthBar)
         {
             UpdateHeathBar();
@@ -61,20 +117,41 @@ public class Health : MonoBehaviour
                 if (GodMode)
                 {
                     health = 100;
+                    return;
                 }
-                if (Explosion)
+                if (!_coroutineStartedRespawn)
                 {
-                    Explosion.SetActive(true);
+                    GetComponent<CollectResources>().Money = 0;
+                    GetComponent<NavMeshAgent>().enabled = false;
+                    GetComponent<MoveInput>().enabled = false;
+                    GetComponent<ShipMovement>().enabled = false;
+                    Dictionary<string, bool> old = new Dictionary<string, bool>();
+                    for (int i = 0; i < transform.childCount; i++)
+                    {
+                        GameObject child = transform.GetChild(i).gameObject;
+                        old.Add(child.name, child.activeSelf);
+                        child.SetActive(false);
+                    }
+                    StartCoroutine(Respawn(old));
+                    if (Explosion)
+                    {
+                        Explosion.SetActive(true);
+                    }
+                    _score.AddPoints(-LosePointOnDiePlayer);
                 }
             }
             else
             {
+                updateEnemyList.AddDestroyingItem(gameObject.GetComponent<AIRootScript>());
                 if (Explosion)
                 {
                     Explosion.SetActive(true);
                 }
-                updateEnemyList.AddDestroyingItem(gameObject.GetComponent<AIRootScript>());
-                GameObject.FindGameObjectWithTag("Player").SendMessage("AddMoney", MoneyOnDie);
+                if (tag.Contains("Enemy"))
+                {
+                    GameObject.FindGameObjectWithTag("Player").SendMessage("AddMoney", MoneyOnDie);
+                    _score.AddPoints(PointOnDieMinion);
+                }
 
                 // Spawn the sound object
                 GameObject explosionSound = new GameObject("bulletSound");
@@ -85,6 +162,32 @@ public class Health : MonoBehaviour
                 Destroy(gameObject, 0.2f);
             }
         }
+    }
+
+    private IEnumerator Respawn(Dictionary<string, bool> old)
+    {
+        _coroutineStartedRespawn = true;
+        yield return new WaitForSeconds(1.5f);
+        Debug.Log("respawn");
+        health = MaxHealth;        
+        Vector3 pos = GameObject.Find("PlayerBase").transform.Find("Spawner").transform.position;
+        transform.position = pos;
+        Explosion.SetActive(false);
+        TimeLeft = 5f;
+        _countdown = true;
+        yield return new WaitForSeconds(WaitAfterRespawn - 2.5f);
+        _countdown = false;
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            GameObject child = transform.GetChild(i).gameObject;
+            child.SetActive(old[child.name]);
+        }
+        GetComponent<NavMeshAgent>().enabled = true;
+        GetComponent<MoveInput>().enabled = true;
+        GetComponent<MoveInput>().setPointer(pos);
+        GetComponent<ShipMovement>().enabled = true;
+        _coroutineStartedRespawn = false;
+
     }
 
     private IEnumerator HealthRecoveryRoutine()
@@ -115,4 +218,19 @@ public class Health : MonoBehaviour
     {
         _bar = HealthBar.transform.Find("bar upgraded").Find("Image").GetComponent<Image>();
     }
+
+    void OnGUI()
+    {
+        if (_countdown)
+        {
+            var centeredStyle = GUI.skin.GetStyle("Label");
+            centeredStyle.alignment = TextAnchor.UpperCenter;
+            centeredStyle.font = font;
+            centeredStyle.fontSize = 20;
+            TimeLeft = (TimeLeft - Time.deltaTime) > 0f ? (TimeLeft - Time.deltaTime) : 0f;
+            string app = "Respawn in: " + Math.Round(TimeLeft, 2).ToString() + "s";
+            GUI.Label(new Rect(Screen.width / 2 - 50, Screen.height / 2 - 25, 100, 50), app, centeredStyle);
+        }
+    }
+
 }

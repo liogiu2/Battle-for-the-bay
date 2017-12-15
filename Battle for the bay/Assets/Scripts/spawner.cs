@@ -2,56 +2,44 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class spawner : MonoBehaviour {
+public class spawner : MonoBehaviour
+{
 
     public float SecondForSpawn;
     public GameObject EnemyGameobject;
     public int spawnCount = 1;
 
-    private bool _corutineStarted = false;
-    private bool _spawning = true;
-    private float range = 10.0f;
-
     private Vector3 initPos;
 
 
     // Use this for initialization
-    void Start() { 
+    void Start()
+    {
         initPos = transform.position;
-        StartSpawing();
-
-        for (int i = 0; i < spawnCount; i++)
-        {
-            StartCoroutine(SpawnEnemyCoroutine());
-        }
+        StartCoroutine(SpawnEnemyCoroutine());
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     private IEnumerator SpawnEnemyCoroutine()
     {
-        _corutineStarted = true;
-        while (_spawning)
+        while (true)
         {
-            if (EnemyGameobject)
+            for (int i = 0; i < spawnCount; i++)
             {
-                GameObject enemy = (GameObject)Instantiate(EnemyGameobject);
-                enemy.transform.position = initPos;
-                enemy.transform.rotation = Quaternion.identity;
+                if (EnemyGameobject)
+                {
+                    GameObject enemy = (GameObject)Instantiate(EnemyGameobject);
+                    enemy.transform.position = initPos;
+                    enemy.transform.rotation = Quaternion.identity;
+                }
+                yield return new WaitForSeconds(.5f);
             }
             yield return new WaitForSeconds(SecondForSpawn);
-        }
-        _corutineStarted = false;
-    }
-
-    public void StartSpawing()
-    {
-        if (!_corutineStarted)
-        {
-            _spawning = true;
         }
     }
 }
