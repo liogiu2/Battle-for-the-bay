@@ -55,17 +55,17 @@ public class MoveInput : MonoBehaviour
 
                 }
 
-                if (hit.collider.tag == "EnemyMinion")
-                {
-                    if (rootScript.TargetEnemy)
-                    {
-                        rootScript.TargetEnemy.SendMessage("DeActivateTarget");
-                        rootScript.StopCorutineFire();
-                    }
-                    GameObject Ship = hit.collider.gameObject;
-                    Ship.SendMessage("ActivateTarget");
-                    rootScript.TargetEnemy = Ship;
-                }
+                // if (hit.collider.tag == "EnemyMinion")
+                // {
+                //     if (rootScript.TargetEnemy)
+                //     {
+                //         rootScript.TargetEnemy.SendMessage("DeActivateTarget");
+                //         rootScript.StopCorutineFire();
+                //     }
+                //     GameObject Ship = hit.collider.gameObject;
+                //     Ship.SendMessage("ActivateTarget");
+                //     rootScript.TargetEnemy = Ship;
+                // }
 
                 if (hit.collider.tag == "PlayerBase")
                 {

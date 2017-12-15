@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Score : MonoBehaviour
 {
 
     public float TimeMinutesToFinish = 15;
     public int Points;
+    private bool _done = false;
 
     // Use this for initialization
     void Start()
@@ -18,7 +21,12 @@ public class Score : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.name == "PlayerWon" && !_done)
+        {
+            _done = true;
+            GameObject.Find("Menu").transform.Find("Won").GetComponent<Text>().text = "Yoy won matey!\nScore: "+Points;
+        }
     }
 
     public int GetPoints()
@@ -42,9 +50,10 @@ public class Score : MonoBehaviour
         else
         {
             float lessTime = timeSinceLevelLoad - timeSinceLevelLoad;
-			AddPoints((int)(lessTime * 100));
+            AddPoints((int)(lessTime * 100));
         }
-        if(Points < 0 ){
+        if (Points < 0)
+        {
             Points = 0;
         }
     }
