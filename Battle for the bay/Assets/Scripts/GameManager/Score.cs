@@ -10,7 +10,10 @@ public class Score : MonoBehaviour
 
     public float TimeMinutesToFinish = 15;
     public int Points;
+    private int _finalGamePoint;
     private bool _done = false;
+    private GameObject _score;
+    private GameObject _name;
 
     // Use this for initialization
     void Start()
@@ -27,8 +30,16 @@ public class Score : MonoBehaviour
         if (scene.name == "PlayerWon" && !_done)
         {
             _done = true;
-            GameObject.Find("Menu").transform.Find("Won").GetComponent<Text>().text = "Yoy won matey!\nScore: "+Points;
+            _score = GameObject.Find("Menu").transform.Find("Score").gameObject;
+            _score.transform.Find("Points").GetComponent<Text>().text = _finalGamePoint.ToString();
+            _name = GameObject.Find("Menu").transform.Find("Name").gameObject;
+            _name.transform.Find("Button").GetComponent<Button>().onClick.AddListener(SaveHighScore);
         }
+        else if (scene.name == "PlayerLost" && !_done)
+        {
+            _done = true;
+            Points = 0;
+       }
     }
 
     public int GetPoints()
@@ -58,13 +69,22 @@ public class Score : MonoBehaviour
         {
             Points = 0;
         }
-        SaveHighScore();
+        _finalGamePoint = Points;
+        Points = 0;
     }
 
     private void SaveHighScore()
     {
-        Debug.Log("sending highscore data");
-        UnityWebRequest www = UnityWebRequest.Get("https://fast-lowlands-46452.herokuapp.com/registerScore/unityPlayer/" + Points.ToString());
-        www.SendWebRequest();
+        string unityPlayer = _name.transform.Find("InputName").GetChild(0).GetComponent<InputField>().text;
+        if (unityPlayer != "")
+        {
+            Debug.Log("sending highscore data");
+            UnityWebRequest www = UnityWebRequest.Get("https://fast-lowlands-46452.herokuapp.com/registerScore/" + unityPlayer + "/" + _finalGamePoint.ToString());
+            www.SendWebRequest();
+        }
+    }
+
+    public void ResetPoint(){
+        Points = 0;
     }
 }
