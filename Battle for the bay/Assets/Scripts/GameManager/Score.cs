@@ -14,6 +14,8 @@ public class Score : MonoBehaviour
     private bool _done = false;
     private GameObject _score;
     private GameObject _name;
+    private GameObject _leaderBoard;
+
 
     // Use this for initialization
     void Start()
@@ -34,12 +36,9 @@ public class Score : MonoBehaviour
             _score.transform.Find("Points").GetComponent<Text>().text = _finalGamePoint.ToString();
             _name = GameObject.Find("Menu").transform.Find("Name").gameObject;
             _name.transform.Find("Button").GetComponent<Button>().onClick.AddListener(SaveHighScore);
+            _leaderBoard = GameObject.Find("Menu").transform.Find("OpenLeaderboard").gameObject;
+            _leaderBoard.GetComponent<Button>().onClick.AddListener(OpenLeaderboard);
         }
-        else if (scene.name == "PlayerLost" && !_done)
-        {
-            _done = true;
-            Points = 0;
-       }
     }
 
     public int GetPoints()
@@ -84,7 +83,13 @@ public class Score : MonoBehaviour
         }
     }
 
-    public void ResetPoint(){
+    public void ResetPoint()
+    {
         Points = 0;
+        _done = false;
+    }
+
+    private void OpenLeaderboard(){
+        Application.OpenURL("https://fast-lowlands-46452.herokuapp.com");
     }
 }
