@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
 
 public class Score : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class Score : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        Debug.Log("calling highscorefunction");
         Points = 0;
         DontDestroyOnLoad(this);
     }
@@ -56,5 +58,13 @@ public class Score : MonoBehaviour
         {
             Points = 0;
         }
+        SaveHighScore();
+    }
+
+    private void SaveHighScore()
+    {
+        Debug.Log("sending highscore data");
+        UnityWebRequest www = UnityWebRequest.Get("https://fast-lowlands-46452.herokuapp.com/registerScore/unityPlayer/" + Points.ToString());
+        www.SendWebRequest();
     }
 }
