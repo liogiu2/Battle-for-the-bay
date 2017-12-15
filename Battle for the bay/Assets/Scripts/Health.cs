@@ -5,7 +5,6 @@ using UnityEngine.UI;
 //using UnityEngine.SceneManagement;
 using UnityEngine.AI;
 using System;
-using mixpanel;
 
 public class Health : MonoBehaviour
 {
@@ -39,7 +38,6 @@ public class Health : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Mixpanel.Track("Plan Selected");
         updateEnemyList = GameObject.Find("GameManager").GetComponent<UpdateEnemyList>();
         if (HealthBar)
         {
