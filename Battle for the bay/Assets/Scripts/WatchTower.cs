@@ -9,6 +9,7 @@ public class WatchTower : MonoBehaviour
     public GameObject bulletPrefab;
     public bool friendly = false;
     public bool MultiAttack = false;
+    public int damage = 20;
 
     // Use this for initialization
     void Start()
@@ -74,6 +75,7 @@ public class WatchTower : MonoBehaviour
         Destroy(bullet, 3.0f);
 
         bullet.GetComponent<BulletsBehaviour>().GeneratedTag = gameObject.tag;
+        bullet.GetComponent<BulletsBehaviour>().DamageOnHit = damage;
         //COLOR THE BULLET
         bullet.GetComponent<MeshRenderer>().material.color = Color.black;
 

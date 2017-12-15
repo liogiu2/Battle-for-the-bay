@@ -33,6 +33,7 @@ public class MenuHandler : MonoBehaviour {
     private GameObject MainPage;
     private GameObject Options;
     private GameObject Controls;
+    private Text volumeValueText;
 
     // Use this for initialization
     void Start () {
@@ -42,6 +43,7 @@ public class MenuHandler : MonoBehaviour {
         statusEnemy = hud.transform.Find("Canvas/Panel/StatusBar/ContainerEnemy/EnemyStatus").gameObject.GetComponent<Image>();
         
         fullscreenToggle = menu.transform.Find("Canvas/Panel/Options/leftPanel").gameObject.GetComponent<Toggle>();
+        volumeValueText = menu.transform.Find("Canvas/Panel/Options/leftPanel/VolumeValue").GetComponent<Text>();
         menu.transform.Find("Canvas/Panel/Options").gameObject.SetActive(false);
         menu.SetActive(false);
         isOpen = false;
@@ -126,6 +128,14 @@ public class MenuHandler : MonoBehaviour {
             PlayerPrefs.SetInt("screen res index", activeScreenResIndex);
             PlayerPrefs.Save();
         }
+    }
+
+    public void OnUpdateMasterVolume(float value)
+    {
+        AudioListener.volume = value;
+        volumeValueText.text = "" + (int) (AudioListener.volume*100);
+        Debug.Log("AudioListener.volume: " + AudioListener.volume);
+        //AudioManager.instance.SetVolume(value, AudioManager.AudioChannel.Music);
     }
 
     public void SetMusicVolume(float value)
