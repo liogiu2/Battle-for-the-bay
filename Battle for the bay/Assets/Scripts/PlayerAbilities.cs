@@ -42,8 +42,12 @@ public class PlayerAbilities : MonoBehaviour
     public AudioClip EAudioClip;
     public AudioClip EAudioClip2;
 
+    private int aimingConfig;
+
     void Start()
     {
+        aimingConfig = 0;
+
         cooldownQTimer = 0f;
         cooldownWTimer = 0f;
         cooldownETimer = 0f;
@@ -71,58 +75,100 @@ public class PlayerAbilities : MonoBehaviour
     void Update()
     {
         // Toggling aim mode
-        if (Input.GetKeyDown("q"))
+
+        if (aimingConfig == 1)
         {
-            if (aimMode > 0)
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 100))
             {
-                resetSprites();
+                Vector3 position = new Vector3(hit.point.x, lineShotAim.transform.position.y, hit.point.z);
+                lineShotAim.transform.LookAt(position);
+                if (Input.GetKeyDown("q") && cooldownQTimer == 0f)
+                {
+                    cooldownQTimer = cooldownQ;
+                    fireTowards(lineShotAim.transform.rotation);
+                    clickDelay = true;                    
+                }
+                if (Input.GetKeyDown("w") && cooldownWTimer == 0f)
+                {
+                    cooldownWTimer = cooldownW;
+                    MultiFire(lineShotAim.transform.rotation);
+                    clickDelay = true;
+                }
+                if (Input.GetKeyDown("e") && cooldownETimer == 0f)
+                {
+                    Vector3 centerPosition = transform.localPosition;
+                    float distance = Vector3.Distance(hit.point, centerPosition);
+
+                    if (distance > areaPointerRange) //If the distance is less than the radius, it is already within the circle.
+                    {
+                        Vector3 fromOriginToObject = hit.point - centerPosition;
+                        fromOriginToObject *= areaPointerRange / distance;
+                        areaPointer.position = centerPosition + fromOriginToObject;
+                        areaPointer.position = new Vector3(areaPointer.position.x, transform.position.y, areaPointer.position.z);
+                    }
+                    else
+                    {
+                        areaPointer.position = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+                    }
+                    cooldownETimer = cooldownE;
+
+                    areaAttack(areaPointer.position, lineShotAim.transform.rotation);
+                    clickDelay = true;
+                }
             }
-            if (aimMode != 1)
-            {
-                aimMode = 1;
-                // aimMode = (aimMode == 0) ? 1 : 0;
-                lineShotAim.SetActive(true);
-                // moveInput.enabled = !moveInput.enabled;
-            }
-            else
-            {
-                aimMode = 0;
-            }
-        }
-        else if (Input.GetKeyDown("w"))
+        } else
         {
-            if (aimMode > 0)
+            if (Input.GetKeyDown("q"))
             {
-                resetSprites();
+                {
+                    if (aimMode > 0)
+                    {
+                        resetSprites();
+                    }
+                    if (aimMode != 1)
+                    {
+                        aimMode = 1;
+                        lineShotAim.SetActive(true);
+                    }
+                    else
+                    {
+                        aimMode = 0;
+                    }
+                }
             }
-            if (aimMode != 2)
+            else if (Input.GetKeyDown("w"))
             {
-                aimMode = 2;
-                // aimMode = (aimMode == 0) ? 2 : 0;
-                lineShotAim.SetActive(true);
-                // moveInput.enabled = !moveInput.enable;
+                if (aimMode > 0)
+                {
+                    resetSprites();
+                }
+                if (aimMode != 2)
+                {
+                    aimMode = 2;
+                    lineShotAim.SetActive(true);
+                }
+                else
+                {
+                    aimMode = 0;
+                }
             }
-            else
+            else if (Input.GetKeyDown("e"))
             {
-                aimMode = 0;
-            }
-        }
-        else if (Input.GetKeyDown("e"))
-        {
-            if (aimMode > 0)
-            {
-                resetSprites();
-            }
-            if (aimMode != 3)
-            {
-                aimMode = 3;
-                lineShotAim.SetActive(true);
-                // aimMode = (aimMode == 0) ? 3 : 0;
-                // moveInput.enabled = !moveInput.enabled;
-            }
-            else
-            {
-                aimMode = 0;
+                if (aimMode > 0)
+                {
+                    resetSprites();
+                }
+                if (aimMode != 3)
+                {
+                    aimMode = 3;
+                    lineShotAim.SetActive(true);
+                }
+                else
+                {
+                    aimMode = 0;
+                }
             }
         }
 
@@ -153,7 +199,7 @@ public class PlayerAbilities : MonoBehaviour
                             {
                                 cooldownQTimer = cooldownQ;
                                 fireTowards(lineShotAim.transform.rotation);
-                                // resetSprites();
+                                if (aimingConfig == 0) resetSprites();
                                 clickDelay = true;
                             }
                         }
@@ -169,7 +215,7 @@ public class PlayerAbilities : MonoBehaviour
                             {
                                 cooldownWTimer = cooldownW;
                                 MultiFire(lineShotAim.transform.rotation);
-                                // resetSprites();
+                                if (aimingConfig == 0) resetSprites();
                                 clickDelay = true;
                             }
                         }
@@ -197,7 +243,7 @@ public class PlayerAbilities : MonoBehaviour
                             cooldownETimer = cooldownE;
 
                             areaAttack(areaPointer.position, lineShotAim.transform.rotation);
-                            // resetSprites();
+                            if (aimingConfig == 0) resetSprites();
                             clickDelay = true;
                         }
                         break;
@@ -315,5 +361,11 @@ public class PlayerAbilities : MonoBehaviour
         AudioSource audioSource = explosionSound.AddComponent<AudioSource>();
         Destroy(explosionSound, audioClip.length);
         audioSource.PlayOneShot(audioClip);
+    }
+
+    public void setAimConfig(int conf)
+    {
+        aimingConfig = conf;
+        resetSprites();
     }
 }
