@@ -6,7 +6,7 @@ public class Score : MonoBehaviour
 {
 
     public float TimeMinutesToFinish = 15;
-    public static int Points;
+    public int Points;
 
     // Use this for initialization
     void Start()
@@ -43,6 +43,9 @@ public class Score : MonoBehaviour
         {
             float lessTime = timeSinceLevelLoad - timeSinceLevelLoad;
 			AddPoints((int)(lessTime * 100));
+        }
+        if(Points < 0 ){
+            Points = 0;
         }
     }
 }

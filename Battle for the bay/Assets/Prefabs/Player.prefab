@@ -919,10 +919,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c73916e810f5ce64ca270c7bcf8e6ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipPointer: {fileID: 0}
   shipMovement: {fileID: 114856745083065884}
   minMoveRange: 0
-  cursorSprite: {fileID: 0}
   upgradeCanvas: {fileID: 0}
 --- !u!114 &114455987388131342
 MonoBehaviour:
@@ -943,9 +941,13 @@ MonoBehaviour:
   Smoke: {fileID: 1929576430000370}
   Fire: {fileID: 1841020503318552}
   MoneyOnDie: 0
+  WaitAfterRespawn: 5
   HealthBar: {fileID: 0}
   minionHealthBar: {fileID: 0}
   GodMode: 0
+  LosePointOnDiePlayer: 200
+  PointOnDieMinion: 10
+  font: {fileID: 12800000, guid: a8e19431fadce01448b834045c5653fb, type: 3}
 --- !u!114 &114516890984255286
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -958,7 +960,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotoSpeed: 200
-  shipMovement: {fileID: 0}
   cursorSprite: {fileID: 212872010290612530}
 --- !u!114 &114642925748159340
 MonoBehaviour:

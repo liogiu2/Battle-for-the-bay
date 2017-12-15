@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.AI;
+using System;
 
 
 public class Health : MonoBehaviour
@@ -22,6 +23,7 @@ public class Health : MonoBehaviour
     public bool GodMode = false;
     public int LosePointOnDiePlayer = 0;
     public int PointOnDieMinion = 10;
+    public Font font;
 
     private UpdateEnemyList updateEnemyList;
     private bool _coroutineStarted = false;
@@ -30,7 +32,8 @@ public class Health : MonoBehaviour
     private Image _bar;
     private Vector3 _startPosition;
     private Score _score;
-    private bool _countdown = true;
+    private bool _countdown = false;
+    private float TimeLeft = 5;
 
 
     // Use this for initialization
@@ -67,30 +70,33 @@ public class Health : MonoBehaviour
     private void CheckSmokeAndFire()
     {
         float percentage = (health / MaxHealth) * 100;
-        if (percentage <= 50)
+        if (health > 1 && Smoke && Fire)
         {
-            if (!Smoke.activeSelf)
+            if (percentage <= 50)
             {
-                Smoke.SetActive(true);
-            }
-            if (percentage <= 30)
-            {
-                if (!Fire.activeSelf)
+                if (!Smoke.activeSelf)
                 {
-                    Fire.SetActive(true);
+                    Smoke.SetActive(true);
+                }
+                if (percentage <= 30)
+                {
+                    if (!Fire.activeSelf)
+                    {
+                        Fire.SetActive(true);
+                    }
+                }
+                else if (Fire.activeSelf)
+                {
+                    Fire.SetActive(false);
                 }
             }
-            else if (Fire.activeSelf)
+            else if (Smoke.activeSelf)
             {
-                Fire.SetActive(false);
-            }
-        }
-        else if (Smoke.activeSelf)
-        {
-            Smoke.SetActive(false);
-            if (Fire.activeSelf)
-            {
-                Fire.SetActive(false);
+                Smoke.SetActive(false);
+                if (Fire.activeSelf)
+                {
+                    Fire.SetActive(false);
+                }
             }
         }
     }
@@ -162,12 +168,14 @@ public class Health : MonoBehaviour
         _coroutineStartedRespawn = true;
         yield return new WaitForSeconds(1.5f);
         Debug.Log("respawn");
-        Explosion.SetActive(false);
-        _countdown = true;
-        yield return new WaitForSeconds(WaitAfterRespawn);
+        health = MaxHealth;        
         Vector3 pos = GameObject.Find("PlayerBase").transform.Find("Spawner").transform.position;
         transform.position = pos;
-        health = MaxHealth;
+        Explosion.SetActive(false);
+        TimeLeft = 5f;
+        _countdown = true;
+        yield return new WaitForSeconds(WaitAfterRespawn - 2.5f);
+        _countdown = false;
         for (int i = 0; i < transform.childCount; i++)
         {
             GameObject child = transform.GetChild(i).gameObject;
@@ -208,6 +216,20 @@ public class Health : MonoBehaviour
     public void upgradeHealthBar()
     {
         _bar = HealthBar.transform.Find("bar upgraded").Find("Image").GetComponent<Image>();
+    }
+
+    void OnGUI()
+    {
+        if (_countdown)
+        {
+            var centeredStyle = GUI.skin.GetStyle("Label");
+            centeredStyle.alignment = TextAnchor.UpperCenter;
+            centeredStyle.font = font;
+            centeredStyle.fontSize = 20;
+            TimeLeft = (TimeLeft - Time.deltaTime) > 0f ? (TimeLeft - Time.deltaTime) : 0f;
+            string app = "Respawn in: " + Math.Round(TimeLeft, 2).ToString() + "s";
+            GUI.Label(new Rect(Screen.width / 2 - 50, Screen.height / 2 - 25, 100, 50), app, centeredStyle);
+        }
     }
 
 }
