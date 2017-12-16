@@ -17,6 +17,8 @@ public class Score : MonoBehaviour
     private GameObject _leaderBoard;
     private bool _alreadySent = false;
     private Text _scoreOnGUI;
+    private GameObject _tutorial;
+    private string _oldSceneName;
 
 
     // Use this for initialization
@@ -39,6 +41,15 @@ public class Score : MonoBehaviour
             _scoreOnGUI = null;
         }
         Scene scene = SceneManager.GetActiveScene();
+        if (_oldSceneName != scene.name)
+        {
+            _oldSceneName = scene.name;
+            if (GameObject.Find("GameManager") != null)
+            {
+                _tutorial = GameObject.Find("HUD").transform.Find("Canvas").transform.Find("Panel").transform.Find("Tutorial").gameObject;
+                _tutorial.SetActive(true);
+            }
+        }
         if (scene.name == "PlayerWon" && !_done)
         {
             _done = true;
