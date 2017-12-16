@@ -30,7 +30,7 @@ public class aoeBehavior : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "EnemyMinion") targets.Add(other.gameObject);
+        if (other.tag == "EnemyMinion" || other.tag == "NeutralNPC" ) targets.Add(other.gameObject);
 
         //other.gameObject.SendMessage("DamageOnHit", DamagePerSecond);
 
@@ -43,7 +43,7 @@ public class aoeBehavior : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.tag == "EnemyMinion") targets.Remove(other.gameObject);
+        if (other.tag == "EnemyMinion" || other.tag == "NeutralNPC") targets.Remove(other.gameObject);
     }
 
     IEnumerator burn()

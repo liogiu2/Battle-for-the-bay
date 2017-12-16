@@ -138,6 +138,25 @@ public class Health : MonoBehaviour
                     _score.AddPoints(-LosePointOnDiePlayer);
                 }
             }
+            else if(gameObject.tag == "NeutralNPC"){
+                // if (Explosion)
+                // {
+                //     Explosion.SetActive(true);
+                // }
+                // Spawn the sound object
+                // GameObject explosionSound = new GameObject("bulletSound");
+                // AudioSource audioSource = explosionSound.AddComponent<AudioSource>();
+                // Destroy(explosionSound, DeathSound.length);
+                // audioSource.PlayOneShot(DeathSound);
+                //CREATE THE BULLET
+                var bloodPool = (GameObject)Instantiate(
+                    Explosion,
+                    transform.position,
+                    Quaternion.identity);
+                Destroy(bloodPool, 2.0f);
+
+                Destroy(gameObject);
+            }
             else
             {
                 updateEnemyList.AddDestroyingItem(gameObject.GetComponent<AIRootScript>());
