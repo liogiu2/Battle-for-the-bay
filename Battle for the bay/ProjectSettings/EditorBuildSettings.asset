@@ -9,11 +9,8 @@ EditorBuildSettings:
     path: Assets/GameEntrance.unity
     guid: d56fc29bd7f261347aad8263159fca3c
   - enabled: 1
-    path: Assets/GiulioMain.unity
-    guid: 05367d5f5a973457691d33841d615acc
-  - enabled: 0
     path: Assets/michelangeloMain.unity
-    guid: 04dd8110e0489554cacaf07560d4dd0a
+    guid: 71b24c2213a6fa848949ff72df383223
   - enabled: 1
     path: Assets/PlayerWon.unity
     guid: 640e2be390042dc4bbfd3d072c5a5c0b

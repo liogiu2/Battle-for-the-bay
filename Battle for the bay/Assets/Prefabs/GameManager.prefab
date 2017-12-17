@@ -173,7 +173,12 @@ MonoBehaviour:
   healthBarUpgraded: {fileID: 0}
   ship1Prefab: {fileID: 0}
   ship2Prefab: {fileID: 0}
-  towersLevel: 1
+  enemyTowersUpgradeTime:
+  - 150
+  - 300
+  enemyMinionsUpgradeTime: 150
+  friendlyTowersLevel: 0
+  enemyTowersLevel: 0
   towersMaxLevel: 3
   fortLevel: 1
   fortMaxLevel: 3
@@ -219,3 +224,4 @@ MonoBehaviour:
   volumeSliders: []
   resolutionToggles: []
   screenWidths: 
+  menuProfile: {fileID: 11400000, guid: 1e7cddf7ed72c684fb929c393630c3c3, type: 2}

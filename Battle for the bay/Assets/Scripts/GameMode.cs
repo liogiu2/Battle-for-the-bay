@@ -19,8 +19,8 @@ public class GameMode : MonoBehaviour
     void Start()
     {
         GameObject.Find("Score").GetComponent<Score>().ResetPoint();
-        _tutorial = GameObject.Find("HUD").transform.Find("Canvas").transform.Find("Panel").transform.Find("Tutorial").gameObject;
-        GameObject.Find("HUD").transform.Find("Canvas").transform.Find("Panel").transform.Find("Tutorial").transform.Find("Button").GetComponent<Button>().onClick.AddListener(StopPause);
+        _tutorial = GameObject.Find("HUD").transform.Find("Canvas").transform.Find("Tutorial").gameObject;
+        GameObject.Find("HUD").transform.Find("Canvas").transform.Find("Tutorial").transform.Find("Button").GetComponent<Button>().onClick.AddListener(StopPause);
         GamePaused = true;
     }
 

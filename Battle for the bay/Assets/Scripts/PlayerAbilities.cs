@@ -122,21 +122,20 @@ public class PlayerAbilities : MonoBehaviour
         {
             if (Input.GetKeyDown("q"))
             {
+                if (aimMode > 0)
                 {
-                    if (aimMode > 0)
-                    {
-                        resetSprites();
-                    }
-                    if (aimMode != 1)
-                    {
-                        aimMode = 1;
-                        lineShotAim.SetActive(true);
-                    }
-                    else
-                    {
-                        aimMode = 0;
-                    }
+                    resetSprites();
                 }
+                if (aimMode != 1)
+                {
+                    aimMode = 1;
+                    lineShotAim.SetActive(true);
+                }
+                else
+                {
+                    aimMode = 0;
+                    resetSprites();
+                }   
             }
             else if (Input.GetKeyDown("w"))
             {
@@ -152,6 +151,7 @@ public class PlayerAbilities : MonoBehaviour
                 else
                 {
                     aimMode = 0;
+                    resetSprites();
                 }
             }
             else if (Input.GetKeyDown("e"))
@@ -168,6 +168,7 @@ public class PlayerAbilities : MonoBehaviour
                 else
                 {
                     aimMode = 0;
+                    resetSprites();
                 }
             }
         }
@@ -347,12 +348,12 @@ public class PlayerAbilities : MonoBehaviour
 
     private void resetSprites()
     {
-        // aimMode = 0;
+        Debug.Log("resetting sprites");
+        aimMode = 0;
         areaSprite.enabled = false;
         rangeSprite.enabled = false;
         lineSprite.enabled = false;
         lineShotAim.SetActive(false);
-        aimMode = 0;
     }
 
     private void playSound(AudioClip audioClip)

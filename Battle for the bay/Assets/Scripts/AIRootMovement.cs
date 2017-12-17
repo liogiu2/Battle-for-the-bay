@@ -223,10 +223,14 @@ public class AIRootMovement : MonoBehaviour
     {
         targetsInVision.RemoveAll(item => item == null);
         GameObject opponent = (gameObject.tag == "EnemyMinion") ? targetsInVision.Find(item => item.tag == "Player") : targetsInVision.Find(item => item.tag == "Enemy");
+        GameObject opponentMinion = (gameObject.tag == "EnemyMinion") ? targetsInVision.Find(item => item.tag == "PlayerMinion") : targetsInVision.Find(item => item.tag == "EnemyMinion");
 
         if (opponent != null)
         {
             target = opponent;
+        }
+        else if(opponentMinion != null){
+            target = opponentMinion;
         }
         else if (targetsInVision.Count > 0)
         {

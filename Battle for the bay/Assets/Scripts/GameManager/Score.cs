@@ -26,7 +26,10 @@ public class Score : MonoBehaviour
     {
         Points = 0;
         DontDestroyOnLoad(this);
-        _scoreOnGUI = GameObject.Find("HUD").transform.Find("Canvas").transform.Find("Panel").transform.Find("Score").transform.Find("ScoreLabel").GetComponent<Text>();
+        if (GameObject.Find("HUD"))
+        {
+            _scoreOnGUI = GameObject.Find("HUD").transform.Find("Canvas").transform.Find("Panel").transform.Find("Score").transform.Find("ScoreLabel").GetComponent<Text>();
+        }
     }
 
     // Update is called once per frame
@@ -43,10 +46,11 @@ public class Score : MonoBehaviour
         Scene scene = SceneManager.GetActiveScene();
         if (_oldSceneName != scene.name)
         {
+            Time.timeScale = 1f;
             _oldSceneName = scene.name;
             if (GameObject.Find("GameManager") != null)
             {
-                _tutorial = GameObject.Find("HUD").transform.Find("Canvas").transform.Find("Panel").transform.Find("Tutorial").gameObject;
+                _tutorial = GameObject.Find("HUD").transform.Find("Canvas").transform.Find("Tutorial").gameObject;
                 _tutorial.SetActive(true);
             }
         }

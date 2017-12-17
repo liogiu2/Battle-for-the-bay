@@ -41,6 +41,8 @@ public class CollectResources : MonoBehaviour
     {
         Money += MoneyForTreasure;
         Debug.Log("Got Treasure");
+        AudioSource coinsEffect = GetComponent<AudioSource>();
+        coinsEffect.Play();
     }
 
     public void inIsland()

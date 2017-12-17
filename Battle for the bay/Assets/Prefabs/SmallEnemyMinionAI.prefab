@@ -300,8 +300,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1571076837685520}
-  m_LocalRotation: {x: -0, y: 0.07271123, z: -0, w: -0.997353}
-  m_LocalPosition: {x: 52.19371, y: 7.506204e-16, z: -49.918594}
+  m_LocalRotation: {x: -0, y: 0.90699875, z: -0, w: -0.42113334}
+  m_LocalPosition: {x: 52.767784, y: 6.7339294e-16, z: -48.449455}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4848236017841430}
@@ -312,7 +312,7 @@ Transform:
   - {fileID: 224617889979144552}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -130.188, z: 0}
 --- !u!4 &4406935269527120
 Transform:
   m_ObjectHideFlags: 1
@@ -519,7 +519,9 @@ MonoBehaviour:
   TargetEnemy: {fileID: 0}
   bulletPrefab: {fileID: 1206017651612816, guid: bc82d198bd7be3f4fad1f37ca3322fc2,
     type: 2}
-  BulletSpeed: 5
+  bulletSoundPrefab: {fileID: 1039695625498826, guid: 519434dc33c2a6745a079c82b298b1ee,
+    type: 2}
+  BulletSpeed: 10
   FireAudioClip: {fileID: 8300000, guid: 15b61cecc9c413944b23744fbd523914, type: 3}
 --- !u!114 &114292342245237744
 MonoBehaviour:
@@ -532,15 +534,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f8d75d3952f59f42a4fea22286ab09a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  MaxHealth: 100
+  health: 200
+  MaxHealth: 200
   HealthRecovery: 1
-  DeathSound: {fileID: 8300000, guid: 3c495268ef48e6940b71d7cc67f524ad, type: 3}
+  deathSoundPrefab: {fileID: 1776450049702432, guid: eaaac9b537ede7146816a47ed4a5c8fc,
+    type: 2}
   Explosion: {fileID: 1496793775603666}
+  Smoke: {fileID: 0}
+  Fire: {fileID: 0}
   MoneyOnDie: 5
+  WaitAfterRespawn: 5
   HealthBar: {fileID: 0}
   minionHealthBar: {fileID: 114345060737753768}
   GodMode: 0
+  LosePointOnDiePlayer: 0
+  PointOnDieMinion: 10
+  font: {fileID: 0}
 --- !u!114 &114345060737753768
 MonoBehaviour:
   m_ObjectHideFlags: 1

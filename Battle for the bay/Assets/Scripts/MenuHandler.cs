@@ -36,6 +36,7 @@ public class MenuHandler : MonoBehaviour
     private GameObject Controls;
     private Text volumeValueText;
     private GameMode _gameMode;
+    public GameObject panel;
 
     // Use this for initialization
     void Start()
@@ -45,7 +46,7 @@ public class MenuHandler : MonoBehaviour
         statusPlayer = hud.transform.Find("Canvas/Panel/StatusBar/ContainerPlayer/PlayerStatus").gameObject.GetComponent<Image>();
         statusEnemy = hud.transform.Find("Canvas/Panel/StatusBar/ContainerEnemy/EnemyStatus").gameObject.GetComponent<Image>();
 
-        fullscreenToggle = menu.transform.Find("Canvas/Panel/Options/leftPanel").gameObject.GetComponent<Toggle>();
+        fullscreenToggle = menu.transform.Find("Canvas/Panel/Options/leftPanel/Toggle").gameObject.GetComponent<Toggle>();
         volumeValueText = menu.transform.Find("Canvas/Panel/Options/leftPanel/VolumeValue").GetComponent<Text>();
         menu.transform.Find("Canvas/Panel/Options").gameObject.SetActive(false);
         menu.SetActive(false);
@@ -178,15 +179,17 @@ public class MenuHandler : MonoBehaviour
     public void resumeGame()
     {
         isOpen = false;
+        panel.SetActive(true);
         menu.SetActive(false);
         hud.SetActive(true);
 
-        mainCamera.GetComponent<PostProcessingBehaviour>().profile = currentProfile;
         _gameMode.StopPause();
+        mainCamera.GetComponent<PostProcessingBehaviour>().profile = currentProfile;
     }
 
     public void endGame()
     {
+        _gameMode.StopPause();
         SceneManager.LoadScene(3);
     }
 }

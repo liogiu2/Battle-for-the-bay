@@ -8,15 +8,24 @@ public class structureHealth : MonoBehaviour
     public float health = 200f;
     public float initHealth = 200f;
     public GameObject Explosion;
+    public GameObject destructionSoundPrefab;
     public Slider structureHealthBar;
     public int PointsOnDieTower = 100;
     private Score _score;
+    private GameObject _allertImage;
 
     // Use this for initialization
     void Start()
     {
         initHealth = health;
         _score = GameObject.Find("Score").GetComponent<Score>();
+        _allertImage = GameObject.Find("HUD").transform.Find("Canvas").transform.Find("Panel").transform.Find("StatusBar").transform.Find("ContainerPlayer").transform.Find("BaseUnderAttack").gameObject;
+        _allertImage.SetActive(false);
+    }
+
+    void OnEnable()
+    {
+
     }
 
     // Update is called once per frame
@@ -31,6 +40,16 @@ public class structureHealth : MonoBehaviour
             _score.AddPoints(PointsOnDieTower);
             var bang = (GameObject)Instantiate(Explosion, transform.position, transform.rotation);
             Destroy(bang, 3.5f);
+
+            if (destructionSoundPrefab)
+            {
+                GameObject deathSound = Instantiate(
+                    destructionSoundPrefab,
+                    transform.position,
+                    Quaternion.identity);
+                Destroy(deathSound, destructionSoundPrefab.gameObject.GetComponent<AudioSource>().clip.length);
+            }
+
             Destroy(gameObject, 0.1f);
         }
     }
@@ -38,5 +57,16 @@ public class structureHealth : MonoBehaviour
     public void DamageOnHit(float damage)
     {
         this.health -= damage;
+        if (!_allertImage.activeSelf && (name == "PlayerBase" || transform.parent.name == "PlayerBase"))
+        {
+            _allertImage.SetActive(true);
+            StartCoroutine(DeactivateAfterSecond());
+        }
+    }
+
+    private IEnumerator DeactivateAfterSecond()
+    {
+        yield return new WaitForSeconds(2f);
+        _allertImage.SetActive(false);
     }
 }
