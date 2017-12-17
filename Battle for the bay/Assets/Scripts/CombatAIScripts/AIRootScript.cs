@@ -14,6 +14,7 @@ public class AIRootScript : MonoBehaviour
     public List<GameObject> detected, enemies;
     public GameObject TargetEnemy;
     public GameObject bulletPrefab;
+    public GameObject bulletSoundPrefab;
     public float BulletSpeed;
 
     public AudioClip FireAudioClip;
@@ -35,7 +36,7 @@ public class AIRootScript : MonoBehaviour
     {
         detected.RemoveAll(item => item == null);
         enemies.RemoveAll(item => item == null);
-        
+
         //Let extended class to do something
         OnUpdate();
 
@@ -79,19 +80,32 @@ public class AIRootScript : MonoBehaviour
             Vector3 bulletPosition = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
 
             //CREATE THE BULLET
-            var bullet = (GameObject)Instantiate(
+            GameObject bullet = Instantiate(
                 bulletPrefab,
                 bulletPosition,
-                //Quaternion.Euler(-10, transform.rotation.y - 90, 0));
                 Quaternion.identity);
             Destroy(bullet, 4.0f);
 
-            // Spawn the sound object
-            GameObject bulletSound = new GameObject("bulletSound");
-            AudioSource audioSource = bulletSound.AddComponent<AudioSource>();
-            Destroy(bulletSound, FireAudioClip.length);
-            audioSource.PlayOneShot(FireAudioClip);
 
+
+            // Spawn the sound object
+            if (bulletSoundPrefab)
+            {
+                GameObject bulletSound = Instantiate(
+                    bulletSoundPrefab,
+                    bulletPosition,
+                    Quaternion.identity);
+                Destroy(bulletSound, bulletSoundPrefab.gameObject.GetComponent<AudioSource>().clip.length);
+            }
+            // GameObject bulletSound = new GameObject("bulletSound");
+            // AudioSource audioSource = bulletSound.AddComponent<AudioSource>();
+            // audioSource.clip = FireAudioClip;
+            // audioSource.spatialBlend = 1.0f;
+            // audioSource.rolloffMode = AudioRolloffMode.Linear;
+            // audioSource.maxDistance = 10;
+            // Destroy(bulletSound, FireAudioClip.length);
+            // // audioSource.PlayOneShot(FireAudioClip);
+            // audioSource.Play();
 
             bullet.GetComponent<BulletsBehaviour>().GeneratedTag = gameObject.tag;
             //COLOR THE BULLET

@@ -11,7 +11,8 @@ public class Health : MonoBehaviour
     public float health;
     public float MaxHealth;
     public float HealthRecovery;
-    public AudioClip DeathSound;
+    public GameObject deathSoundPrefab;
+    // public AudioClip DeathSound;
     public GameObject Explosion;
     public GameObject Smoke;
     public GameObject Fire;
@@ -151,7 +152,7 @@ public class Health : MonoBehaviour
                 //CREATE THE BULLET
                 var bloodPool = (GameObject)Instantiate(
                     Explosion,
-                    transform.position,
+                    new Vector3(transform.position.x, transform.position.y + 0.3f, transform.position.z),
                     Quaternion.identity);
                 Destroy(bloodPool, 2.0f);
 
@@ -171,10 +172,21 @@ public class Health : MonoBehaviour
                 }
 
                 // Spawn the sound object
-                GameObject explosionSound = new GameObject("bulletSound");
-                AudioSource audioSource = explosionSound.AddComponent<AudioSource>();
-                Destroy(explosionSound, DeathSound.length);
-                audioSource.PlayOneShot(DeathSound);
+
+                // Spawn the sound object
+                if (deathSoundPrefab)
+                {
+                    GameObject deathSound = Instantiate(
+                        deathSoundPrefab,
+                        transform.position,
+                        Quaternion.identity);
+                    Destroy(deathSound, deathSoundPrefab.gameObject.GetComponent<AudioSource>().clip.length);
+                }
+
+                // GameObject explosionSound = new GameObject("bulletSound");
+                // AudioSource audioSource = explosionSound.AddComponent<AudioSource>();
+                // Destroy(explosionSound, DeathSound.length);
+                // audioSource.PlayOneShot(DeathSound);
 
                 Destroy(gameObject, 0.2f);
             }

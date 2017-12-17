@@ -8,6 +8,7 @@ public class structureHealth : MonoBehaviour
     public float health = 200f;
     public float initHealth = 200f;
     public GameObject Explosion;
+    public GameObject destructionSoundPrefab;
     public Slider structureHealthBar;
     public int PointsOnDieTower = 100;
     private Score _score;
@@ -31,6 +32,16 @@ public class structureHealth : MonoBehaviour
             _score.AddPoints(PointsOnDieTower);
             var bang = (GameObject)Instantiate(Explosion, transform.position, transform.rotation);
             Destroy(bang, 3.5f);
+
+            if (destructionSoundPrefab)
+            {
+                GameObject deathSound = Instantiate(
+                    destructionSoundPrefab,
+                    transform.position,
+                    Quaternion.identity);
+                Destroy(deathSound, destructionSoundPrefab.gameObject.GetComponent<AudioSource>().clip.length);
+            }
+
             Destroy(gameObject, 0.1f);
         }
     }
