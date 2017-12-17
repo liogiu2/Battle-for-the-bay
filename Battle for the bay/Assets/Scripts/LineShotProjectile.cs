@@ -52,6 +52,11 @@ public class LineShotProjectile : MonoBehaviour
             other.gameObject.SendMessage("DamageOnHit", DamageOnHit);
             Destroy(gameObject, 0.1f);
         }
+        if (other.gameObject.tag == "NeutralNPC")
+        {
+            other.gameObject.SendMessage("DamageOnHit", DamageOnHit);
+            Destroy(gameObject, 0.1f);
+        }
         if (other.gameObject.tag == "destructable")
         { 
             other.gameObject.SendMessage("DamageOnHit", DamageOnHit);
