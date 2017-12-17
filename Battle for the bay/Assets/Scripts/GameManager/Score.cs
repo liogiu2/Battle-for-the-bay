@@ -46,7 +46,7 @@ public class Score : MonoBehaviour
             _oldSceneName = scene.name;
             if (GameObject.Find("GameManager") != null)
             {
-                _tutorial = GameObject.Find("HUD").transform.Find("Canvas").transform.Find("Panel").transform.Find("Tutorial").gameObject;
+                _tutorial = GameObject.Find("HUD").transform.Find("Canvas").transform.Find("Tutorial").gameObject;
                 _tutorial.SetActive(true);
             }
         }
