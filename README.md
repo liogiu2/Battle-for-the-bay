@@ -42,21 +42,6 @@ Assets
 - [freesound.org](https://freesound.org/) Various sound effects
 - [Freepik]() AOE aiming sprite
 
-
-MDA+ Analysis
-------------
-
-If you just want to play the game on Windows, use the [available binaries for
-each release][2] are what you need.  Just click the green button under a
-release to download the archive and run the `*.exe` file. This might require a
-newer Windows version.
-
-For development, there are Visual Studio 2013 project files included. I also
-provide prebuild libraries for the Visual C++ compiler. You need to build the
-dependencies and put thier static LIB files into the `bin` directory first.
-
-[2]: https://github.com/danijar/computer-game/releases
-
 Tools used
 --------
 - [Unity]() Game engine
@@ -76,16 +61,13 @@ Like most MOBA's or RTS games, the player navigates using his mouse and right mo
 | `Q`   | Cast special ability Q (Fireball) 		   |
 | `W`   | Cast special ability W.(Multishot)           |
 | `E`   | Cast special ability E.(Incarceration)       |
-| `S`   | Toggle vertical sync.                        |
+| `S`   | Stop player movement.                        |
+| `M`   | Toggle large map view.                       |
 
 Known Bugs
 ----------
 
 - fix sound sliders and resolution toggles
-- upgrade system - resources consuming
-- Material live reload is not reliable
-- Fix base collider
-- Player gets score for destroying own towers
 
 ## Authors
 
