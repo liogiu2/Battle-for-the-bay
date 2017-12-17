@@ -7,7 +7,7 @@ The game can be downloaded from [here][2] (36.6 MB) and the highscore server is 
 
 [1]: http://cadia.ru.is/wiki/public:t-624-cgdd-17-3:main
 [2]: http://codelab.is/bftb.rar
-[3]: https://fast-lowlands-46452.herokuapp.com/
+[3]: http://battle.codelab.is
 
 ![Screenshot](https://i.gyazo.com/1f94240d16fecea14b859605beb923f4.png?raw=true)
 
