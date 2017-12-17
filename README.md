@@ -1,7 +1,7 @@
 Battle for the Bay
 =============
 
-Battle for the Bay is a computer game designed and developed in the [SC-SC-T-624-CGDD][1] three weeks course tought by David Thue and Marco Bancale.
+Battle for the Bay is a computer game designed and developed in the [SC-SC-T-624-CGDD][1] three week course tought by David Thue and Marco Bancale.
 The game is essentially a pirate-era MOBA game where the player controls a pirate ship and is accompanied by his minions to conquer the enemy base.
 
 [1]: http://cadia.ru.is/wiki/public:t-624-cgdd-17-3:main
@@ -53,89 +53,42 @@ dependencies and put thier static LIB files into the `bin` directory first.
 
 [2]: https://github.com/danijar/computer-game/releases
 
-Built With
----------
-
-Savegames are stored in `save/`. Modify the settings file located at
-`script/settings/init.js` to specify which save game should be loaded at
-startup. The default name is `world`. If the name doesn't exist yet, a new
-world is created.
-
-    Savegame: [ 'string', 'world' ],
-
-There are also scripting functions available for creating new worlds and
-switching between them at run time.
-
-Built with
----------
-
-The scripting language is JavaScript. You can access the in-game scripting
-console by pressing `Tab`. It's only visible in debug mode, though. To enable
-debug mode, blindly press `Tab`, type in `debug()` and hit `Enter`. You can now
-see debug information on the screen like the scripting console, frames per
-second, number of loaded meshes, coordinates of the camera, and so on.
-
-Documentation can be found in the [List of Scripting Functions][3].
-
-[3]: https://github.com/danijar/computer-game/wiki/List-of-Scripting-Functions
+Tools used
+--------
+- [Unity]() Game engine
+- [Photoshop]() for asset creation / modification
+- [Github]() for version control
+- [Trello]() for project management
 
 Controls
 --------
 
+Like most MOBA's or RTS games, the player navigates using his mouse and right mouse button.
 ### Settings and global actions
 
 | Key   | Action                                       |
 | :---: | -------------------------------------------- |
-| `Esc` | Exit the application.                        |
-| `F1`  | Toggle mouse capture for camera movement.    |
-| `F2`  | Toggle wire frame mode.                      |
-| `F3`  | Toggle collision shapes debug draw.          |
-| `F4`  | Toggle vertical sync.                        |
-| `F11` | Toggle between fullscreen and windowed mode. |
-| `Tab` | Toggle scripting console.                    |
-
-### Interaction with the world
-
-| Key            | Action                               |
-| :------------: | ------------------------------------ |
-| `Mouse Left`   | Mine selected block.                 |
-| `Mouse Right`  | Place a block.                       |
-| `Mouse Middle` | Pick type of selected block.         |
-| `1` to `9`     | Change type of block getting placed. |
-
-### Inserting test objects
-
-| Key      | Action                                                           |
-| :------: | ---------------------------------------------------------------- |
-| `Ctrl+C` | Insert a capsule body.                                           |
-| `Ctrl+V` | Shoot a cube in view direction.                                  |
-| `Ctrl+B` | Place barrel on the floor.                                       |
-| `Ctrl+N` | Insert a big rock.                                               |
-| `Ctrl+M` | Set a shrine.                                                    |
-| `Ctrl+X` | Insert a big cube with the material from the `texture` variable. |
-| `HOUSE`  | Insert a procedurally generated house.                           |
+| `Esc` | Toggle game menu.                            |
+| `Q`   | Cast special ability Q (Fireball) 		   |
+| `W`   | Cast special ability W.(Multishot)           |
+| `E`   | Cast special ability E.(Incarceration)       |
+| `S`   | Toggle vertical sync.                        |
 
 Known Bugs
 ----------
 
-- Switch to fullscreen doen't work
-- Testing on intel tablet, the screen pass doesn't work after resize
+- fix sound sliders and resolution toggles
+- upgrade system - resources consuming
 - Material live reload is not reliable
-- Two unneeded framebuffer creations fail at startup
-- Stencil doesn't work in all cases
-- Out of range chunks aren't freed completely
-- One can sometimes jump when in air
+- Fix base collider
+- Player gets score for destroying own towers
 
-Authors
-----------
+## Authors
 
-- Switch to fullscreen doen't work
-- Testing on intel tablet, the screen pass doesn't work after resize
-- Material live reload is not reliable
-- Two unneeded framebuffer creations fail at startup
-- Stencil doesn't work in all cases
-- Out of range chunks aren't freed completely
-- One can sometimes jump when in air
+* **Giulio Mori** - *Student* - [liogiu2](https://github.com/liogiu2)
+* **Matteo Altobelli** - *Student* - [M4tt92](https://github.com/M4tt92)
+* **Michelangelo Diamanti** - *Student* - [MichelangeloDiamanti](MichelangeloDiamanti)
+* **Theodor Magnusson** - *Student* - [teddimagg](https://github.com/teddimagg)
 
 
 License
