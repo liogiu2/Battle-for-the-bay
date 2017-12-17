@@ -119,7 +119,7 @@ public class UpgradeSystem : MonoBehaviour
                 Vector3 position = new Vector3(tower.transform.position.x, tower.transform.position.y + 1f, tower.transform.position.z);
                 GameObject upgradeEffect = Instantiate(upgradeEffectPrefab, position, Quaternion.identity);
                 Destroy(upgradeEffect, 3f);
-                StartCoroutine(FriendlyTowerAfterTime(tower, 3));
+                StartCoroutine(FriendlyTowerAfterTime(tower, 3f));
             }
             friendlyTowersLevel += 1;
         }
