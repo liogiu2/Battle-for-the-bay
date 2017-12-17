@@ -18,6 +18,7 @@ TagManager:
   - Enemy
   - PlayerTower
   - EnemyTower
+  - NeutralNPC
   layers:
   - Default
   - TransparentFX
