@@ -4935,7 +4935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ca87bb9cc89c746931c00393a65f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SecondForSpawn: 17
+  SecondForSpawn: 30
   EnemyGameobject: {fileID: 1571076837685520, guid: 7e343911f70696843991a3de785f0319,
     type: 2}
   spawnCount: 4

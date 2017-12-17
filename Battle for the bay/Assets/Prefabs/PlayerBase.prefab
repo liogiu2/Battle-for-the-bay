@@ -687,6 +687,7 @@ GameObject:
   - component: {fileID: 65616335948333266}
   - component: {fileID: 114248705090190990}
   - component: {fileID: 114114474634152342}
+  - component: {fileID: 82705523745924416}
   m_Layer: 2
   m_Name: PlayerBase
   m_TagString: destructable
@@ -4388,6 +4389,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 21.93021, y: 24.250645, z: 19.074007}
   m_Center: {x: -0.09004784, y: 6.279693, z: -0.014691447}
+--- !u!82 &82705523745924416
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1426964943084242}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d3723f1a768a74544b2d446224019d38, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95228864017786242
 Animator:
   serializedVersion: 3
@@ -5093,10 +5174,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ca87bb9cc89c746931c00393a65f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SecondForSpawn: 17
+  SecondForSpawn: 30
   EnemyGameobject: {fileID: 1104071182886360, guid: 171517f4abe18dd4698077395720c61d,
     type: 2}
-  spawnCount: 1
+  spawnCount: 4
 --- !u!114 &114839526901168948
 MonoBehaviour:
   m_ObjectHideFlags: 1

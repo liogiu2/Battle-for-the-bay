@@ -178,6 +178,7 @@ public class UpgradeSystem : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(enemyMinionsUpgradeTime);
+            if(enemyBase.transform.Find("Spawner").GetComponent<spawner>().SecondForSpawn > 15) enemyBase.transform.Find("Spawner").GetComponent<spawner>().SecondForSpawn -= 3;
             enemyBase.transform.Find("Spawner").GetComponent<spawner>().spawnCount += 1;
         }
     }
