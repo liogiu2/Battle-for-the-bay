@@ -100,8 +100,8 @@ public class UpgradeSystem : MonoBehaviour
                 TowerUI[towersLevel].SetActive(true);
                 Vector3 position = new Vector3(tower.transform.position.x, tower.transform.position.y + 1f, tower.transform.position.z);
                 GameObject upgradeEffect = Instantiate(upgradeEffectPrefab, position, Quaternion.identity);
-                Destroy(upgradeEffect, 3f);
-                StartCoroutine(TowerAfterTime(tower, 3));
+                Destroy(upgradeEffect, 2f);
+                StartCoroutine(TowerAfterTime(tower, 2f));
             }
             towersLevel += 1;
         }

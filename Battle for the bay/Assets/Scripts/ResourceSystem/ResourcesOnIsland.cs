@@ -25,6 +25,10 @@ public class ResourcesOnIsland : MonoBehaviour
 
     public void GetMoneyFromPlayer()
     {
+        if (PlayerResources.Money == 0) return;
+
+        AudioSource depositCoinsEffect = GetComponent<AudioSource>();
+        depositCoinsEffect.Play();
         MoneyOnIsland += PlayerResources.Money;
         PlayerResources.Money = 0;
     }
