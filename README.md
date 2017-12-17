@@ -3,7 +3,7 @@ Battle for the Bay
 
 Battle for the Bay is a computer game designed and developed in the [SC-SC-T-624-CGDD][1] three week course tought by David Thue and Marco Bancale.
 The game is essentially a pirate-era MOBA game where the player controls a pirate ship and is accompanied by his minions to conquer the enemy base.
-The game can be downloaded from [here][2] and the highscore server is accessible [here][3]
+The game can be downloaded from [here][2] (36.6 MB) and the highscore server is accessible [here][3]
 
 [1]: http://cadia.ru.is/wiki/public:t-624-cgdd-17-3:main
 [2]: http://codelab.is/bftb.rar
