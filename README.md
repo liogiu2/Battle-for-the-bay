@@ -5,9 +5,15 @@ Battle for the Bay is a computer game designed and developed in the [SC-SC-T-624
 The game is essentially a pirate-era MOBA game where the player controls a pirate ship and is accompanied by his minions to conquer the enemy base.
 The game can be downloaded from [here][2] (36.6 MB) and the highscore server is accessible [here][3]
 
+Instructions
+--------
+After downloading the game files, extract the contents of the bftb.rar file to a good place using [WinRAR][4] or a similar archiver. Once extracted, 
+click the bftb.exe executable, set the game settings, press play and enjoy!
+
 [1]: http://cadia.ru.is/wiki/public:t-624-cgdd-17-3:main
 [2]: http://codelab.is/bftb.rar
 [3]: http://battle.codelab.is
+[4]: https://www.rarlab.com/download.htm
 
 ![Screenshot](https://i.gyazo.com/1f94240d16fecea14b859605beb923f4.png?raw=true)
 
