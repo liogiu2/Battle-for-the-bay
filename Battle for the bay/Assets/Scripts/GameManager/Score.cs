@@ -26,7 +26,10 @@ public class Score : MonoBehaviour
     {
         Points = 0;
         DontDestroyOnLoad(this);
-        _scoreOnGUI = GameObject.Find("HUD").transform.Find("Canvas").transform.Find("Panel").transform.Find("Score").transform.Find("ScoreLabel").GetComponent<Text>();
+        if (GameObject.Find("HUD"))
+        {
+            _scoreOnGUI = GameObject.Find("HUD").transform.Find("Canvas").transform.Find("Panel").transform.Find("Score").transform.Find("ScoreLabel").GetComponent<Text>();
+        }
     }
 
     // Update is called once per frame
