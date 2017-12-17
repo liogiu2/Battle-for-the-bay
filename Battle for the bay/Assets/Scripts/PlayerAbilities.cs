@@ -122,7 +122,7 @@ public class PlayerAbilities : MonoBehaviour
         {
             if (Input.GetKeyDown("q"))
             {
-                if (aimMode > 0)
+                if (aimMode > 0 && aimMode != 1)
                 {
                     resetSprites();
                 }
@@ -134,12 +134,11 @@ public class PlayerAbilities : MonoBehaviour
                 else
                 {
                     aimMode = 0;
-                    resetSprites();
                 }   
             }
             else if (Input.GetKeyDown("w"))
             {
-                if (aimMode > 0)
+                if (aimMode > 0 && aimMode != 2)
                 {
                     resetSprites();
                 }
@@ -151,12 +150,11 @@ public class PlayerAbilities : MonoBehaviour
                 else
                 {
                     aimMode = 0;
-                    resetSprites();
                 }
             }
             else if (Input.GetKeyDown("e"))
             {
-                if (aimMode > 0)
+                if (aimMode > 0 && aimMode != 3)
                 {
                     resetSprites();
                 }
@@ -168,7 +166,6 @@ public class PlayerAbilities : MonoBehaviour
                 else
                 {
                     aimMode = 0;
-                    resetSprites();
                 }
             }
         }
@@ -191,35 +188,31 @@ public class PlayerAbilities : MonoBehaviour
                 switch (aimMode)
                 {
                     case 1:
-                        if (cooldownQTimer == 0f)
-                        {
-                            lineSprite.enabled = true;
-                            lineShotAim.transform.LookAt(position);
+                        lineSprite.enabled = true;
+                        lineShotAim.transform.LookAt(position);
 
-                            if (Input.GetMouseButtonDown(0))
-                            {
-                                cooldownQTimer = cooldownQ;
-                                fireTowards(lineShotAim.transform.rotation);
-                                if (aimingConfig == 0) resetSprites();
-                                clickDelay = true;
-                            }
+                        if (Input.GetMouseButtonDown(0) && cooldownQTimer == 0f)
+                        {
+                            cooldownQTimer = cooldownQ;
+                            fireTowards(lineShotAim.transform.rotation);
+                            if (aimingConfig == 0) resetSprites();
+                            clickDelay = true;
                         }
+                        
                         break;
                     case 2:
                         // Range 
-                        if (cooldownWTimer == 0f)
-                        {
-                            rangeSprite.enabled = true;
-                            lineShotAim.transform.LookAt(position);
+                        rangeSprite.enabled = true;
+                        lineShotAim.transform.LookAt(position);
 
-                            if (Input.GetMouseButtonDown(0))
-                            {
-                                cooldownWTimer = cooldownW;
-                                MultiFire(lineShotAim.transform.rotation);
-                                if (aimingConfig == 0) resetSprites();
-                                clickDelay = true;
-                            }
+                        if (Input.GetMouseButtonDown(0) && cooldownWTimer == 0f)
+                        {
+                            cooldownWTimer = cooldownW;
+                            MultiFire(lineShotAim.transform.rotation);
+                            if (aimingConfig == 0) resetSprites();
+                            clickDelay = true;
                         }
+                        
                         break;
                     case 3:
                         // Splash Area mode
