@@ -5,7 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.PostProcessing;
 using UnityEngine.SceneManagement;
 
-public class MenuHandler : MonoBehaviour {
+public class MenuHandler : MonoBehaviour
+{
 
     private bool isOpen;
     private GameObject menu;
@@ -13,7 +14,7 @@ public class MenuHandler : MonoBehaviour {
     private float health;
     private GameObject playerBase;
     private GameObject enemyBase;
-    
+
     private float initHealth;
 
     private Image statusPlayer;
@@ -34,20 +35,22 @@ public class MenuHandler : MonoBehaviour {
     private GameObject Options;
     private GameObject Controls;
     private Text volumeValueText;
+    private GameMode _gameMode;
 
     // Use this for initialization
-    void Start () {
-        hud = GameObject.Find("HUD").gameObject;                
+    void Start()
+    {
+        hud = GameObject.Find("HUD").gameObject;
         menu = GameObject.Find("Menu").gameObject;
         statusPlayer = hud.transform.Find("Canvas/Panel/StatusBar/ContainerPlayer/PlayerStatus").gameObject.GetComponent<Image>();
         statusEnemy = hud.transform.Find("Canvas/Panel/StatusBar/ContainerEnemy/EnemyStatus").gameObject.GetComponent<Image>();
-        
+
         fullscreenToggle = menu.transform.Find("Canvas/Panel/Options/leftPanel").gameObject.GetComponent<Toggle>();
         volumeValueText = menu.transform.Find("Canvas/Panel/Options/leftPanel/VolumeValue").GetComponent<Text>();
         menu.transform.Find("Canvas/Panel/Options").gameObject.SetActive(false);
         menu.SetActive(false);
         isOpen = false;
-
+        _gameMode = GetComponent<GameMode>();
         //PLAYER PREFERENCES
         activeScreenResIndex = PlayerPrefs.GetInt("screen res index");
         bool isFullscreen = (PlayerPrefs.GetInt("fullscreen") == 1) ? true : false;
@@ -61,7 +64,7 @@ public class MenuHandler : MonoBehaviour {
             resolutionToggles[i].isOn = i == activeScreenResIndex;
         }
 
-        if(fullscreenToggle != null)
+        if (fullscreenToggle != null)
             fullscreenToggle.isOn = isFullscreen;
 
         playerBase = GameObject.Find("PlayerBase").gameObject;
@@ -81,7 +84,8 @@ public class MenuHandler : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -90,7 +94,8 @@ public class MenuHandler : MonoBehaviour {
                 if (MainPage.activeSelf)
                 {
                     resumeGame();
-                } else
+                }
+                else
                 {
                     MainPage.SetActive(true);
                     Options.SetActive(false);
@@ -99,7 +104,7 @@ public class MenuHandler : MonoBehaviour {
             }
             else
             {
-                Time.timeScale = 0.0f;
+                _gameMode.StartPause();
                 isOpen = true;
                 menu.SetActive(true);
                 hud.SetActive(false);
@@ -133,7 +138,7 @@ public class MenuHandler : MonoBehaviour {
     public void OnUpdateMasterVolume(float value)
     {
         AudioListener.volume = value;
-        volumeValueText.text = "" + (int) (AudioListener.volume*100);
+        volumeValueText.text = "" + (int)(AudioListener.volume * 100);
         Debug.Log("AudioListener.volume: " + AudioListener.volume);
         //AudioManager.instance.SetVolume(value, AudioManager.AudioChannel.Music);
     }
@@ -177,7 +182,7 @@ public class MenuHandler : MonoBehaviour {
         hud.SetActive(true);
 
         mainCamera.GetComponent<PostProcessingBehaviour>().profile = currentProfile;
-        Time.timeScale = 1.0f;
+        _gameMode.StopPause();
     }
 
     public void endGame()
