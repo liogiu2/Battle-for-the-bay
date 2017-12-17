@@ -46,6 +46,7 @@ public class Score : MonoBehaviour
         Scene scene = SceneManager.GetActiveScene();
         if (_oldSceneName != scene.name)
         {
+            Time.timeScale = 1f;
             _oldSceneName = scene.name;
             if (GameObject.Find("GameManager") != null)
             {

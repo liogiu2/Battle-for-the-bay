@@ -45,7 +45,7 @@ public class MenuHandler : MonoBehaviour
         statusPlayer = hud.transform.Find("Canvas/Panel/StatusBar/ContainerPlayer/PlayerStatus").gameObject.GetComponent<Image>();
         statusEnemy = hud.transform.Find("Canvas/Panel/StatusBar/ContainerEnemy/EnemyStatus").gameObject.GetComponent<Image>();
 
-        fullscreenToggle = menu.transform.Find("Canvas/Panel/Options/leftPanel").gameObject.GetComponent<Toggle>();
+        fullscreenToggle = menu.transform.Find("Canvas/Panel/Options/leftPanel/Toggle").gameObject.GetComponent<Toggle>();
         volumeValueText = menu.transform.Find("Canvas/Panel/Options/leftPanel/VolumeValue").GetComponent<Text>();
         menu.transform.Find("Canvas/Panel/Options").gameObject.SetActive(false);
         menu.SetActive(false);
@@ -181,12 +181,13 @@ public class MenuHandler : MonoBehaviour
         menu.SetActive(false);
         hud.SetActive(true);
 
-        mainCamera.GetComponent<PostProcessingBehaviour>().profile = currentProfile;
         _gameMode.StopPause();
+        mainCamera.GetComponent<PostProcessingBehaviour>().profile = currentProfile;
     }
 
     public void endGame()
     {
+        _gameMode.StopPause();
         SceneManager.LoadScene(3);
     }
 }

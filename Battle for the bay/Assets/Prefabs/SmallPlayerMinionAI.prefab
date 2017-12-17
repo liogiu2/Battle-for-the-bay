@@ -53,6 +53,7 @@ GameObject:
   - component: {fileID: 4889868831956334}
   - component: {fileID: 198261421641114320}
   - component: {fileID: 199295194927136798}
+  - component: {fileID: 82669088129073290}
   m_Layer: 0
   m_Name: Explosion
   m_TagString: Untagged
@@ -339,8 +340,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1104071182886360}
-  m_LocalRotation: {x: -0, y: 0.07271123, z: -0, w: -0.997353}
-  m_LocalPosition: {x: -76.83547, y: -1.3842342e-15, z: -17.158327}
+  m_LocalRotation: {x: -0, y: -0.88854706, z: -0, w: -0.45878553}
+  m_LocalPosition: {x: -74.84774, y: -1.1035075e-15, z: -13.540533}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4444384971160850}
@@ -351,7 +352,7 @@ Transform:
   - {fileID: 224834170076526486}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 125.382, z: 0}
 --- !u!4 &4873628790012294
 Transform:
   m_ObjectHideFlags: 1
@@ -463,6 +464,86 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!82 &82669088129073290
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1063353638610936}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 3c495268ef48e6940b71d7cc67f524ad, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 3
+  MaxDistance: 30
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114006055429417174
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -480,7 +561,9 @@ MonoBehaviour:
   TargetEnemy: {fileID: 0}
   bulletPrefab: {fileID: 1206017651612816, guid: bc82d198bd7be3f4fad1f37ca3322fc2,
     type: 2}
-  BulletSpeed: 5
+  bulletSoundPrefab: {fileID: 1039695625498826, guid: 519434dc33c2a6745a079c82b298b1ee,
+    type: 2}
+  BulletSpeed: 10
   FireAudioClip: {fileID: 8300000, guid: 8951a99d1a26fea4fbcb3775f8a0b399, type: 3}
 --- !u!114 &114062298959071498
 MonoBehaviour:
@@ -641,15 +724,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f8d75d3952f59f42a4fea22286ab09a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  MaxHealth: 100
+  health: 200
+  MaxHealth: 200
   HealthRecovery: 0
-  DeathSound: {fileID: 8300000, guid: 3c495268ef48e6940b71d7cc67f524ad, type: 3}
+  deathSoundPrefab: {fileID: 1776450049702432, guid: eaaac9b537ede7146816a47ed4a5c8fc,
+    type: 2}
   Explosion: {fileID: 1063353638610936}
+  Smoke: {fileID: 0}
+  Fire: {fileID: 0}
   MoneyOnDie: 0
+  WaitAfterRespawn: 5
   HealthBar: {fileID: 0}
   minionHealthBar: {fileID: 114860320602220810}
   GodMode: 0
+  LosePointOnDiePlayer: 0
+  PointOnDieMinion: 10
+  font: {fileID: 0}
 --- !u!114 &114785151707610874
 MonoBehaviour:
   m_ObjectHideFlags: 1
