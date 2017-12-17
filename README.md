@@ -8,8 +8,8 @@ The game is essentially a pirate-era MOBA game where the player controls a pirat
 
 ![Screenshot](https://i.gyazo.com/1f94240d16fecea14b859605beb923f4.png?raw=true)
 
-<img src="https://i.gyazo.com/87bc4e036a0bfa2c26b6107450fd810f.jpg?raw=true" width="460">&nbsp;
-<img src="https://i.gyazo.com/a802e8aeb3b0c46caffc7e763a643a12.jpg?raw=true" width="460">
+<img src="https://i.gyazo.com/87bc4e036a0bfa2c26b6107450fd810f.jpg?raw=true" width="400">&nbsp;
+<img src="https://i.gyazo.com/a802e8aeb3b0c46caffc7e763a643a12.jpg?raw=true" width="400">
 
 Features
 --------
