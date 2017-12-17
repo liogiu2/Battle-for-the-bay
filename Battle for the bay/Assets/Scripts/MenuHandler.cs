@@ -36,6 +36,7 @@ public class MenuHandler : MonoBehaviour
     private GameObject Controls;
     private Text volumeValueText;
     private GameMode _gameMode;
+    public GameObject panel;
 
     // Use this for initialization
     void Start()
@@ -178,6 +179,7 @@ public class MenuHandler : MonoBehaviour
     public void resumeGame()
     {
         isOpen = false;
+        panel.SetActive(true);
         menu.SetActive(false);
         hud.SetActive(true);
 

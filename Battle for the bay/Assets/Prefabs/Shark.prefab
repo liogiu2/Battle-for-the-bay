@@ -695,8 +695,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f8d75d3952f59f42a4fea22286ab09a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 200
-  MaxHealth: 200
+  health: 350
+  MaxHealth: 350
   HealthRecovery: 1
   deathSoundPrefab: {fileID: 0}
   Explosion: {fileID: 1868733195991084, guid: d6f35dcbcf79b14479c5c6cb29926fde, type: 2}
